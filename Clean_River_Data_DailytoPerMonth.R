@@ -1,4 +1,4 @@
-#for SWALIM datasets before you need to
+#for SWALIM datasets http://frrmis.faoso.net/rivers/levels before you need to 
 #1 - change column names to COLLECTIONDATE, Level and Discharge
 #2 - eliminate the space (replace all = _/ --> /)
 #3  - text to columns - fixed with -> date -> DMY
