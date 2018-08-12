@@ -1,9 +1,22 @@
 $(window).on('load', function () {
-     $('#disclaimer').modal('show');
+    // $('#disclaimer').modal('show');
 });
 
+$('section').not('.prediction, .faqs, .articles').each(function () {
+    if ($(this).height() > 500) {
+        $(this).addClass('minified').append('<div class="more view"><button class="showme"><span class="ti-arrow-down"></span> Expand this section </button><button class="hideme"><span class="ti-arrow-up"></span> Minimise this section</button></div>');
+        $('.more').unbind('click').click(function (e) {
+            e.stopPropagation();
+            $(this).parent().toggleClass('minified');
+            $(this).toggleClass('view');
+            console.log($(this).parent().attr('class'))
+        })
+    }
+});
+
+
 $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
+    $('[data-toggle="tooltip"]').tooltip()
 })
 
 $('a[href*="#"]')
@@ -51,13 +64,14 @@ google.charts.setOnLoadCallback(drawRegionsMap);
 
 
 var options = {
-    legend:'none',
+    legend: 'none',
     region: 'SO',
     backgroundColor: '#000E4A',
     resolution: 'provinces',
     colorAxis: {
-        minValue: 1,
-        colors: ['#2c5df5', '#b400ff', '#ff0000']
+        minValue: 0,
+        values: [0, 1, 2, 3],
+        colors: ['#000E4A', '#2c5df5', '#b400ff', '#ff0000']
     },
     datalessRegionColor: '#000E4A'
 };
@@ -242,9 +256,9 @@ getCombinedData().then(function (data) {
 
         month = item['month'];
 
-//        var alg1 = item['algorithms'][0].value;
-//        var alg2 = item['algorithms'][1].value;
-//        var alg3 = item['algorithms'][2].value;
+        //        var alg1 = item['algorithms'][0].value;
+        //        var alg2 = item['algorithms'][1].value;
+        //        var alg3 = item['algorithms'][2].value;
 
         // function to change names to regions
         if (region == 'Middle_Shabelle') {
@@ -283,8 +297,8 @@ getCombinedData().then(function (data) {
             badregion = region;
             region = 'Dollo Ado'
         };
-        
-        
+
+
 
         // function for status update
 
@@ -292,34 +306,36 @@ getCombinedData().then(function (data) {
         if ((item['status'][0] == region) || (item['status'][0] == badregion)) {
             finalstatus = 3;
             console.log('critical ' + region + ' ' + item['status'][0]);
-        };
+        } else
 
         if ((item['status'][1] == region) || (item['status'][1] == badregion)) {
             finalstatus = 2;
             console.log('mid ' + region + ' ' + item['status'][1]);
-        };
+        } else
 
         if ((item['status'][2] == region) || (item['status'][2] == badregion)) {
             finalstatus = 1;
             console.log('low ' + region + ' ' + item['status'][2]);
+        } else {
+            finalstatus = 0;
+            console.log('low ' + region + ' ' + finalstatus);
         };
         //        
-        //   
-        console.log(data);     
+        //     
 
-//        var avg = (alg1 + alg2 + alg3) / 3;
-//
-//        function round(number, precision) {
-//            var shift = function (number, precision, reverseShift) {
-//                if (reverseShift) {
-//                    precision = -precision;
-//                }
-//                var numArray = ("" + number).split("e");
-//                return +(numArray[0] + "e" + (numArray[1] ? (+numArray[1] + precision) : precision));
-//            };
-//            return shift(Math.round(shift(number, precision, false)), precision, true);
-//        }
-//        avg = round(avg, 0);
+        //        var avg = (alg1 + alg2 + alg3) / 3;
+        //
+        //        function round(number, precision) {
+        //            var shift = function (number, precision, reverseShift) {
+        //                if (reverseShift) {
+        //                    precision = -precision;
+        //                }
+        //                var numArray = ("" + number).split("e");
+        //                return +(numArray[0] + "e" + (numArray[1] ? (+numArray[1] + precision) : precision));
+        //            };
+        //            return shift(Math.round(shift(number, precision, false)), precision, true);
+        //        }
+        //        avg = round(avg, 0);
 
         mapdata.push(
         [region, finalstatus]
@@ -343,22 +359,45 @@ function drawRegionsMap() {
 
     $('#show_map').click(function () {
 
-        var data = google.visualization.arrayToDataTable(mapdata);
+            var data = google.visualization.arrayToDataTable(mapdata);
 
-        console.log(mapdata);
+            // console.log(mapdata);
 
-        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+            var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
 
-        $("#regions_div").slideToggle("normal", function () {
-            chart.draw(data, options);
+            $("#regions_div").slideToggle("normal", function () {
+                    chart.draw(data, options);
 
-            const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-            const d = new Date(month);
-            month = monthNames[d.getMonth()];
+                    const d = new Date(month);
+                    month = monthNames[d.getMonth()];
 
-            $(".map-title h2").html('<span class="ti-calendar"></span> Predictions for the month of ' + month);
-            $(".map-title").toggle()
-        });
+                    $(".map-title h2").html('<span class="ti-calendar"></span> Predictions for the month of ' + month);
+                    $(".map-title").toggle();
+
+                    var now = new Date();
+                    current = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+                    var montharr = new Array();
+                    montharr[0] = "January";
+                    montharr[1] = "February";
+                    montharr[2] = "March";
+                    montharr[3] = "April";
+                    montharr[4] = "May";
+                    montharr[5] = "June";
+                    montharr[6] = "July";
+                    montharr[7] = "August";
+                    montharr[8] = "September";
+                    montharr[9] = "October";
+                    montharr[10] = "November";
+                    montharr[11] = "December";
+
+                    var nextmonth = montharr[current.getMonth()];
+                    if(month != nextmonth)
+                        {
+                            $('.warning').show();
+                        }
+
+            });
     });
 }
