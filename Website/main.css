@@ -3,7 +3,6 @@
 body
 {
     font-family: 'Roboto', sans-serif;
-    background: #fffffb
 }
 
 *
@@ -58,86 +57,46 @@ section
 .chart h3
 {
     margin-bottom:30px;
-    font-weight:400;
-}
-
-.chart h4.map-title
-{
-    margin-bottom:30px;
     font-weight:200;
-    margin-top:23px;
-}
-
-
-.chart h4.region-title
-{
-    margin-bottom:10px;
-    font-weight:400;
-    color:#000;
-    font-size:18px;
-    margin-top:10px;
-}
-
-.slider-row
-{
-    margin-bottom:30px;
 }
 
 .controls
 {
+    background:#e6e6e2;
     margin:0 -40px;
-    padding:0 20px;
+    padding:20px;
     margin-bottom:40px;
-    text-align:center;
-}
-
-.controls h4 
-{
-    font-weight:200;
-    color:#777;
-    margin:0;
-    font-size:20px
 }
 
 .controls h5
 {
-    font-size:14px;
+    font-size:13px;
     letter-spacing:1px;
     font-weight:200
 }
 
-.conflict-control 
-{
-    text-align:left;
-}
-
-.food-control 
-{
-    text-align:right;
-}
-
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active
 {
-    border-radius:2px;
+    border-radius:4px;
     top:-9px;
-    height:20px;
-    width:20px;
-    margin-left:-11px !important;
-    background:#6D6D6B;
+    height:22px;
+    width:22px;
+    background: #000;
     margin-left:0;
     margin-right:0;
     cursor: -webkit-grab; /* Chrome 1-21, Safari 4+ */
     cursor:    -moz-grab; /* Firefox 1.5-26 */
     cursor:         grab; /* W3C standards syntax, should come least */
+    box-shadow:0 0 15px rgba(0,0,0, 0.5);
     border:none;
 }
 
 .ui-slider-horizontal
 {
-    height:2px;
+    height:3px;
     border:none !important;
-    background: rgba(0, 0, 0, 0.19);
-    margin:10px 10px 0px;
+    background: #000;
+    margin:20px 0 30px;
     border-radius: 5px;
 }
 
@@ -145,17 +104,15 @@ section
 {
     width:100%;
     position:relative;
-    font-size:9px;
+    font-size:11px;
     font-weight:600;
-    color:#666;
-    text-align:left;
+    color:#666
 }
 
 .slider-key .max
 {
     position:absolute;
-    right:0;
-    text-align:right;
+    right:0
 }
 
 .locations
@@ -281,70 +238,23 @@ section
 
 /* map */
 
-.map
+#map
 {
     width:100%;
     height:500px;
     transition:all ease-in-out .3s;
 }
 
-.map > div
+#map > div
 {
     background: #f2f2ed !important;    
 }
 
 .infoBox
 {
-    width:100px !important;
-    margin-left:-25px 
+    text-shadow:0 2px 30px rgba(0,0,0,1);
 }
 
-.infoBox h4
-{
-    font-weight:200;
-    font-size:20px;
-    text-shadow:0 0 50px rgba(0,0,0,1)
-}
-
-.infoBox h6
-{
-    font-weight:400;
-    font-size:10px;
-}
-
-
-.slider-variables
-{
-    padding-top:40px;
-    padding-bottom:40px;
-}
-
-/* intent */
-
-#chart
-{
-    margin: auto
-}
-
-.intents
-{
-    text-align: center;
-    padding-top:40px;
-    padding-bottom:40px;
-}
-
-.node rect {
-  cursor: move;
-  fill-opacity: .9;
-  shape-rendering: crispEdges;
-}
- 
-.node text {
-  pointer-events: none;
-  font-family: Helvetica;
-  font-size: 14px;
-    font-weight: 200;
-}
 
 
 
