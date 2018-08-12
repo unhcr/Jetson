@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,8 +9,11 @@
 
     <!-- Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet">
-    <link href="main.css" rel="stylesheet">
+    <link href="css/themify-icons.css" rel="stylesheet">
+    <link href="css/simplelightbox.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -23,52 +25,360 @@
 
 <body>
 
-    <section class="title">
-        <div class="container">
-            <img src="unhcr-logo.jpg" width="100" />
-            <h1>Welcome to Jetson</h1>
-            <p>UNHCR Innovation Service’s displacement flow simulation for the Somalia situation. Please note, this page is currently in progress. <b>This simulation is currently in experiment phase and data shown should not be taken as the finished product.</b>
-                <p>
-                    <h2>Jetson Displacement Flow Simulation</h2>
-                    <p>This graph illustrates how many people have been displaced into Ethiopia, and how many are predicted to flee by end of year 2017. Change the variable to view a simulation of how these movements can change based on the variables.</p>
+    <div class="body-container" data-spy="scroll" data-target="#spy">
+        <div class="sidebar">
+            <div class="logo">
+                <a href="#">
+                    <img src="img/logo.png" />
+                </a>
+            </div>
+            <div id="spy">
+                <ul class="nav">
+                  <li role="presentation" class="active"><a href="#intro"></a></li>
+                  <li role="presentation"><a href="#simulation"></a></li>
+                  <li role="presentation"><a href="#about"></a></li>
+                  <li role="presentation"><a href="#access"></a></li>
+                </ul>
+            </div>
+            <div class="footer">
+                2017
+            </div>
         </div>
-    </section>
-
-    <section class="chart">
-        <div class="controls row">
-            <div class="col-sm-6">
-                <h3>Slide the variables to see the predictions changed</h3>
-            </div>
-            <div class="control col-sm-3">
-                <h5>Conflict</h5>
-                <p>Violent conflict incidents per year in Somalia</p>
-                <div id="slider"></div>
-                <div class="slider-key">
-                    <span class="min">1000/year</span>
-                    <span class="max">3000/year</span>
-                </div>
-            </div>
-            <div class="control col-sm-3">
-                <h5>Food Security</h5>
-                <p>Integrated Food Security Phase Classification (IPC)
-                    <div id="slider2"></div>
-                    <div class="slider-key">
-                        <span class="min">1/Minimal Food Insecurity</span>
-                        <span class="max">5/Famine</span>
+        <div class="main">
+            <!-- intro -->
+            <section id="intro">
+                <div class="caption">
+                    <div class="caption-inner">
+                        <h2>Welcome to Jetson</h2>
+                        <p>UNHCR Innovation Service’s displacement flow simulation for the Somalia situation. Please note, this page is currently in progress. This simulation is currently in experiment phase and data shown should not be taken as the finished product.</p>
+                        <a href="#simulation">
+                            <button class="btn">
+                                Explore simulation <span class="ti-arrow-down"></span>
+                            </button>
+                        </a>
                     </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <canvas id="myChart" width="400" height="300"></canvas>
-            </div>
-            <div class="col-sm-6">
-                <div id="map"></div>
-            </div>
-        </div>
-    </section>
+                </div>
+            </section>
 
-    <section class="circles">
+            <!-- simulation -->
+
+            <section id="simulation">
+                <div class="row">
+                <div class="col-sm-3">
+                <div class="col-sm-12">
+                    <h3>Jetson Displacement Flow Simulation</h3>
+                    <p>This graph illustrates how many people have been displaced into Ethiopia, and how many are predicted to flee by end of year 2017. Change the variable to view a simulation of how these movements can change based on the variables.</p>
+                    <div class="slider-variables">
+                        <div class="slide-holder">
+                            <div class="controls">
+                                <h4>Slide the variables to see the predictions changed</h4>
+                                <div class="row slider-row">
+                                    <div class="control col-sm-5 conflict-control">
+                                        <div class="row">
+                                            <h5>Conflict</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2 control-titles">
+                                        <div class="row">
+                                            <h5 class="region-title">Region</h5>
+                                        </div>
+                                    </div>
+                                    <div class="control col-sm-5 food-control">
+                                        <div class="row">
+                                            <h5>Food Security</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row slider-row">
+                                    <div class="control col-sm-5 conflict-control">
+                                        <div class="row">
+                                            <div id="banadir-conflict-slide"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2 control-titles">
+                                        <div class="row">
+                                            <h4>Banadir</h4>
+                                        </div>
+
+                                    </div>
+                                    <div class="control col-sm-5 food-control">
+                                        <div class="row">
+                                            <div id="banadir-food-slide"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row slider-row">
+                                    <div class="control col-sm-5 conflict-control">
+                                        <div class="row">
+                                            <div id="bay-conflict-slide"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2 control-titles">
+                                        <div class="row">
+                                            <h4>Bay</h4>
+                                        </div>
+                                    </div>
+                                    <div class="control col-sm-5 food-control">
+                                        <div class="row">
+                                            <div id="bay-food-slide"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row slider-row">
+                                    <div class="control col-sm-5 conflict-control">
+                                        <div class="row">
+                                            <div id="juba-conflict-slide"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2 control-titles">
+                                        <div class="row">
+                                            <h4>Juba</h4>
+                                        </div>
+                                    </div>
+                                    <div class="control col-sm-5 food-control">
+                                        <div class="row">
+                                            <div id="juba-food-slide"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row slider-row">
+                                    <div class="control col-sm-5 conflict-control">
+                                        <div class="row">
+                                            <div id="shabelle-conflict-slide"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2 control-titles">
+                                        <div class="row">
+                                            <h4>Shabelle</h4>
+                                        </div>
+                                    </div>
+                                    <div class="control col-sm-5 food-control">
+                                        <div class="row">
+                                            <div id="shabelle-food-slide"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row slider-row">
+                                    <div class="control col-sm-5 conflict-control">
+                                        <div class="row">
+                                            <div class="slider-key">
+                                                <span class="min">1000/year</span>
+                                                <span class="max">3000/year</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2 control-titles">
+
+                                    </div>
+                                    <div class="control col-sm-5 food-control">
+                                        <div class="row">
+                                            <div class="slider-key">
+                                                <span class="min">5/Famine</span>
+                                                <span class="max">1/Min. Insecurity</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-sm-9">
+                    <canvas id="myChart" width="400" height="120"></canvas>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h4 class="map-title">Violent incidents per region</h4>
+                            <div class="row">
+                                <div id="conflictmap" class="map"></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <h4 class="map-title text-right">Food Insecurity</h4>
+                            <div class="row">
+                                <div id="foodmap" class="map"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+            <h3>Intent to flee Survey</h3>
+            <p>Internally displaced: Somalia, survey intention to flee</p>
+                        
+                        </div>
+                        <div class="col-sm-10">
+                            <div id='somalia-intent'>
+                    
+<script lang='babel' type='text/babel'>
+const units = '';
+const margin = {top: 10, right: 10, bottom: 10, left: 10};
+const width = 800 - margin.left - margin.right;
+const height = 300 - margin.top - margin.bottom;
+
+// zero decimal places
+const formatNumber = d3.format(',.0f');
+
+const format = d => `${formatNumber(d)} ${units}`;
+
+const color = d3.scaleOrdinal()
+  .domain([
+    'Banadir (Mogadishu)',
+    'Bay',
+    'Shabelle Hoose (Lower)',
+    'Bakool',
+    'Hiraan',
+    'Nugaal',
+    'Mudug'
+  ])
+  .range([
+    '#0B6EB8',
+    '#9E1E62',
+    '#EF4036',
+    '#00ccbc',
+    '#f29e2e',
+    '#00ccbc',
+    '#d7191c'
+  ]);
+
+d3.select('#somalia-intent')
+  .style('visibility', 'visible');
+
+// append the svg canvas to the page
+const svg = d3.select('#somalia-intent').append('svg')
+  .attr('width', width + margin.left + margin.right)
+  .attr('height', height + margin.top + margin.bottom)
+  .append('g')
+    .attr('transform', `translate(${margin.left},${margin.top})`);
+
+// set the sankey diagram properties
+const sankey = d3.sankey()
+  .nodeWidth(40)
+  .nodePadding(10)
+  .size([width, height]);
+
+const path = sankey.link();
+
+// append a defs (for definition) element to your SVG
+const defs = svg.append('defs');
+
+// load the data
+d3.json('somalia-intent.json', (error, graph) => {
+  console.log('graph', graph);
+  sankey
+    .nodes(graph.nodes)
+    .links(graph.links)
+    .layout(13); // any value > 13 breaks the link gradient
+ 
+  // add in the links
+  const link = svg.append('g').selectAll('.link')
+    .data(graph.links)
+    .enter().append('path')
+      .attr('class', 'link')
+      .attr('d', path)
+      .style('stroke-width', d => Math.max(1, d.dy))
+      .style('fill', 'none')
+      .style('stroke-opacity', 0.5)
+      .sort((a, b) => b.dy - a.dy)
+      .on('mouseover', function() {
+        d3.select(this).style('stroke-opacity', 0.7);
+      })
+      .on('mouseout', function() {
+        d3.select(this).style('stroke-opacity', 0.5);
+      });
+ 
+  // add the link titles
+  link.append('title')
+    .text(d => `${d.source.name} → ${d.target.name}\n${format(d.value)}`);
+ 
+  // add in the nodes
+  const node = svg.append('g').selectAll('.node')
+    .data(graph.nodes)
+    .enter().append('g')
+      .attr('class', 'node')
+      .attr('transform', d => `translate(${d.x},${d.y})`)
+      .call(d3.drag()
+        .subject(d => d)
+        .on('start', function() { 
+          this.parentNode.appendChild(this); })
+        .on('drag', dragmove));
+ 
+  // add the rectangles for the nodes
+  node.append('rect')
+    .attr('height', d => d.dy)
+    .attr('width', sankey.nodeWidth())
+    .style('fill', d => { 
+      if(color.domain().indexOf(d.name) > -1){
+        return d.color = color(d.name);  
+      } else {
+        return d.color = '#ccc';
+      }
+    })
+    .append('title')
+      .text(d => `${d.name}\n${format(d.value)}`);
+ 
+  // add in the title for the nodes
+  node.append('text')
+    .attr('x', -6)
+    .attr('y', d => d.dy / 2)
+    .attr('dy', '.35em')
+    .attr('text-anchor', 'end')
+    .attr('transform', null)
+    .text(d => d.name + ' ' + d.value)
+    .filter(d => d.x < width / 2)
+      .attr('x', 6 + sankey.nodeWidth())
+      .attr('text-anchor', 'start');
+
+  // add gradient to links
+  link.style('stroke', (d, i) => {
+    console.log('d from gradient stroke func', d);
+
+    // make unique gradient ids  
+    const gradientID = `gradient${i}`;
+
+    const startColor = d.source.color;
+    const stopColor = d.target.color;
+
+    console.log('startColor', startColor);
+    console.log('stopColor', stopColor);
+
+    const linearGradient = defs.append('linearGradient')
+        .attr('id', gradientID);
+
+    linearGradient.selectAll('stop') 
+      .data([                             
+          {offset: '10%', color: startColor },      
+          {offset: '90%', color: stopColor }    
+        ])                  
+      .enter().append('stop')
+      .attr('offset', d => {
+        console.log('d.offset', d.offset);
+        return d.offset; 
+      })   
+      .attr('stop-color', d => {
+        console.log('d.color', d.color);
+        return d.color;
+      });
+
+    return `url(#${gradientID})`;
+  })
+ 
+// the function for moving the nodes
+  function dragmove(d) {
+    d3.select(this).attr('transform', 
+      `translate(${d.x = Math.max(0, Math.min(width - d.dx, d3.event.x))},${d.y = Math.max(0, Math.min(height - d.dy, d3.event.y))})`);
+    sankey.relayout();
+    link.attr('d', path);
+  }
+});
+</script>
+            </div>
+                        </div>
+                    </div>
+                </div>
+                    </div>
+            </section>
+          <section id="about">
+              <img src="img/about.jpg"/>
         <div class="container">
             <h3>What is UNHCR Innovation Jetson?</h3>
             <p>Jetson is a predictive analytics platform aimed at providing better data to deliver better decisions. We measure multiple variables to see how changes many effect internally displaced populations. Jetson is an experimental project launched by UNHCR&rsquo;s Innovation Service in 2017 to better understand how data can be used to predict movements of people in Sub-Saharan Africa, particularly in the Horn of Africa.</p>
@@ -90,7 +400,7 @@
             <br>
             <img src="img/our-process.png"/>
 
-            <h4>5 Project Assumptions</h4>
+            <h4>4 Project Assumptions</h4>
             <ul>
                 <li>
                     <p>The project is focused only in the population flow, both across borders and internally. This means the main research purpose is to measure changes in the population in an specific period of time (e.g. a year)</p>
@@ -141,13 +451,21 @@
                 </div>
             </div>
         <div class="container">
-            <h4>Satellite data analysis, improving the quality of analysis:</h4>
+            <h4>Satellite data and humanitarian access; improving the quality of analysis:</h4>
             <p>Using two data points (17th January 2017 and 21st April 2017), it is possible to see an increase in the presence of shelters in Baidoa over a three month period. The rows of orange structures shown here found southeast of the airport perimeter (April image), are assumed to have been erected by newly arrived IDPs to Baidoa. These arrivals have also been confirmed in population data sourced from the <a href="http://data.unhcr.org/horn-of-africa/country.php?id=197">Protection and Return Monitoring Network (PRMN</a>). These structures are considerably smaller than existing structures in Baidoa, including pre-identified IDP settlements. From immediate observation these shelters are assumed to have been &lsquo;self-constructed&rsquo; by individual households, from a similar source of shelter materials, including orange tarpaulin. Orange tarpaulins are often provided by NRC as NFI/shelter distributions; there presence/support in establishing these shelters would need to be confirmed. </p>
         </div>
     </section>
+            <section id="access">
+                <a href="img/access-map.jpg" class="lightbox">
+                    <img src="img/access-map.jpg"/>
+                </a>
+                <div class="col-sm-12">
+                    <h6>Source: <a href="http://www.nspsomalia.org/joomla/index.php/nsp-resources-maps/access-maps/file/139-201602-access-map-somalia-february-2016-inso-hr" target="_blank">UNOCHA (2016)</a></h6>
+                </div>
+            </section>
 
-
-
+        </div>
+    </div>
 
 
     <script>
@@ -179,7 +497,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.3/Chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
-    <script src="main.js"></script>
+    <script src='js/d3.min.js'></script>
+    <script src='js/d3.sankey.js'></script>
+    <script src='js/babel.min.js'></script>
+    <script src='js/simple-lightbox.min.js'></script>
+    <script src="js/main.js"></script>
 
 </body>
 

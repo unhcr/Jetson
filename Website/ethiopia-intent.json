@@ -1,0 +1,80 @@
+{
+  "nodes": [
+    {
+      "name": "Banadir (Mogadishu)",
+      "id": 0
+    },
+    {
+      "name": "Bay",
+      "id": 1
+    },
+    {
+      "name": "Shabelle Hoose (Lower)",
+      "id": 2
+    },
+    {
+      "name": "Bakool",
+      "id": 3
+    },
+    {
+      "name": "Hiraan",
+      "id": 4
+    },
+    {
+      "name": "Nugaal",
+      "id": 5
+    },
+    {
+      "name": "Mudug",
+      "id": 6
+    },
+    {
+      "name": "Banadir (Mogadishu)",
+      "id": 7
+    }
+  ],
+  "links": [
+    {
+      "source": 0,
+      "target": 1,
+      "value": 19260,
+      "label": 19260
+    },
+    {
+      "source": 0,
+      "target": 2,
+      "value": 48363,
+      "label": 48363
+    },    
+    {
+      "source": 0,
+      "target": 3,
+      "value": 4797,
+      "label": 4797
+    },
+    {
+      "source": 4,
+      "target": 3,
+      "value": 1906,
+      "label": 1906
+    },
+    {
+      "source": 5,
+      "target": 6,
+      "value": 1180,
+      "label": 1180
+    },
+    {
+      "source": 1,
+      "target": 7,
+      "value": 4826,
+      "label": 4826
+    },
+    {
+      "source": 2,
+      "target": 7,
+      "value": 1124,
+      "label": 1124
+    }
+  ]
+}
