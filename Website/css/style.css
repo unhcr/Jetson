@@ -21,6 +21,10 @@
     font-style: normal;
 }
 
+* {
+    outline: none !important;
+}
+
 h1,
 h2 {
     font-family: 'proximabold';
@@ -56,6 +60,13 @@ img {
     color: #fff;
 }
 
+.modal .btn {
+    background: #000E4A;
+    padding: 13px 20px;
+    border: none;
+    color: #fff !important;
+}
+
 .btn span {
     border: 1px solid rgba(255, 255, 255, .3);
     padding: 10px;
@@ -82,11 +93,12 @@ p {
 
 .navbar-default {
     border: none;
-    background: #000E4A;
+    background: none;
     border-radius: 0;
     margin: 0;
     border-bottom-color: #000E4A;
     margin-bottom: -1px;
+    z-index: 2;
 }
 
 .navbar-default .navbar-brand img {
@@ -114,15 +126,24 @@ section ol li {
 .hero {
     background: #000E4A;
     color: #fff;
-    height: 85%;
+    height: 100%;
     position: relative;
+    padding: 0;
+    margin-top: -50px;
+    z-index: 1;
 }
 
 .hero .hero-caption {
     position: absolute;
-    bottom: 40px;
+    bottom: 0;
     left: 0;
     right: 0;
+    text-align: center;
+    padding: 15% 0 10%;
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.34) 78%, rgba(0, 0, 0, 0.34) 100%);
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.34) 78%, rgba(0, 0, 0, 0.34) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.34) 78%, rgba(0, 0, 0, 0.34) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#57000000', GradientType=0);
 }
 
 .hero h1 {
@@ -134,6 +155,52 @@ section ol li {
     font-weight: 200;
     font-size: 20px;
     letter-spacing: 1px;
+}
+
+.scene {
+    background: #000E4A;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+.scene path:first-child {
+    fill: #4f4fea;
+}
+
+.scene path:nth-child(2) {
+    fill: #0c27cf;
+}
+
+.scene path:nth-child(3) {
+    fill: #13269c;
+}
+
+.scene path:nth-child(4) {
+    fill: #242468;
+}
+
+.scene path:nth-child(5) {
+    fill: #2648e6;
+}
+
+.scene path:nth-child(6) {
+    fill: #2c31b0;
+}
+
+.scene path:nth-child(7) {
+    fill: #262689;
+}
+
+.title {
+    color: #fff;
+    font-size: 6vw;
+    font-weight: 400;
+    z-index: 1000;
+    font-family: "Arapey", serif;
+    pointer-events: none;
 }
 
 
@@ -258,8 +325,8 @@ section ol li {
 .prediction h1 {
     font-size: 140px;
     position: relative;
-    display: inline-block;
-    margin-top: 0
+    display: block;
+    margin-top: 0;
 }
 
 .prediction h1 #pred_accuracy {
@@ -273,16 +340,19 @@ section ol li {
 .prediction h1 #pred_date {
     font-size: 18px;
     display: block;
-    color: #59AB00
+    color: #59AB00;
+    font-family: 'proxima';
+    letter-spacing: 2px;
 }
 
-.prediction .downloadpdf {
-    display: block;
+.prediction .btn {
+    display: inline-block;
     border: 1px solid rgba(0, 14, 74, .2);
     color: #000E4A;
-    width: 200px;
+    width: auto;
     margin: 0 auto;
-    margin-top: 30px;
+    margin-top: 20px;
+    margin-right: 5px;
     padding: 15px 20px;
     border-radius: 50px;
     font-family: 'proximabold';
@@ -292,16 +362,121 @@ section ol li {
     background: #fff;
 }
 
-.prediction .downloadpdf:hover {
+.prediction button.btn {
+    margin-right: 0;
+}
+
+.prediction .btn:hover {
     border: 1px solid rgba(0, 14, 74, 1);
     transition: all ease-in-out .3s;
 }
 
-.prediction .downloadpdf .ti-panel {
+.prediction .btn span {
     margin-left: 5px;
+    margin-right: 0;
     font-size: 15px;
     display: inline-block;
     vertical-align: middle;
+    padding: 0;
+}
+
+
+/* map */
+
+.map-container {
+    margin: 30px auto 0;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    background: #000E4A;
+}
+
+#regions_div {
+    border-radius: 0 0 15px 15px;
+    overflow: hidden;
+    background: #000E4A;
+    width: 100%;
+    height: 600px;
+    display: none;
+}
+
+.map-title {
+    background: #000E4A;
+    border-radius: 15px 15px 0 0;
+    display: none;
+}
+
+.map-title h2 {
+    color: #fff;
+    font-family: 'proximamedium';
+    font-size: 16px;
+    padding: 15px 40px 0;
+    display: inline-block;
+    margin: 0 auto;
+    border-radius: 0 0 15px 15px;
+    border-top: 0;
+}
+
+.map-title h2 span {
+    margin-right: 10px
+}
+
+.map-container h4 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: 'proximamedium';
+}
+
+.key {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: #fff;
+    z-index: 3;
+    width: 300px;
+}
+
+.key .colours {
+    width: 100%;
+}
+
+.key .colours span {
+    height: 4px;
+    width: 33.3333333333%;
+    background: #ff0000;
+    display: block;
+    float: left;
+    border-radius: 2px
+}
+
+.key .colours span.moderate {
+    background: #2d5cf5;
+}
+
+.key .colours span.high {
+    background: #b500ff;
+}
+
+.key .colours span.critical {
+    background: #ff0000;
+}
+
+.key .labels span
+{
+    cursor: pointer;
+}
+
+.key .labels .moderate {
+    float: left
+}
+
+.key .labels .high {
+    float: none;
+}
+
+.key .labels .critical {
+    float: right
 }
 
 
@@ -564,9 +739,6 @@ footer .back-home a:hover span {
         width: 100%;
         margin-top: 10px;
     }
-    .hero .hero-caption {
-        bottom: 40px;
-    }
 }
 
 
@@ -583,9 +755,6 @@ footer .back-home a:hover span {
     }
     .faqs .col-sm-4 {
         margin-bottom: 40px;
-    }
-    .hero .hero-caption {
-        bottom: 40px;
     }
     .prediction h1 #pred_accuracy {
         font-size: 16px;
@@ -619,11 +788,31 @@ footer .back-home a:hover span {
         margin-top: 30px;
         margin-bottom: -0px;
     }
-    .hero .hero-caption {
-        bottom: 40px;
-    }
     .articles .single-article-thumb {
         height: auto;
+    }
+    #regions_div {
+        border-radius: 15px;
+        overflow: hidden;
+        margin-top: 0px;
+        background: #000E4A;
+        width: 100%;
+        height: 300px;
+        display: none;
+    }
+    .key {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        color: #fff;
+        z-index: 3;
+        width: 250px;
+    }
+    .key .colours {
+        width: 100%;
+    }
+    .key .labels span {
+        font-size: 14px;
     }
 }
 

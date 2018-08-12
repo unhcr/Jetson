@@ -10,7 +10,7 @@
     <title>Project Jetson</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/themify-icons.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="favicon.ico" rel="icon" type="image/ico">
@@ -39,17 +39,39 @@
         <!-- /.container-fluid -->
     </nav>
     <section class="hero">
-        <div class="hero-caption">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h1>Project Jetson</h1>
-                        <p>Welcome to UNHCR Innovation Service’s Project Jetson website. Jetson is a machine-learning based application aimed at providing predictions on displaced population movement for the Somalia situation.</p>
-                        <a href="#intro" class="btn"><span class="ti-arrow-down"></span> Find out more</a>
+				<canvas class="scene scene--full" id="scene"></canvas>
+				<script type="x-shader/x-vertex" id="wrapVertexShader">
+					attribute float size;
+					attribute vec3 color;
+					varying vec3 vColor;
+					void main() {
+						vColor = color;
+						vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+						gl_PointSize = size * ( 350.0 / - mvPosition.z );
+						gl_Position = projectionMatrix * mvPosition;
+					}
+				</script>
+				<script type="x-shader/x-fragment" id="wrapFragmentShader">
+					varying vec3 vColor;
+					uniform sampler2D texture;
+					void main(){
+						vec4 textureColor = texture2D( texture, gl_PointCoord );
+						if ( textureColor.a < 0.3 ) discard;
+						vec4 color = vec4(vColor.xyz, 1.0) * textureColor;
+						gl_FragColor = color;
+					}
+				</script>
+                <div class="hero-caption">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6 col-sm-offset-3">
+                                <h1>Project Jetson</h1>
+                                <p>Welcome to UNHCR Innovation Service’s Project Jetson website. Jetson is a machine-learning based application aimed at providing predictions on displaced population movement for the Somalia situation.</p>
+                                <a href="#intro" class="btn"><span class="ti-arrow-down"></span> Find out more</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
     </section>
 
     <section class="intro" id="intro">
@@ -64,7 +86,7 @@
         </div>
     </section>
 
-    <section class="prediction">
+    <!-- section class="prediction">
         <div class="container">
             <div class="map-holder">
                 <img src="img/africa.svg" alt="Africa" />
@@ -72,10 +94,59 @@
             <h4><span class="highlight">ARRIVALS PREDICTED IN </span> <span class="ti-location-pin"></span> BAY, SOMALIA</h4>
             <h1 class="prediction-number">
                 <span class="from_num">11,584</span>—<span id="to_num">20,161</span>
-                <!-- span id="pred_accuracy">BASED ON 93% MODEL ACCURACY*</span -->
                 <span id="pred_date">01.02.2018 — 28.02.2018</span>
             </h1>
             <a class="downloadpdf" href="https://unhcrinnovation.shinyapps.io/Somalia/" target="_blank">Explore the engine <span class="ti-panel"></span></a>
+            <p>The above range is based on different computer models that are selected based on two factors: 1) the best model data that ‘fits’ the historical data (R^2), and 2) its mean absolute error (MAE).
+                <br> The MAE measures the accuracy of future month predictions, and is the difference between the future predictive arrivals vs. actual future arrivals. In short, it describes the margin of error of arrivals. So the higher the MAE, the less accurate the prediction. The MAE varies from model to model.
+                <br> R^2 is the value of how close the model is based on historical data. The closer (or fit) the model, the higher the value, with 1.0 being the most ideal fit.
+            </p>
+        </div>
+    </section -->
+
+    <section class="prediction">
+        <div class="container">
+            <div class="map-holder">
+                <img src="img/africa.svg" alt="Africa" />
+            </div>
+            <h4><span class="highlight">ARRIVALS PREDICTED IN </span> <span class="ti-location-pin"></span>SOMALIA</h4>
+            <h1 class="prediction-number">
+                <span class="from_num">Jetson Models</span>
+                <!-- span id="pred_date">01.05.2018 — 31.05.2018</span -->
+            </h1>
+   
+            
+            <!-- buttons -->
+            
+            <a class="btn" href="https://unhcrinnovation.shinyapps.io/Somalia/" target="_blank"><span class="ti-panel"></span> Explore the engine</a>
+            
+            <button class="btn" id="show_map">
+            <span class="ti-location-pin"></span> View map
+            </button>
+            
+            
+            <!-- map -->
+            
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <div class="map-container">
+                <div class="map-title"><h2></h2></div>
+                <div id="regions_div"></div>
+                <div class="key">
+                    <h4>Predicted Displacement</h4>
+                    <div class="labels">
+                        <span class="moderate" data-toggle="tooltip" data-placement="top" data-toggle="tooltip" data-placement="top" title="Below 50% of increase or average arrivals past 3 months">1 - Moderate</span>
+                        <span class="high" data-toggle="tooltip" data-placement="top" data-toggle="tooltip" data-placement="top" title="50-99% increase of average arrivals past 3 months">2 - High</span>
+                        <span class="critical" data-toggle="tooltip" data-placement="top" data-toggle="tooltip" data-placement="top" title="100% increase of average arrivals past 3 months">3 - Critical</span>
+                    </div>
+                    <div class="colours">
+                        <span class="moderate"></span>
+                        <span class="high"></span>
+                        <span class="critical"></span>
+                    </div>
+                </div>
+            </div>
+            
+            
             <p>The above range is based on different computer models that are selected based on two factors: 1) the best model data that ‘fits’ the historical data (R^2), and 2) its mean absolute error (MAE).
                 <br> The MAE measures the accuracy of future month predictions, and is the difference between the future predictive arrivals vs. actual future arrivals. In short, it describes the margin of error of arrivals. So the higher the MAE, the less accurate the prediction. The MAE varies from model to model.
                 <br> R^2 is the value of how close the model is based on historical data. The closer (or fit) the model, the higher the value, with 1.0 being the most ideal fit.
@@ -127,15 +198,15 @@
                 </div>
                 <div class="col-sm-6 single-article-thumb">
                     <div class="thumb-cover">
-                        <h2>Use of digital data for insights into forced displacement</h2>
-                        <h5>White Paper</h5>
+                        <h2>Jetson: insights into building a predictive analytics platform for displacement</h2>
+                        <h5>Interview</h5>
                         <p>- Article</p>
                     </div>
-                    <a href="http://www.unhcr.org/innovation/new-paper-from-un-global-pulse-and-unhcr-explores-use-of-digital-data-for-insights-into-forced-displacement/" target="_blank">
+                    <a href="http://www.unhcr.org/innovation/jetson-insights-into-building-a-predictive-analytics-platform-for-displacement/" target="_blank">
                         <div class="thumb-hover">
                             <div class="read-cont">
                                 <span class="ti-book"></span>
-                                <a href="http://www.unhcr.org/innovation/new-paper-from-un-global-pulse-and-unhcr-explores-use-of-digital-data-for-insights-into-forced-displacement/" target="_blank">Read article</a>
+                                <a href="http://www.unhcr.org/innovation/jetson-insights-into-building-a-predictive-analytics-platform-for-displacement/" target="_blank">Read article</a>
                             </div>
                         </div>
                     </a>
@@ -234,6 +305,23 @@
     </footer>
 
     <!-- modals -->
+    
+
+    <div class="modal fade" id="disclaimer" tabindex="-1" role="dialog" aria-labelledby="q3">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Disclaimer</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Project Jetson is a predictive analytics project aimed at providing predictions on displaced population movement for the Somalia situation launched by UNHCR’s Innovation Service. Jetson is focused on predicting forced displacement movement, through analyzing external factors and variables as well as internal UNHCR data. The purpose of this website is to enhance information-sharing of data innovation processes and the results of the experiment. The information shown on this site should be viewed as indicators of potential movements and their underlying causes. Therefore, interpretation and application of predictions data is at your own discretion. If you would like to know more about Project Jetson, please reach out to UNHCR Innovation Service, at <a href="mailto:innovation@unhcr.org" target="_blank">innovation@unhcr.org</a>.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Agree and Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="modal fade" id="q1" tabindex="-1" role="dialog" aria-labelledby="q1">
         <div class="modal-dialog" role="document">
@@ -407,6 +495,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/hero-anim.js"></script>
+    <script src="js/three.min.js"></script>
+    <script src="js/TweenMax.min.js"></script>
+    <script src="js/hero-animset.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/1.1.0/exceljs.min.js">
+    </script>
+    <script src="//cdn.jsdelivr.net/bluebird/3.5.0/bluebird.min.js"></script>
+<script src="js/main.js"></script>
 </body>
 
 </html>
