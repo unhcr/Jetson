@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -5,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Jetson Visualisation</title>
+    <title>Jetson Alpha</title>
 
     <!-- Bootstrap -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/themify-icons.css" rel="stylesheet">
-    <link href="css/simplelightbox.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
+    <link href="css/jquery-ui.css" rel="stylesheet">
+    <link href="css/map.css" rel="stylesheet">
+    <link href="vendor/rangeslider.js-2.3.0/rangeslider.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -24,449 +25,110 @@
 </head>
 
 <body>
-
-    <div class="body-container" data-spy="scroll" data-target="#spy">
-        <div class="sidebar">
-            <div class="logo">
-                <a href="#">
-                    <img src="img/logo.png" />
-                </a>
-            </div>
-            <div id="spy">
-                <ul class="nav">
-                  <li role="presentation" class="active"><a href="#intro"></a></li>
-                  <li role="presentation"><a href="#simulation"></a></li>
-                  <li role="presentation"><a href="#about"></a></li>
-                  <li role="presentation"><a href="#access"></a></li>
-                </ul>
-            </div>
-            <div class="footer">
-                2017
-            </div>
+    <div class="nav">
+        <div class="logo-holder">
+            <a href="index.html">
+                <img src="img/logo-innovation-service-72.png" />
+            </a>
         </div>
-        <div class="main">
-            <!-- intro -->
-            <section id="intro">
-                <div class="caption">
-                    <div class="caption-inner">
-                        <h2>Welcome to Jetson</h2>
-                        <p>UNHCR Innovation Service’s displacement flow simulation for the Somalia situation. Please note, this page is currently in progress. This simulation is currently in experiment phase and data shown should not be taken as the finished product.</p>
-                        <a href="#simulation">
-                            <button class="btn">
-                                Explore simulation <span class="ti-arrow-down"></span>
-                            </button>
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- simulation -->
-
-            <section id="simulation">
-                <div class="row">
-                <div class="col-sm-3">
-                <div class="col-sm-12">
-                    <h3>Jetson Displacement Flow Simulation</h3>
-                    <p>This graph illustrates how many people have been displaced into Ethiopia, and how many are predicted to flee by end of year 2017. Change the variable to view a simulation of how these movements can change based on the variables.</p>
-                    <div class="slider-variables">
-                        <div class="slide-holder">
-                            <div class="controls">
-                                <h4>Slide the variables to see the predictions changed</h4>
-                                <div class="row slider-row">
-                                    <div class="control col-sm-5 conflict-control">
-                                        <div class="row">
-                                            <h5>Conflict</h5>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2 control-titles">
-                                        <div class="row">
-                                            <h5 class="region-title">Region</h5>
-                                        </div>
-                                    </div>
-                                    <div class="control col-sm-5 food-control">
-                                        <div class="row">
-                                            <h5>Food Security</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row slider-row">
-                                    <div class="control col-sm-5 conflict-control">
-                                        <div class="row">
-                                            <div id="banadir-conflict-slide"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2 control-titles">
-                                        <div class="row">
-                                            <h4>Banadir</h4>
-                                        </div>
-
-                                    </div>
-                                    <div class="control col-sm-5 food-control">
-                                        <div class="row">
-                                            <div id="banadir-food-slide"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row slider-row">
-                                    <div class="control col-sm-5 conflict-control">
-                                        <div class="row">
-                                            <div id="bay-conflict-slide"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2 control-titles">
-                                        <div class="row">
-                                            <h4>Bay</h4>
-                                        </div>
-                                    </div>
-                                    <div class="control col-sm-5 food-control">
-                                        <div class="row">
-                                            <div id="bay-food-slide"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row slider-row">
-                                    <div class="control col-sm-5 conflict-control">
-                                        <div class="row">
-                                            <div id="juba-conflict-slide"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2 control-titles">
-                                        <div class="row">
-                                            <h4>Juba</h4>
-                                        </div>
-                                    </div>
-                                    <div class="control col-sm-5 food-control">
-                                        <div class="row">
-                                            <div id="juba-food-slide"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row slider-row">
-                                    <div class="control col-sm-5 conflict-control">
-                                        <div class="row">
-                                            <div id="shabelle-conflict-slide"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2 control-titles">
-                                        <div class="row">
-                                            <h4>Shabelle</h4>
-                                        </div>
-                                    </div>
-                                    <div class="control col-sm-5 food-control">
-                                        <div class="row">
-                                            <div id="shabelle-food-slide"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row slider-row">
-                                    <div class="control col-sm-5 conflict-control">
-                                        <div class="row">
-                                            <div class="slider-key">
-                                                <span class="min">1000/year</span>
-                                                <span class="max">3000/year</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2 control-titles">
-
-                                    </div>
-                                    <div class="control col-sm-5 food-control">
-                                        <div class="row">
-                                            <div class="slider-key">
-                                                <span class="min">5/Famine</span>
-                                                <span class="max">1/Min. Insecurity</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </div>
-                <div class="col-sm-9">
-                    <canvas id="myChart" width="400" height="120"></canvas>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h4 class="map-title">Violent incidents per region</h4>
-                            <div class="row">
-                                <div id="conflictmap" class="map"></div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <h4 class="map-title text-right">Food Insecurity</h4>
-                            <div class="row">
-                                <div id="foodmap" class="map"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-2">
-            <h3>Intent to flee Survey</h3>
-            <p>Internally displaced: Somalia, survey intention to flee</p>
-                        
-                        </div>
-                        <div class="col-sm-10">
-                            <div id='somalia-intent'>
-                    
-<script lang='babel' type='text/babel'>
-const units = '';
-const margin = {top: 10, right: 10, bottom: 10, left: 10};
-const width = 800 - margin.left - margin.right;
-const height = 300 - margin.top - margin.bottom;
-
-// zero decimal places
-const formatNumber = d3.format(',.0f');
-
-const format = d => `${formatNumber(d)} ${units}`;
-
-const color = d3.scaleOrdinal()
-  .domain([
-    'Banadir (Mogadishu)',
-    'Bay',
-    'Shabelle Hoose (Lower)',
-    'Bakool',
-    'Hiraan',
-    'Nugaal',
-    'Mudug'
-  ])
-  .range([
-    '#0B6EB8',
-    '#9E1E62',
-    '#EF4036',
-    '#00ccbc',
-    '#f29e2e',
-    '#00ccbc',
-    '#d7191c'
-  ]);
-
-d3.select('#somalia-intent')
-  .style('visibility', 'visible');
-
-// append the svg canvas to the page
-const svg = d3.select('#somalia-intent').append('svg')
-  .attr('width', width + margin.left + margin.right)
-  .attr('height', height + margin.top + margin.bottom)
-  .append('g')
-    .attr('transform', `translate(${margin.left},${margin.top})`);
-
-// set the sankey diagram properties
-const sankey = d3.sankey()
-  .nodeWidth(40)
-  .nodePadding(10)
-  .size([width, height]);
-
-const path = sankey.link();
-
-// append a defs (for definition) element to your SVG
-const defs = svg.append('defs');
-
-// load the data
-d3.json('somalia-intent.json', (error, graph) => {
-  console.log('graph', graph);
-  sankey
-    .nodes(graph.nodes)
-    .links(graph.links)
-    .layout(13); // any value > 13 breaks the link gradient
- 
-  // add in the links
-  const link = svg.append('g').selectAll('.link')
-    .data(graph.links)
-    .enter().append('path')
-      .attr('class', 'link')
-      .attr('d', path)
-      .style('stroke-width', d => Math.max(1, d.dy))
-      .style('fill', 'none')
-      .style('stroke-opacity', 0.5)
-      .sort((a, b) => b.dy - a.dy)
-      .on('mouseover', function() {
-        d3.select(this).style('stroke-opacity', 0.7);
-      })
-      .on('mouseout', function() {
-        d3.select(this).style('stroke-opacity', 0.5);
-      });
- 
-  // add the link titles
-  link.append('title')
-    .text(d => `${d.source.name} → ${d.target.name}\n${format(d.value)}`);
- 
-  // add in the nodes
-  const node = svg.append('g').selectAll('.node')
-    .data(graph.nodes)
-    .enter().append('g')
-      .attr('class', 'node')
-      .attr('transform', d => `translate(${d.x},${d.y})`)
-      .call(d3.drag()
-        .subject(d => d)
-        .on('start', function() { 
-          this.parentNode.appendChild(this); })
-        .on('drag', dragmove));
- 
-  // add the rectangles for the nodes
-  node.append('rect')
-    .attr('height', d => d.dy)
-    .attr('width', sankey.nodeWidth())
-    .style('fill', d => { 
-      if(color.domain().indexOf(d.name) > -1){
-        return d.color = color(d.name);  
-      } else {
-        return d.color = '#ccc';
-      }
-    })
-    .append('title')
-      .text(d => `${d.name}\n${format(d.value)}`);
- 
-  // add in the title for the nodes
-  node.append('text')
-    .attr('x', -6)
-    .attr('y', d => d.dy / 2)
-    .attr('dy', '.35em')
-    .attr('text-anchor', 'end')
-    .attr('transform', null)
-    .text(d => d.name + ' ' + d.value)
-    .filter(d => d.x < width / 2)
-      .attr('x', 6 + sankey.nodeWidth())
-      .attr('text-anchor', 'start');
-
-  // add gradient to links
-  link.style('stroke', (d, i) => {
-    console.log('d from gradient stroke func', d);
-
-    // make unique gradient ids  
-    const gradientID = `gradient${i}`;
-
-    const startColor = d.source.color;
-    const stopColor = d.target.color;
-
-    console.log('startColor', startColor);
-    console.log('stopColor', stopColor);
-
-    const linearGradient = defs.append('linearGradient')
-        .attr('id', gradientID);
-
-    linearGradient.selectAll('stop') 
-      .data([                             
-          {offset: '10%', color: startColor },      
-          {offset: '90%', color: stopColor }    
-        ])                  
-      .enter().append('stop')
-      .attr('offset', d => {
-        console.log('d.offset', d.offset);
-        return d.offset; 
-      })   
-      .attr('stop-color', d => {
-        console.log('d.color', d.color);
-        return d.color;
-      });
-
-    return `url(#${gradientID})`;
-  })
- 
-// the function for moving the nodes
-  function dragmove(d) {
-    d3.select(this).attr('transform', 
-      `translate(${d.x = Math.max(0, Math.min(width - d.dx, d3.event.x))},${d.y = Math.max(0, Math.min(height - d.dy, d3.event.y))})`);
-    sankey.relayout();
-    link.attr('d', path);
-  }
-});
-</script>
-            </div>
-                        </div>
-                    </div>
-                </div>
-                    </div>
-            </section>
-          <section id="about">
-              <img src="img/about.jpg"/>
-        <div class="container">
-            <h3>What is UNHCR Innovation Jetson?</h3>
-            <p>Jetson is a predictive analytics platform aimed at providing better data to deliver better decisions. We measure multiple variables to see how changes many effect internally displaced populations. Jetson is an experimental project launched by UNHCR&rsquo;s Innovation Service in 2017 to better understand how data can be used to predict movements of people in Sub-Saharan Africa, particularly in the Horn of Africa.</p>
-            <br>
-
-            <h4>The Predictive Analytics Engine Project<br>
-            </h4>
-            <p>The Predictive Analytics Engine (Jetson) is an applied predictive analytics project taking concrete steps to provide insights on the future of displacement. </p>
-            <br>
-
-            <p>The project is the first step is understanding data about a) the population flow and b) some of the most common variables that are correlated with the population flow. The project focused on the catalysts that might cause people to flee their homes in the Somalia situation. The main objective is to make predictions about potential displacement events by utilizing data mining, statistics, modeling, machine-learning, and artificial intelligence to analyse different data and yield some preliminary conclusions.</p>
-            <br>
-
-            <p>The project aims to raise awareness and understand the above-mentioned variables, by obtaining information from structured and unstructured data points (e.g. data sources such as the UNOSAT and WMO) that will lead to better decision-making actions.The secondary aim is to identify and map existing humanitarian data gaps and services in select operations in order to improve access to demand-driven, insightful information in education, energy and the environment, connectivity, business models/cash and other key areas.</p>
-            <br>
-
-            <h4>What is a predictive simulation?</h4>
-            <p>The project currently is in design phase. We are building a very simple simulation model with basic human-made rules. This is &nbsp;the type of modelling that is used for predicting movements in ant colonies or in financial markets. As we gather data, later on, we hope to replace the simulation model with comprehensive model that can analyze both macro variables (external) such as conflict, climate and food insecurity data, but also behavioral or micro variables such as particular population vulnerabilities, intent of movement and other multiple contextual variables that can be later be connected by a machine-learning algorithm. Initial research explorations for this more comprehensive model are related to having a robust <a href="https://www.openabm.org/book/export/html/3443">agent-based modeling </a>and simulation (ABMS) or conducting a sensitivity analysis of <a href="http://www.systemdynamics.org/what-is-s/">system dynamics modeling</a>. </p>
-            <br>
-            <img src="img/our-process.png"/>
-
-            <h4>4 Project Assumptions</h4>
-            <ul>
-                <li>
-                    <p>The project is focused only in the population flow, both across borders and internally. This means the main research purpose is to measure changes in the population in an specific period of time (e.g. a year)</p>
-                </li>
-                <li>
-                    <p>There is not one single major cause of forced displacement. There are many causes (variables) and infinite combination of these variables, along with behavioral human patterns that leads to forced displacement. </p>
-                </li>
-                <li>
-                    <p>This project attempts to find interesting and meaningful patterns in data, making assumptions from the data our partners are providing. </p>
-                </li>
-                <li>
-                    <p>Some of the assumptions &ldquo;do not need a model to tell a person that&rdquo; the assumption is correct. Building a model goes beyond identifying the assumptions&rsquo; characteristics (e.g. we do not need a model to know people are forced to flee due to conflict). However, the model attempts to find the best combination that could predict the target variable, in this case: population flow</p>
-                </li>
-            </ul>
-            <br>
-            <br>
-
-            <h4>Our data sources and/or main project partners:</h4>
-            <p>Climate: <a href="http://sddr.faoswalim.org/climate_aws.php?catid=2&subid=16&mapsubid=18">FAO-SWALIM</a>, <a href="https://www.wmo.int/cpdb/somalia">WMO</a>, <a href="http://www.icpac.net">IGAD-ICPAC</a>, <a href="http://www.unitar.org/unosat/maps/SOM">UNOSAT</a>, <a href="http://climate4development.worldbank.org/open/">World Bank</a></p>
-            <p>Infrastructure: <a href="http://www.unitar.org/unosat/maps/HOA">UNOSAT</a></p>
-            <p>Conflict: <a href="http://www.acleddata.com">ACLED</a></p>
-            <p>Food Security: <a href="http://www.fsnau.org/ipc/ipc-map">FAO-FSNAU</a>, <a href="http://www.fews.net/east-africa/somalia">FEWES</a></p>
-            <p>Population: <a href="http://data.unhcr.org">UNHCR</a>, <a href="http://reliefweb.int/report/somalia/unhcr-somalia-protection-return-monitoring-network-prmn-notes-methodology">PRMN</a></p>
-            Data Science support: <a href="http://www.unglobalpulse.org">UN Global Pulse</a>, <a href="https://www.hrbdt.ac.uk">Essex University,</a> <a href="https://uptake.com/beyond-uptake">Beyond.Uptake</a>
-            <p>&nbsp;</p>
-            <br>
-
-            <h4>References</h4>
-            <ul>
-                <li>
-                    <p>WFP/MET Office: <a href="http://www.metoffice.gov.uk/food-insecurity-index/?utm_source=OCHA+Global+Product+List&utm_campaign=ffd37b7918-EMAIL_CAMPAIGN_2017_01_10&utm_medium=email&utm_term=0_fdc5b4f7e9-ffd37b7918-320510621">Food Insecurity and Climate Change</a></p>
-                </li>
-            </ul>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
+        <div class="share-icon">
+            <a href="#"><span class="ti-sharethis"></span> </a>
         </div>
-            <div class="col-sm-6 full-image">
-                <h4>17th January 2017</h4>
-                <div class="row">
-                    <img src="img/Baidoa_Airport_17January2017.jpg" />
-                </div>
-            </div>
-            <div class="col-sm-6 full-image">
-                <h4>21st April 2017</h4>
-                <div class="row">
-                    <img src="img/Baidoa_Airport_21April2017.jpg" />
-                    <h6 class="right">Image source: UNOSAT</h6>
-                </div>
-            </div>
-        <div class="container">
-            <h4>Satellite data and humanitarian access; improving the quality of analysis:</h4>
-            <p>Using two data points (17th January 2017 and 21st April 2017), it is possible to see an increase in the presence of shelters in Baidoa over a three month period. The rows of orange structures shown here found southeast of the airport perimeter (April image), are assumed to have been erected by newly arrived IDPs to Baidoa. These arrivals have also been confirmed in population data sourced from the <a href="http://data.unhcr.org/horn-of-africa/country.php?id=197">Protection and Return Monitoring Network (PRMN</a>). These structures are considerably smaller than existing structures in Baidoa, including pre-identified IDP settlements. From immediate observation these shelters are assumed to have been &lsquo;self-constructed&rsquo; by individual households, from a similar source of shelter materials, including orange tarpaulin. Orange tarpaulins are often provided by NRC as NFI/shelter distributions; there presence/support in establishing these shelters would need to be confirmed. </p>
-        </div>
-    </section>
-            <section id="access">
-                <a href="img/access-map.jpg" class="lightbox">
-                    <img src="img/access-map.jpg"/>
-                </a>
-                <div class="col-sm-12">
-                    <h6>Source: <a href="http://www.nspsomalia.org/joomla/index.php/nsp-resources-maps/access-maps/file/139-201602-access-map-somalia-february-2016-inso-hr" target="_blank">UNOCHA (2016)</a></h6>
-                </div>
-            </section>
 
-        </div>
     </div>
+    <!-- end nav -->
 
+    <div class="main ">
+        <section class="hero">
+            <div class="video-holder">
+                <video loop poster="img/video-poster.png" id="video">
+                  <source src="video/engine-video.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="overlay">
+                    <div class="controls" id="play">
+                        <span class="ti-control-play"></span>
+                        <h5>Play Simulation</h5>
+                    </div>
+                </div>
+                <div class="alert-dismissible alert">
+                    <button type="button" class="close fade in" data-dismiss="alert" aria-label="Close">
+                      <span class="ti-close"></span>
+                    </button>
+                    <h3>Jetson Introduction</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quonam modo? Facillimum id quidem est, inquam. Cupit enim dícere nihil posse ad beatam vitam deesse sapienti. Cave putes quicquam esse verius. Ergo illi intellegunt quid Epicurus dicat, ego non intellego?
+                    </p>
+                    <a href="#intro"><button class="btn">Explore <span class="ti-arrow-down"></span></button></a>
+                </div>
+            </div>
+        </section>
+        <section class="text">
+            <div class="container" id="intro">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quonam modo? Facillimum id quidem est, inquam. Cupit enim dícere nihil posse ad beatam vitam deesse sapienti. Cave putes quicquam esse verius. Ergo illi intellegunt quid Epicurus dicat, ego non intellego?</p>
+                <p>Quonam modo? Facillimum id quidem est, inquam. . Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quonam modo? Facillimum id quidem est, inquam. Cupit enim dícere nihil posse ad beatam vitam deesse sapienti. Cave putes quicquam esse verius. Ergo illi intellegunt quid Epicurus dicat, ego non intellego?</p>
+            </div>
+        </section>
+        <section class="map" id="map">
+            <div id="main_content">
+                <div id="map-canvas" class="map"></div>
+                <div id="toggles">
+                    <div class="toggle-row">
+                    <p><span class="ti-view-list"></span> Layers</p>
+                    </div>
+                    <div class="toggle-row">
+                        <input id="display_lines" type="checkbox" value="display_lines" checked>
+                        <label for="display_lines">Migrations</label>
+                    </div>
+                    <div class="toggle-row">
+                        <input id="display_heatmaps" type="checkbox" value="display_heatmaps" checked>
+                        <label for="display_heatmaps">Conflicts</label>
+                    </div>
+                </div>
+                <div id="controls_container">
+                    <div class="play-date">
+<button id="autoplay"><span class="ti-control-play"></span></button>
+<div id="month_year"></div>
+</div>
+                    <input id="slider" type="range" value='0'>
+                </div>
+            </div>
+        </section>
+        <section class="engine" id="engine">
+            <iframe src="https://unhcrinnovation.shinyapps.io/monthlypredictions/" frameborder="0" scrolling="no" id="engineIframe" width="100%"></iframe>
+            <a class="download" href="#" title="Download"><span class="ti-download"></span></a>
+        </section>
+        <!-- section class="system-dynamics p-holder">
+            System dynamics
+            <a class="download" href="#" title="Download"><span class="ti-download"></span></a>
+        </section -->
+        <section class="text">
+            <div class="container">
+                <h3>Conclusion</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quonam modo? Facillimum id quidem est, inquam. Cupit enim dícere nihil posse ad beatam vitam deesse sapienti. Cave putes quicquam esse verius. Ergo illi intellegunt quid Epicurus dicat, ego non intellego?</p>
+            </div>
+        </section>
+        <section class="video">
+            <div class="video-holder">
+                <video loop id="videoO">
+                  <source src="video/outro.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="overlay">
+                    <div class="controls" id="playO">
+                        <span class="ti-control-play"></span>
+                        <h5>Watch the Story</h5>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- end main -->
+
+    <div class="footer ">
+
+
+
+    </div>
 
     <script>
         (function(i, s, o, g, r, a, m) {
@@ -481,28 +143,21 @@ d3.json('somalia-intent.json', (error, graph) => {
             m.parentNode.insertBefore(a, m)
         })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-        ga('create', 'UA-52484005-12', 'auto');
+        ga('create', 'UA-52484005-13', 'auto');
         ga('send', 'pageview');
     </script>
 
 
-
-
-
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyAVw1nG_1kX7XjY45f71xxpb9GNcc9_cCY&sensor=false"></script>
-    <script type="text/javascript" src="https://cdn.rawgit.com/googlemaps/v3-utility-library/master/infobox/src/infobox.js"></script>
+    <script src="vendor/jquery-3.2.1.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.3/Chart.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
-    <script src='js/d3.min.js'></script>
-    <script src='js/d3.sankey.js'></script>
-    <script src='js/babel.min.js'></script>
-    <script src='js/simple-lightbox.min.js'></script>
-    <script src="js/main.js"></script>
-
+    <script src="js/bootstrap.min.js "></script>
+    <script src="js/iframeResizer.js "></script>    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg9Y7T1xOS_PPeDsCS2AL221x72a1I5k0&libraries=geometry,visualization"></script>
+    <script src="vendor/rangeslider.js-2.3.0/rangeslider.min.js"></script>
+    <script src="vendor/papaparse.min.js"></script>
+    <script src="js/richmarker.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/main.js "></script>
 </body>
 
 </html>
