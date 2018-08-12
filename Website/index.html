@@ -2,162 +2,252 @@
 <html lang="en">
 
 <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Jetson Alpha</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Jetson Beta</title>
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
     <link href="css/themify-icons.css" rel="stylesheet">
-    <link href="css/jquery-ui.css" rel="stylesheet">
     <link href="css/map.css" rel="stylesheet">
     <link href="vendor/rangeslider.js-2.3.0/rangeslider.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <div class="nav">
-        <div class="logo-holder">
-            <a href="index.html">
-                <img src="img/logo-innovation-service-72.png" />
+    <header>
+        <div class="wrapper">
+            <div class="scene">
+                <div class="layer" data-depth="0.15">
+                    <div class="layer-1"></div>
+                </div>
+            </div>
+        </div>
+        <div class="top-menu">
+
+            <div class="header-logo">
+                <img src="img/logo.png" />
+            </div>
+
+            <a class="share" href="#">
+                <img src="img/share.svg" />
             </a>
         </div>
-        <div class="share-icon">
-            <a href="#"><span class="ti-sharethis"></span> </a>
+        <div class="header-caption">
+            <div class="container">
+                <h4>Welcome to</h4>
+                <h2>Jetson</h2>
+                <p>Welcome to the UNHCR Innovation Service’s displacement flow simulation for the Somalia situation. This is an experiment that combines data science, design, and strategic communications. We continuously develop the back-end (the prediction engine) of this website simulation to improve predictions as we receive, collate, and analyse new, and improved data sets.</p>
+                <button class="play-button">
+                <img src="img/play.svg" />
+                </button>
+            </div>
         </div>
 
-    </div>
-    <!-- end nav -->
-
-    <div class="main ">
-        <section class="hero">
-            <div class="video-holder">
-                <video loop poster="img/video-poster.png" id="video">
-                  <source src="video/engine-video.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
-                <div class="overlay">
-                    <div class="controls" id="play">
-                        <span class="ti-control-play"></span>
-                        <h5>Play Simulation</h5>
-                    </div>
-                </div>
-                <div class="alert-dismissible alert">
-                    <button type="button" class="close fade in" data-dismiss="alert" aria-label="Close">
-                      <span class="ti-close"></span>
-                    </button>
-                    <h3>Jetson Introduction</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quonam modo? Facillimum id quidem est, inquam. Cupit enim dícere nihil posse ad beatam vitam deesse sapienti. Cave putes quicquam esse verius. Ergo illi intellegunt quid Epicurus dicat, ego non intellego?
-                    </p>
-                    <a href="#intro"><button class="btn">Explore <span class="ti-arrow-down"></span></button></a>
-                </div>
-            </div>
-        </section>
-        <section class="text">
-            <div class="container" id="intro">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quonam modo? Facillimum id quidem est, inquam. Cupit enim dícere nihil posse ad beatam vitam deesse sapienti. Cave putes quicquam esse verius. Ergo illi intellegunt quid Epicurus dicat, ego non intellego?</p>
-                <p>Quonam modo? Facillimum id quidem est, inquam. . Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quonam modo? Facillimum id quidem est, inquam. Cupit enim dícere nihil posse ad beatam vitam deesse sapienti. Cave putes quicquam esse verius. Ergo illi intellegunt quid Epicurus dicat, ego non intellego?</p>
-            </div>
-        </section>
-        <section class="map" id="map">
-            <div id="main_content">
-                <div id="map-canvas" class="map"></div>
-                <div id="toggles">
-                    <div class="toggle-row">
-                    <p><span class="ti-view-list"></span> Layers</p>
-                    </div>
-                    <div class="toggle-row">
-                        <input id="display_lines" type="checkbox" value="display_lines" checked>
-                        <label for="display_lines">Migrations</label>
-                    </div>
-                    <div class="toggle-row">
-                        <input id="display_heatmaps" type="checkbox" value="display_heatmaps" checked>
-                        <label for="display_heatmaps">Conflicts</label>
-                    </div>
-                </div>
-                <div id="controls_container">
-                    <div class="play-date">
-<button id="autoplay"><span class="ti-control-play"></span></button>
-<div id="month_year"></div>
-</div>
-                    <input id="slider" type="range" value='0'>
-                </div>
-            </div>
-        </section>
-        <section class="engine" id="engine">
-            <iframe src="https://unhcrinnovation.shinyapps.io/monthlypredictions/" frameborder="0" scrolling="no" id="engineIframe" width="100%"></iframe>
-            <a class="download" href="#" title="Download"><span class="ti-download"></span></a>
-        </section>
-        <!-- section class="system-dynamics p-holder">
-            System dynamics
-            <a class="download" href="#" title="Download"><span class="ti-download"></span></a>
-        </section -->
-        <section class="text">
+        <nav>
             <div class="container">
-                <h3>Conclusion</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quonam modo? Facillimum id quidem est, inquam. Cupit enim dícere nihil posse ad beatam vitam deesse sapienti. Cave putes quicquam esse verius. Ergo illi intellegunt quid Epicurus dicat, ego non intellego?</p>
+                <ul>
+                    <li>
+                        <a href="#about"> <img src="img/info.svg" /> About Project</a>
+                    </li>
+                    <li>
+                        <a href="#timeline"> <img src="img/map.svg" /> MAP TIMELINE</a>
+                    </li>
+                    <li>
+                        <a href="#model"> <img src="img/predictive.svg" /> PREDICTIVE MODEL</a>
+                    </li>
+                    <li>
+                        <a href="#conclusion"> <img src="img/summary.svg" /> Conclusion</a>
+                    </li>
+                </ul>
             </div>
-        </section>
-        <section class="video">
-            <div class="video-holder">
-                <video loop id="videoO">
-                  <source src="video/outro.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
-                <div class="overlay">
-                    <div class="controls" id="playO">
-                        <span class="ti-control-play"></span>
-                        <h5>Watch the Story</h5>
+        </nav>
+    </header>
+    <section id="about">
+        <div class="container">
+            <h3>ABOUT PROJECT</h3>
+            <p>Jetson is a project aimed at providing better data analytics to make better decisions to adequately prepare for contingencies in forced displacement situations. The Predictive Analytics Engine (Jetson) is an applied predictive analytics experiment taking concrete steps to provide insights on the future of displacement. Jetson was launched by UNHCR’s Innovation Service in 2017 to better understand how data can be used to predict movements of people in Sub-Saharan Africa, starting with the Horn of Africa.</p>
+        </div>
+    </section>
+    <section id="timeline">
+        <div class="container">
+            <h3>MAP STORY</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scaevolam M. Aliter enim explicari, quod quaeritur, non potest. Nam Pyrrho, Aristo, Erillus iam diu abiecti. Eadem nunc mea adversum te oratio est. Ergo ita: non posse honeste vivi, nisi honeste vivatur? Duo Reges: constructio interrete. Nec vero alia sunt quaerenda contra Carneadeam illam sententiam. Sin laboramus, quis est, qui alienae modum statuat industriae?</p>
+        </div>
+    </section>
+    <div class="map" id="map">
+        <div id="main_content">
+            <div id="map-canvas" class="map"></div>
+            <div id="toggles">
+                <div class="toggle-row">
+                    <p><span class="ti-view-list"></span> Layers</p>
+                </div>
+                <div class="toggle-row">
+                    <input id="display_lines" type="checkbox" value="display_lines" checked>
+                    <label for="display_lines">Migrations</label>
+                </div>
+                <div class="toggle-row">
+                    <input id="display_heatmaps" type="checkbox" value="display_heatmaps" checked>
+                    <label for="display_heatmaps">Conflicts</label>
+                </div>
+            </div>
+            <div id="controls_container">
+                <div class="play-date">
+                    <button id="autoplay"><span class="ti-control-play"></span></button>
+                    <div id="month_year"></div>
+                </div>
+                <input id="slider" type="range" value='0'>
+<!--
+                <button class="yr-btn" id="yr_2010">2010</button>
+                <button class="yr-btn" id="yr_2011">2011</button>
+                <button class="yr-btn" id="yr_2012">2012</button>
+                <button class="yr-btn" id="yr_2013">2013</button>
+                <button class="yr-btn" id="yr_2014">2014</button>
+                <button class="yr-btn" id="yr_2015">2015</button>
+                <button class="yr-btn" id="yr_2016">2016</button>
+                <button class="yr-btn" id="yr_2017">2017</button>
+-->
+            </div>
+        </div>
+    </div>
+    <section id="model">
+        <div class="container">
+            <h3>Engine story</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scaevolam M. Aliter enim explicari, quod quaeritur, non potest. Nam Pyrrho, Aristo, Erillus iam diu abiecti. Eadem nunc mea adversum te oratio est. Ergo ita: non posse honeste vivi, nisi honeste vivatur? Duo Reges: constructio interrete. Nec vero alia sunt quaerenda contra Carneadeam illam sententiam. Sin laboramus, quis est, qui alienae modum statuat industriae?</p>
+            <div class="circle-holder">
+                <div class="circle data-circle">data</div>
+                <div class="circle data-variables">variables</div>
+                <div class="circle data-algorithm">algorithm</div>
+                <div class="circle data-visualisation">visualisation</div>
+                <div class="circle single-circle">the engine</div>
+            </div>
+        </div>
+    </section>
+    <section id="engine">
+        <div class="container-fluid">
+            <div class="row engine-row">
+                <div class="col-sm-3 variables-list">
+                    <h3>Predictive engine</h3>
+                    <ul>
+                        <li data-toggle="tooltip" data-placement="right" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scaevolam M. Aliter enim explicari, quod quaeritur, non potest. Nam Pyrrho, Aristo, Erillus iam diu abiecti. Eadem nunc mea adversum te oratio est. Ergo ita: non posse honeste vivi, nisi honeste vivatur" class="tooltip-tr">Conflict Data <span class="glyphicon glyphicon-info-sign"></span></li><br>
+                        <li data-toggle="tooltip" data-placement="right" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scaevolam M. Aliter enim explicari, quod quaeritur, non potest. Nam Pyrrho, Aristo, Erillus iam diu abiecti. Eadem nunc mea adversum te oratio est. Ergo ita: non posse honeste vivi, nisi honeste vivatur" class="tooltip-tr">Rainfall Data <span class="glyphicon glyphicon-info-sign"></span></li><br>
+                        <li data-toggle="tooltip" data-placement="right" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scaevolam M. Aliter enim explicari, quod quaeritur, non potest. Nam Pyrrho, Aristo, Erillus iam diu abiecti. Eadem nunc mea adversum te oratio est. Ergo ita: non posse honeste vivi, nisi honeste vivatur" class="tooltip-tr">Goat Price Data <span class="glyphicon glyphicon-info-sign"></span></li>
+                    </ul>
+                    <button class="btn btn-primary" id="enginetoggle"><img src="img/code.svg"/>SHOW ENGINE VARIABLES</button>
+                </div>
+                <div class="col-sm-9">
+                    <div class="number-holder">
+                        <h5 class="num-date">october 2017</h5>
+                        <h1>0.8m</h1>
+                        <h6>predicted displacement</h6>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+        
+                <iframe class="engine-if" src="https://unhcrinnovation.shinyapps.io/engine/" width="100%" height="100%"></iframe>
+    </section>
+    <section id="conclusion">
+        <div class="container">
+            <h3>The Challenge</h3>
+            <p>One of the most pressing challenges for humanitarian agencies in trying to predict population movement is the information gap that exists when many people move from one place to another. This is particularly challenging, during emergencies, when the ‘fluid or rapid’ movement makes it difficult for humanitarian actors to track and estimate arrivals, and departures. In consequence, this challenge affects planning, funding of assistance and services. The challenge is exacerbated by: Lack of access to territory: referring to regions with ongoing violent conflict, to occupied territories and/or geographical areas where humanitarian actors are not present or access is denied. Lack of resources: lack of financial or human resources to deploy enumerators to collect data from specific sources or geographical locations. Lack of informants: collecting data from specific sources, or a particular group can bias the data Lack of validation: sometimes information verification is conducted only by participant observation (visual) and/or the data provided by the informants could be partial or inaccurate for diverse number of reasons.
+            </p>
+        </div>
+    </section>
+    <div class="expand-wrapper" id="prc_data">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6 process-card">
+                    <div class="row card-row">
+                        <div class="card-bg"></div>
+                        <div class="card-caption">
+                            <h3>The Process</h3>
+                            <p>The Jetson experiment is the first step in understanding the data about a) the population flow, and b) some of the most common variables that are observed during population movement. </p>
+                            <button class="btn btn-invert" id="prc_btn"><img src="img/read.svg"/> Read more</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 data-card">
+                    <div class="row card-row">
+                        <div class="card-bg"></div>
+                        <div class="card-caption">
+                            <h3>The Data</h3>
+                            <p>The project uses both structured, and unstructured data points. Examples of structured data are: conflict data, population data, environmental data, to mention some.</p>
+                            <button class="btn btn-invert" id="dta_btn"><img src="img/read.svg"/> Read more</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- end main -->
+    <section id="future">
+        <div class="container">
+            <h3>The Future</h3>
+            <p>The Jetson experiment is a simple simulation model with basic human-made rules. This is the type of modelling that is used for predicting movements in ant colonies, or in financial markets. As we gather data, the model and the pattern combination becomes more complex. We aim to analyze all possible combination of variables: a) macro variables (external) such as conflict, climate and food insecurity data, but also b) behavioral or micro variables such as particular population vulnerabilities, intent of movement and other multiple contextual variables that can be later be connected by a machine-learning algorithm. Initial research explorations for this more comprehensive model are related to having a robust agent-based modeling and simulation (ABMS) or conducting a sensitivity analysis of system dynamics modeling. The project also intends to put a spotlight on humanitarian, and development actors to provide their data in a systematic way, in order for computers to read it and process it automatically, which means passing from a predictive analytics phase to a prescriptive analytics phase.
+                <p>
+                    4 Project Assumptions
+                </p>
+                <ol>
+                    <li>
+                        The project is focused only in the population flow, both across borders and internally. This means the main research purpose is to measure changes in the population in an specific period of time (e.g. a month)</li>
+                    <li>There is not one single major cause of forced displacement. There are many causes (variables) and an infinite combination of these variables, along with behavioral human patterns that lead to forced displacement. The objective of the model is not to find the cause (why?) but to explain how are people moving (patterns)</li>
+                    <li>This project attempts to find interesting, and meaningful patterns in data by making assumptions from the data our partners are providing, particularly when data is not available, or is incomplete. </li>
+                    <li>Some of the assumptions “do not need a model to tell a person that” the assumption is correct. Building a model goes beyond identifying the assumptions’ characteristics (e.g. we do not need a model to know people are forced to flee due to conflict). However, the model attempts to find the best combination that could predict the target variable, in this case: population flow numbers and geographical locations, in an specific period of time.</li>
 
-    <div class="footer ">
+                </ol>
+        </div>
+    </section>
+    <footer>
+        © UNHCR Innovation 2017
+    </footer>
 
-
-
+    <div class="off-canvas-content" id="process">
+        <div class="container">
+            <h3>The Process</h3>
+            <p>The Jetson experiment is the first step in understanding the data about a) the population flow, and b) some of the most common variables that are observed during population movement. Responding to the questions: where, when, and how many people are being displaced is key for future contingency planning. The experiment focuses particularly on catalysts that may cause people to flee their homes in the Somalia. The main objective is to make predictions about potential displacement events by utilizing data mining, statistics, modeling, and machine-learning to analyse different data, and yield preliminary conclusions.
+                <p>
+                    The project aims to raise awareness of the importance of humanitarian planning in terms of having access to technically-open data. What this means is that data is in a machine-readable format. It also aims to showcase the what role data science, design, and predictive analytics application can play in the humanitarian sector. Finally, the ultimate goal is to improve the quality, and access to assistance and services for persons who are forcibly displaced. The project is useful to identify, and map existing humanitarian data gaps and services in select operations in order to improve access to demand-driven, insightful information in education, energy and the environment, connectivity, business models/cash, and other key areas.</p>
+        </div>
+        <button class="close-btn">
+            <img src="img/close.svg"/>
+        </button>
     </div>
-
+    <div class="off-canvas-content" id="data">
+        <div class="container">
+            <h3>The Data</h3>
+            <p>The project uses both structured, and unstructured data points. Examples of structured data are: conflict data, population data, environmental data, to mention some. Examples of unstructured data are: weather and climate data, deforestation satellite imagery, free-text in surveys fields, social media, to mention some. The Jetson experiment aims to portray the relevance of humanitarian, and development partners collecting, systematizing, analyzing and publishing data derived from their work. Jetson aims to set a precedent of applied predictive analytics to the work of the humanitarian sector, by strengthening coordination, planning and compilation of data. </p>
+        </div>
+        <button class="close-btn">
+            <img src="img/close.svg"/>
+        </button>
+    </div>
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-52484005-14"></script>
     <script>
-        (function(i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function() {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        window.dataLayer = window.dataLayer || [];
 
-        ga('create', 'UA-52484005-13', 'auto');
-        ga('send', 'pageview');
+        function gtag() {
+            dataLayer.push(arguments)
+        };
+        gtag('js', new Date());
+
+        gtag('config', 'UA-52484005-14');
     </script>
 
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="vendor/jquery-3.2.1.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js "></script>
-    <script src="js/iframeResizer.js "></script>    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg9Y7T1xOS_PPeDsCS2AL221x72a1I5k0&libraries=geometry,visualization"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="js/parallax.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/iframeResizer.js "></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg9Y7T1xOS_PPeDsCS2AL221x72a1I5k0&libraries=geometry,visualization"></script>
     <script src="vendor/rangeslider.js-2.3.0/rangeslider.min.js"></script>
     <script src="vendor/papaparse.min.js"></script>
+    <script src="js/whenInViewport.min.js"></script>
     <script src="js/richmarker.js"></script>
+    <script src="js/main.js"></script>
     <script src="js/app.js"></script>
-    <script src="js/main.js "></script>
 </body>
 
 </html>
