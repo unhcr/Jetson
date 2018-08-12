@@ -20,11 +20,15 @@ $(function () {
     });
 });
 
-$('.circle-holder').whenInViewport(function($circ) {
-    $circ.addClass('active-circ');
-}, {
-    threshold: -350 // difference in pixels from user scroll position
-});
+$('.circle-holder').whenInViewport(function ($circ) {
+        setTimeout(function () {
+            $circ.addClass('active-circ');
+        }, 2000);
+    }, {
+        threshold: -350 // difference in pixels from user scroll position
+    }
+
+);
 
 // Read in the migration data from CSV
 Papa.parse("data/data-large.csv", {
@@ -75,6 +79,7 @@ function setupSlider() {
                 slider_last_position = value;
                 drawMapOverlays(value);
             }
+            $('.yr-btn').blur();
         },
     });
 }
@@ -101,12 +106,30 @@ function drawMapOverlays(slider_value) {
         drawHeatmapByMonth(month, year);
     }
     $('#month_year').text(month + '/' + year);
+
+
+    $('.yr-btn').each(function () {
+        var yrid = $(this).attr('id');
+        if (yrid === 'yr_' + year) {
+            $('.yr-btn').removeClass('active-btn');
+            $(this).addClass('active-btn');
+        }
+    });
+
+
 }
 
 
 var Baidoa, Doolow, Luuq, Mogadishu, Melkadida, Ifo, Guriceel;
 
+var Marker = google.maps.Marker;
+
+var Point = google.maps.Point;
+
+var curvature = 0.2; // how curvy to make the arc
+
 function initializeMap() {
+
     var mapCenter = new google.maps.LatLng(5.646663, 46.311971);
 
     var mapOptions = {
@@ -114,122 +137,44 @@ function initializeMap() {
         center: mapCenter,
         scrollwheel: false,
         disableDefaultUI: true,
-        styles: [{
-            "featureType": "water",
-            "elementType": "geometry",
-            "stylers": [{
-                "color": "#0070BF"
-            }, {
-                "lightness": 17
-            }]
-        }, {
-            "featureType": "landscape",
-            "elementType": "geometry",
-            "stylers": [{
-                "color": "#f5f5f5"
-            }, {
-                "lightness": 20
-            }]
-        }, {
-            "featureType": "road.highway",
-            "elementType": "geometry.fill",
-            "stylers": [{
-                "color": "#ffffff"
-            }, {
-                "lightness": 17
-            }]
-        }, {
-            "featureType": "road.highway",
-            "elementType": "geometry.stroke",
-            "stylers": [{
-                "color": "#ffffff"
-            }, {
-                "lightness": 29
-            }, {
-                "weight": 0.2
-            }]
-        }, {
-            "featureType": "road.arterial",
-            "elementType": "geometry",
-            "stylers": [{
-                "color": "#ffffff"
-            }, {
-                "lightness": 18
-            }]
-        }, {
-            "featureType": "road.local",
-            "elementType": "geometry",
-            "stylers": [{
-                "color": "#ffffff"
-            }, {
-                "lightness": 16
-            }]
-        }, {
-            "featureType": "poi",
-            "elementType": "geometry",
-            "stylers": [{
-                "color": "#f5f5f5"
-            }, {
-                "lightness": 21
-            }]
-        }, {
-            "featureType": "poi.park",
-            "elementType": "geometry",
-            "stylers": [{
-                "color": "#dedede"
-            }, {
-                "lightness": 21
-            }]
-        }, {
-            "elementType": "labels.text.stroke",
-            "stylers": [{
-                "visibility": "on"
-            }, {
-                "color": "#ffffff"
-            }, {
-                "lightness": 16
-            }]
-        }, {
-            "elementType": "labels.text.fill",
-            "stylers": [{
-                "saturation": 36
-            }, {
-                "color": "#333333"
-            }, {
-                "lightness": 40
-            }]
-        }, {
-            "elementType": "labels.icon",
-            "stylers": [{
-                "visibility": "off"
-            }]
-        }, {
-            "featureType": "transit",
-            "elementType": "geometry",
-            "stylers": [{
-                "color": "#f2f2f2"
-            }, {
-                "lightness": 19
-            }]
-        }, {
-            "featureType": "administrative",
-            "elementType": "geometry.fill",
-            "stylers": [{
-                "color": "#fefefe"
-            }, {
-                "lightness": 20
-            }]
-        }, {
-            "featureType": "administrative",
-            "elementType": "geometry.stroke",
-            "stylers": [{
-                "color": "#fefefe"
-            }, {
-                "lightness": 17
-            }, {
-                "weight": 1.2
-            }]
-        }]
+        styles: [
+            {
+                "stylers": [
+                    {
+                        "visibility": "simplified"
+            }
+        ]
+    },
+            {
+                "stylers": [
+                    {
+                        "color": "#131314"
+            }
+        ]
+    },
+            {
+                "featureType": "water",
+                "stylers": [
+                    {
+                        "color": "#131313"
+            },
+                    {
+                        "lightness": 7
+            }
+        ]
+    },
+            {
+                "elementType": "labels.text.fill",
+                "stylers": [
+                    {
+                        "visibility": "on"
+            },
+                    {
+                        "lightness": 25
+            }
+        ]
+    }
+]
     };
 
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
@@ -344,7 +289,8 @@ function setSliderLimits() {
 }
 
 
-var polylines = []
+var polylines = [];
+var markers = [];
 
 function drawLinesByMonth(month_in, year_in) {
 
@@ -373,48 +319,126 @@ function drawLinesByMonth(month_in, year_in) {
             // Check validity of data
             if (previous_coord.lat === '' || previous_coord.lng === '' ||
                 current_coord.lat === '' || current_coord.lng === '') {
-                console.log('Invalid coordintate(s) on row ' + x + 1)
+                // console.log('Invalid coordintate(s) on row ' + x + 1)
                 continue;
             }
 
             var polygon_path = [previous_coord, current_coord];
 
-            var linePath = new google.maps.Polyline({
-                path: polygon_path,
-                icons: [{
-                    icon: lineSymbol,
-                    offset: '100%',
-                    strokeColor: '#ff9000',
-                    strokeOpacity: 0.6,
-                    strokeWeight: 0.9
-		}],
-                strokeColor: '#ff9000',
-                strokeOpacity: 0.6,
-                strokeWeight: 0.9,
-                geodesic: true
+            var pos1 = previous_coord;
+            var pos2 = current_coord;
+
+            var markerP1 = new Marker({
+                position: pos1,
+                icon: {
+                    path: google.maps.SymbolPath.CIRCLE,
+                    scale: 1.25,
+                    fillColor: '#FFAA00',
+                    fillOpacity: 0.35,
+                    strokeWeight: 0
+                },
+                draggable: true
+            });
+            var markerP2 = new Marker({
+                position: pos2,
+                icon: {
+                    path: google.maps.SymbolPath.CIRCLE,
+                    scale: 1.25,
+                    fillColor: '#00f5a7',
+                    fillOpacity: 0.35,
+                    strokeWeight: 0
+                },
+                draggable: true,
             });
 
-            polylines.push(linePath);
-            
-    console.log(linePath)
+
+            markers.push(markerP1)
+            markers.push(markerP2)
+
+            var curveMarker;
+
+            //        var pos1 = data_line[11]+','+data_line[12], // latlng
+            //            pos2 = data_line[5]+','+data_line[6],
+
+            function updateCurveMarker() {
+                var pos1 = markerP1.getPosition(), // latlng
+                    pos2 = markerP2.getPosition(),
+                    projection = map.getProjection(),
+                    p1 = projection.fromLatLngToPoint(pos1), // xy
+                    p2 = projection.fromLatLngToPoint(pos2);
+                // Calculate the arc.
+                // To simplify the math, these points 
+                // are all relative to p1:
+                var e = new Point(p2.x - p1.x, p2.y - p1.y), // endpoint (p2 relative to p1)
+                    m = new Point(e.x / 2, e.y / 2), // midpoint
+                    o = new Point(e.y, -e.x), // orthogonal
+                    c = new Point( // curve control point
+                        m.x + curvature * o.x,
+                        m.y + curvature * o.y);
+
+                var pathDef = 'M 0,0 ' +
+                    'q ' + c.x + ',' + c.y + ' ' + e.x + ',' + e.y;
+
+                var zoom = map.getZoom(),
+                    scale = 1 / (Math.pow(2, -zoom));
+
+                var symbol = {
+                    path: pathDef,
+                    scale: scale,
+                    strokeColor: '#00a2ff',
+                    strokeOpacity: 0.3,
+                    strokeWeight: 0.7
+                };
+
+
+                curveMarker = new Marker({
+                    position: pos1,
+                    clickable: false,
+                    icon: symbol,
+                    zIndex: 0, // behind the other markers
+                    map: map
+                });
+            }
+
+            updateCurveMarker();
+
+
+
+
+            // Sets the map on all markers in the array.
+            function setMapOnAll(map) {
+                for (var i = 0; i < markers.length; i++) {
+                    markers[i].setMap(map);
+                }
+            }
+
+            polylines.push(curveMarker);
 
 
             var line = polylines[polylines.length - 1];
 
-//            animateCircle(line);
+
+            google.maps.event.addListener(map, 'projection_changed', updateCurveMarker);
+            google.maps.event.addListener(map, 'zoom_changed', updateCurveMarker);
+
+            google.maps.event.addListener(markerP1, 'position_changed', updateCurveMarker);
+            google.maps.event.addListener(markerP2, 'position_changed', updateCurveMarker);
+
+
+            //            animateCircle(line);
 
             // Use the DOM setInterval() function to change the offset of the symbol
             // at fixed intervals.
-//            function animateCircle(line) {
-//                var count = 0;
-//                window.setInterval(function () {
-//                    count = (count + 1) % 120;
-//
-//                    var icons = line.get('icons');
-//                    icons[0].offset = (count / 1.2) + '%';
-//                    line.set('icons', icons);
-//                }, 1);
-//            }
+            //            function animateCircle(line) {
+            //                var count = 0;
+            //                window.setInterval(function () {
+            //                    count = (count + 1) % 120;
+            //
+            //                    var icons = line.get('icons');
+            //                    icons[0].offset = (count / 1.2) + '%';
+            //                    line.set('icons', icons);
+            //                }, 1);
+            //            }
         }
     }
 
@@ -425,6 +449,9 @@ function drawLinesByMonth(month_in, year_in) {
     for (var x in polylines) {
         polylines[x].setMap(map);
     }
+    for (var y in markers) {
+        markers[y].setMap(map);
+    }
 }
 
 
@@ -433,8 +460,12 @@ function removeLines() {
     for (var x in polylines) {
         polylines[x].setMap(null);
     }
+    for (var y in markers) {
+        markers[y].setMap(null);
+    }
 
     polylines = [];
+    markers = [];
 }
 
 
@@ -463,7 +494,7 @@ function drawHeatmapByMonth(month_in, year_in) {
                 lat: data_line[2],
                 lng: data_line[3]
             };
-            var fatalities = parseInt(data_line[4]);
+            var fatalities = (parseInt(data_line[4])) * 0.5;
 
             // Check validity of data
             if (current_coord.lat === '' || current_coord.lng === '') {
@@ -481,7 +512,9 @@ function drawHeatmapByMonth(month_in, year_in) {
     }
 
     heatmap = new google.maps.visualization.HeatmapLayer({
-        data: heatmapData
+        data: heatmapData,
+        dissipating: false,
+        radius: 0.5
     });
 
     console.log('Drawing the heatmap.')
@@ -490,19 +523,9 @@ function drawHeatmapByMonth(month_in, year_in) {
     heatmap.setMap(map);
 
     var gradient = [
-          'rgba(0, 255, 255, 0)',
-          'rgba(0, 255, 255, 1)',
-          'rgba(0, 191, 255, 1)',
-          'rgba(0, 127, 255, 1)',
-          'rgba(0, 63, 255, 1)',
-          'rgba(0, 0, 255, 1)',
-          'rgba(0, 0, 223, 1)',
-          'rgba(0, 0, 191, 1)',
-          'rgba(0, 0, 159, 1)',
-          'rgba(0, 0, 127, 1)',
-          'rgba(63, 0, 91, 1)',
-          'rgba(127, 0, 63, 1)',
-          'rgba(191, 0, 31, 1)',
+          'rgba(131, 0, 70, 0)',
+          'rgba(164, 0, 89, 0.4)',
+          'rgba(201, 0, 71, 0.6)',
           'rgba(255, 0, 0, 1)'
         ]
     heatmap.set('gradient', heatmap.get('gradient') ? null : gradient);
@@ -521,7 +544,7 @@ function playFromStart() {
 }
 
 function play() {
-    var interval = 8000;
+    var interval = 100;
 
     function incrementSlider(value) {
         var current_val = parseInt($('#slider').val());
@@ -532,8 +555,38 @@ function play() {
         timeout_ids.push(window.setTimeout(incrementSlider, interval * (x + 1)));
     }
 
-    console.log(timeout_ids);
+    // console.log(timeout_ids);
 }
+
+// button functions
+
+$('#yr_2010').click(function () {
+    $('#slider').val(0).change();
+});
+$('#yr_2011').click(function () {
+    $('#slider').val(12).change();
+});
+$('#yr_2012').click(function () {
+    $('#slider').val(24).change();
+});
+$('#yr_2013').click(function () {
+    $('#slider').val(36).change();
+});
+$('#yr_2014').click(function () {
+    $('#slider').val(48).change();
+});
+$('#yr_2015').click(function () {
+    $('#slider').val(60).change();
+});
+$('#yr_2016').click(function () {
+    $('#slider').val(72).change();
+});
+$('#yr_2017').click(function () {
+    $('#slider').val(84).change();
+});
+
+
+
 
 function clearTimeouts() {
     for (var x = 0; x <= timeout_ids.length; x++) {
@@ -571,9 +624,16 @@ $('.close-btn').click(function () {
     }, 500);
 });
 
-$('#enginetoggle').click(function(){
-    $('.engine-if').show()
+$('#engineshow').click(function () {
+    $('.engine-if').show();
+    $('.engine-bg').show();
+});
+
+$('#enginehide').click(function () {
+    $('.engine-if').hide();
+    $('.engine-bg').hide();
 })
+
 
 $(document).on('click', 'a[href^="#"]', function (event) {
     event.preventDefault();
@@ -586,8 +646,8 @@ $(document).on('click', 'a[href^="#"]', function (event) {
 
 $(window).scroll(function () {
     if ($(this).scrollTop() >= 400) { // this refers to window
-        $('nav').addClass('fixed-nav');
+        $('nav').addClass('fixed-nav').removeClass('rel-nav');
     } else {
-        $('nav').removeClass('fixed-nav');
+        $('nav').addClass('rel-nav').removeClass('fixed-nav');
     }
 });

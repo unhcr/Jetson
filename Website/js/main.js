@@ -5,5 +5,5 @@ var parallax = new Parallax(scene, {
 });
 
 $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
+  $('[data-toggle="popover"]').popover()
 })

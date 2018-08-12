@@ -28,14 +28,50 @@ body {
     position: relative;
 }
 
-#map-canvas,
-#map_canvas {
-    height: calc(100% - 130px);
+#map {
+    height: 100%
+}
+
+#map-canvas {
+    height: calc(100% - 177px);
 }
 
 #controls_container {
-    background: #f8f8f8;
+    background: #000;
     padding: 30px;
+}
+
+.button-wrapper {
+    display: flex;
+}
+
+#controls_container button {
+    border-radius: 0 2px 2px 0;
+    margin: 0 5px 20px;
+    background: #222;
+    border: none;
+    padding: 10px;
+    color: #fff;
+    flex-grow: 1;
+    font-size: 12px;
+    letter-spacing: 1px;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    justify-content: space-around;
+    transition: all ease-in-out .5s;
+    border-left: 1px solid #0070BF;
+}
+
+#controls_container button:focus, #controls_container button.active-btn {
+    background: #0070BF;
+    transition: all ease-in-out  .5s;
+}
+
+#controls_container #slider {
+    margin-top: 20px;
 }
 
 #toggles {
@@ -43,7 +79,7 @@ body {
     top: 30px;
     left: 30px;
     background: #fff;
-    width: 120px;
+    width: 220px;
     border-radius: 3px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, .5);
     padding: 15px;
@@ -54,14 +90,48 @@ body {
 }
 
 #toggles .toggle-row {
-    margin-bottom: 4px;
     font-family: 'Oswald', sans-serif;
     font-weight: 200;
-    color: #666
+    color: #000;
+    margin-bottom: 10px;
+}
+
+#toggles .toggle-row input {
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -5px;
+    margin-right: 5px;
 }
 
 #toggles .toggle-row p {
-    color: #0070BF
+    color: #000;
+    font-size: 12px;
+}
+
+#toggles .toggle-row h5 {
+    color: #666;
+    font-size: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+}
+
+#toggles .toggle-row h5 span {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    vertical-align: middle;
+    border-radius: 5px;
+    margin-right: 3px;
+    margin-top: -3px;
+}
+
+#toggles .toggle-row h5 span.departure {
+    background: orange
+}
+
+#toggles .toggle-row h5 span.arrival {
+    background: #00f5a7
 }
 
 @media print {
@@ -88,14 +158,14 @@ body {
 
 #month_year {
     text-align: left;
-    font-size: 13px;
-    background: #fff;
+    font-size: 12px;
+    background: none;
     display: inline-block;
-    padding: 10px;
-    border-radius: 3px;
-    border: 1px solid #eee;
+    padding: 10px 20px;
+    border-radius: 2px;
+    border: 1px solid rgba(238, 238, 238, 0.21);
     line-height: 13px;
-    color: #666;
+    color: #eee;
     margin-bottom: 20px;
 }
 
@@ -118,7 +188,7 @@ body {
 .marker {
     background: #333;
     padding: 5px 10px;
-    border-radius: 2px;
+    border-radius: 1px;
     color: #fff;
     position: relative;
     margin-top: -7px;

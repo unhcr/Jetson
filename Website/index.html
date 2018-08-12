@@ -16,6 +16,110 @@
 </head>
 
 <body>
+
+    <!-- start slow page load detect -->
+
+    <style>
+        html {
+            position: relative;
+        }
+        
+        #slow-notice {
+            width: 300px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            margin-left: -160px;
+            background-color: #F0DE7D;
+            text-align: center;
+            z-index: 100;
+            padding: 10px;
+            font-family: sans-serif;
+            font-size: 12px;
+        }
+        
+        #slow-notice a,
+        #slow-notice .dismiss {
+            color: #000;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        
+        #slow-notice .dismiss-container {
+            text-align: right;
+            padding-top: 10px;
+            font-size: 10px;
+        }
+    </style>
+    <script>
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toGMTString();
+            document.cookie = cname + "=" + cvalue + ";path=/;" + expires;
+        }
+
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i].trim();
+                if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+            }
+            return "";
+        }
+
+        if (getCookie('dismissed') != '1') {
+            var html_node = document.getElementsByTagName('html')[0];
+            var div = document.createElement('div');
+            div.setAttribute('id', 'slow-notice');
+
+            var slowLoad = window.setTimeout(function() {
+                var t1 = document.createTextNode("The website is taking a long time to load.");
+                var br = document.createElement('br');
+                var t2 = document.createTextNode("You can switch to the ");
+                var a = document.createElement('a');
+                a.setAttribute('href', '/jetson-beta-preproduction/lite');
+                a.innerHTML = 'Light Weight Site';
+
+                var dismiss = document.createElement('span');
+                dismiss.innerHTML = '[x] dismiss';
+                dismiss.setAttribute('class', 'dismiss');
+                dismiss.onclick = function() {
+                    setCookie('dismissed', '1', 1);
+                    html_node.removeChild(div);
+                }
+
+                var dismiss_container = document.createElement('div');
+                dismiss_container.appendChild(dismiss);
+                dismiss_container.setAttribute('class', 'dismiss-container');
+
+                div.appendChild(t1);
+                div.appendChild(br);
+                div.appendChild(t2);
+                div.appendChild(a);
+                div.appendChild(dismiss_container);
+
+                html_node.appendChild(div);
+
+
+            }, 1000);
+
+            window.addEventListener('load', function() {
+                try {
+                    window.clearTimeout(slowLoad);
+                    html_node.removeChild(div);
+                } catch (e) {
+                    // that's okay.
+                }
+
+            });
+        }
+    </script>
+
+    
+    <!-- end slow page load detect -->
+    
     <header>
         <div class="wrapper">
             <div class="scene">
@@ -27,38 +131,42 @@
         <div class="top-menu">
 
             <div class="header-logo">
-                <img src="img/logo.png" />
+                <!--                <img src="img/logo.png" alt="UNHCR Innovation logo" />-->
             </div>
 
+            <!--
             <a class="share" href="#">
                 <img src="img/share.svg" />
             </a>
+-->
         </div>
         <div class="header-caption">
             <div class="container">
                 <h4>Welcome to</h4>
-                <h2>Jetson</h2>
+                <h2>Project Jetson</h2>
                 <p>Welcome to the UNHCR Innovation Service’s displacement flow simulation for the Somalia situation. This is an experiment that combines data science, design, and strategic communications. We continuously develop the back-end (the prediction engine) of this website simulation to improve predictions as we receive, collate, and analyse new, and improved data sets.</p>
+                <!--
                 <button class="play-button">
                 <img src="img/play.svg" />
                 </button>
+-->
             </div>
         </div>
 
-        <nav>
+        <nav class="rel-nav">
             <div class="container">
                 <ul>
                     <li>
-                        <a href="#about"> <img src="img/info.svg" /> About Project</a>
+                        <a href="#about"> <img src="img/info.svg" /><span>About Project</span></a>
                     </li>
                     <li>
-                        <a href="#timeline"> <img src="img/map.svg" /> MAP TIMELINE</a>
+                        <a href="#timeline"> <img src="img/map.svg" /><span>MAP TIMELINE</span></a>
                     </li>
                     <li>
-                        <a href="#model"> <img src="img/predictive.svg" /> PREDICTIVE MODEL</a>
+                        <a href="#model"> <img src="img/predictive.svg" /><span>PREDICTIVE MODEL</span></a>
                     </li>
                     <li>
-                        <a href="#conclusion"> <img src="img/summary.svg" /> Conclusion</a>
+                        <a href="#conclusion"> <img src="img/summary.svg" /><span>Conclusion</span></a>
                     </li>
                 </ul>
             </div>
@@ -73,19 +181,22 @@
     <section id="timeline">
         <div class="container">
             <h3>MAP STORY</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scaevolam M. Aliter enim explicari, quod quaeritur, non potest. Nam Pyrrho, Aristo, Erillus iam diu abiecti. Eadem nunc mea adversum te oratio est. Ergo ita: non posse honeste vivi, nisi honeste vivatur? Duo Reges: constructio interrete. Nec vero alia sunt quaerenda contra Carneadeam illam sententiam. Sin laboramus, quis est, qui alienae modum statuat industriae?</p>
+            <p>The map displays the relationship between conflict and displacement in Somalia from 2010 to 2017. The aim for the map is to demonstrate the general trends of both variables and to visualise a bird's eye view on displacement and conflict. The visualisation uses the Google Maps API and a custom built data visualisation engine. The data points are grouped by month of reported fatalities in conflict zones and displaced populations per region. The custom module processes over 6 million bytes of data from a CSV file and parses the values onto the map to display volume of seven years of displacement and severity of violent conflict.</p>
         </div>
     </section>
     <div class="map" id="map">
         <div id="main_content">
-            <div id="map-canvas" class="map"></div>
+            <div id="map-canvas" class="map" aria-label="Conflict and Displacement Data Map"></div>
             <div id="toggles">
                 <div class="toggle-row">
                     <p><span class="ti-view-list"></span> Layers</p>
                 </div>
                 <div class="toggle-row">
                     <input id="display_lines" type="checkbox" value="display_lines" checked>
-                    <label for="display_lines">Migrations</label>
+                    <label for="display_lines">Displacement<br>
+                    <h5><span class="departure"></span>Departures</h5>
+                    <h5><span class="arrival"></span>Arrivals</h5>
+                    </label>
                 </div>
                 <div class="toggle-row">
                     <input id="display_heatmaps" type="checkbox" value="display_heatmaps" checked>
@@ -93,35 +204,106 @@
                 </div>
             </div>
             <div id="controls_container">
+
                 <div class="play-date">
-                    <button id="autoplay"><span class="ti-control-play"></span></button>
+                    <!--                    <button id="autoplay"><span class="ti-control-play"></span></a>-->
                     <div id="month_year"></div>
                 </div>
-                <input id="slider" type="range" value='0'>
-<!--
-                <button class="yr-btn" id="yr_2010">2010</button>
-                <button class="yr-btn" id="yr_2011">2011</button>
-                <button class="yr-btn" id="yr_2012">2012</button>
-                <button class="yr-btn" id="yr_2013">2013</button>
-                <button class="yr-btn" id="yr_2014">2014</button>
-                <button class="yr-btn" id="yr_2015">2015</button>
-                <button class="yr-btn" id="yr_2016">2016</button>
-                <button class="yr-btn" id="yr_2017">2017</button>
--->
+
+                <div class="button-wrapper">
+                    <button class="yr-btn" id="yr_2010">2010</button>
+                    <button class="yr-btn" id="yr_2011">2011</button>
+                    <button class="yr-btn" id="yr_2012">2012</button>
+                    <button class="yr-btn" id="yr_2013">2013</button>
+                    <button class="yr-btn" id="yr_2014">2014</button>
+                    <button class="yr-btn" id="yr_2015">2015</button>
+                    <button class="yr-btn" id="yr_2016">2016</button>
+                    <button class="yr-btn" id="yr_2017">2017</button>
+                </div>
+
+                <input id="slider" type="range" value="0" />
             </div>
         </div>
     </div>
     <section id="model">
         <div class="container">
             <h3>Engine story</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scaevolam M. Aliter enim explicari, quod quaeritur, non potest. Nam Pyrrho, Aristo, Erillus iam diu abiecti. Eadem nunc mea adversum te oratio est. Ergo ita: non posse honeste vivi, nisi honeste vivatur? Duo Reges: constructio interrete. Nec vero alia sunt quaerenda contra Carneadeam illam sententiam. Sin laboramus, quis est, qui alienae modum statuat industriae?</p>
-            <div class="circle-holder">
-                <div class="circle data-circle">data</div>
-                <div class="circle data-variables">variables</div>
-                <div class="circle data-algorithm">algorithm</div>
-                <div class="circle data-visualisation">visualisation</div>
-                <div class="circle single-circle">the engine</div>
-            </div>
+            <p>The data behind the engine is anonymized, aggregated per month and per region. Project JETSON uses machine-learning for building a nonparametric algorithm (model) for each region. The models used for each region represent the best &lsquo;fit&rsquo; that can explains the behaviour of seven years of historical data. The target variable (y) is # of arrivals for each region.
+                <p>
+                    The model is trained with data until 30 June 2017 and the date that the predictive *algorithm* was built is 1 September 2017. The engine is built in<a href="https://shiny.rstudio.com"> Shiny,</a> a package for R.
+                    <p>
+                        The algorithm for our first prototype is <u>Bay region</u>, as shown:
+                        <div class="well">
+                            <p><em>Bay_CurrentRegion</em> = max(4.88281349617007*delay(Awdal_CurrentRegion, 1) + 1.70985734411931*delay(Sanaag_CurrentRegion, 1) + 1.6698879385747*delay(Sanaag_FutureRegion, 1) + 2.02695796095132*delay(Nugaal_FutureRegion, 10) + 2.35314983669832e-8*delay(Bari_BeforeRegion, 1)^3*delay(Woqooyi_Galbeed_BeforeRegion, 1) + delay(Nugaal_FutureRegion, 3) - smm(delay(Jubbada_Hoose_FutureRegion, 1), 3) - 0.392410307797819*delay(Togdheer_CurrentRegion, 1), 1.70985734411931*delay(Sanaag_CurrentRegion, 1))</p>
+                        </div>
+                        <p>
+                            The goodness of fit of the available data for this model is R2 = 0.85503337
+                            <p>
+                                For developers, to implement algorithm function: </p>
+                            <table border="0" cellspacing="0" cellpadding="0" class="table">
+                                <tr>
+                                    <td valign="top">
+                                        <p>Delayed Variable </p>
+                                    </td>
+                                    <td valign="top">
+                                        <p>delay(x,num_rows) </p>
+                                    </td>
+                                    <td valign="top">
+                                        <p>Returns the value of the x variable num_rows prior to the current row </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="top">
+                                        <p>Simple Moving Average </p>
+                                    </td>
+                                    <td valign="top">
+                                        <p>sma(x,num_rows) </p>
+                                    </td>
+                                    <td valign="top">
+                                        <p>Returns the average value of the last num_rows values of the x variable </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="top">
+                                        <p>Maximum </p>
+                                    </td>
+                                    <td valign="top">
+                                        <p>max(x,y) </p>
+                                    </td>
+                                    <td valign="top">
+                                        <p>Returns the maximum (signed) result of x and y for the data point </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="top">
+                                        <p>Modified Moving Average </p>
+                                    </td>
+                                    <td valign="top">
+                                        <p>mma (x,num_rows) </p>
+                                    </td>
+                                    <td valign="top">
+                                        <p>Returns the modified average value of the last num_rows values of the x variable </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="top">
+                                        <p>Simple Moving Median </p>
+                                    </td>
+                                    <td valign="top">
+                                        <p>smm(x,num_rows) </p>
+                                    </td>
+                                    <td valign="top">
+                                        <p>Returns the median value of the last num_rows values of the x variable. If there are an even number of values, smm returns the first value, at the floor(length / 2) index. </p>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="circle-holder">
+                                <div class="circle data-circle">data</div>
+                                <div class="circle data-variables">variables</div>
+                                <div class="circle data-algorithm">algorithm</div>
+                                <div class="circle data-visualisation">visualisation</div>
+                                <div class="circle single-circle">the engine</div>
+                            </div>
         </div>
     </section>
     <section id="engine">
@@ -129,24 +311,33 @@
             <div class="row engine-row">
                 <div class="col-sm-3 variables-list">
                     <h3>Predictive engine</h3>
-                    <ul>
-                        <li data-toggle="tooltip" data-placement="right" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scaevolam M. Aliter enim explicari, quod quaeritur, non potest. Nam Pyrrho, Aristo, Erillus iam diu abiecti. Eadem nunc mea adversum te oratio est. Ergo ita: non posse honeste vivi, nisi honeste vivatur" class="tooltip-tr">Conflict Data <span class="glyphicon glyphicon-info-sign"></span></li><br>
-                        <li data-toggle="tooltip" data-placement="right" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scaevolam M. Aliter enim explicari, quod quaeritur, non potest. Nam Pyrrho, Aristo, Erillus iam diu abiecti. Eadem nunc mea adversum te oratio est. Ergo ita: non posse honeste vivi, nisi honeste vivatur" class="tooltip-tr">Rainfall Data <span class="glyphicon glyphicon-info-sign"></span></li><br>
-                        <li data-toggle="tooltip" data-placement="right" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scaevolam M. Aliter enim explicari, quod quaeritur, non potest. Nam Pyrrho, Aristo, Erillus iam diu abiecti. Eadem nunc mea adversum te oratio est. Ergo ita: non posse honeste vivi, nisi honeste vivatur" class="tooltip-tr">Goat Price Data <span class="glyphicon glyphicon-info-sign"></span></li>
-                    </ul>
-                    <button class="btn btn-primary" id="enginetoggle"><img src="img/code.svg"/>SHOW ENGINE VARIABLES</button>
+
+                    <a tabindex="0" class="popover-tr" data-toggle="popover" data-trigger="focus" data-html="true" data-content="Based on the <a href='https://www.acleddata.com/'>ACLED dataset,</a> the engine sums all six main event types from <a href='https://www.acleddata.com/wp-content/uploads/2017/01/ACLED_Codebook_2017.pdf'>ACLED Codebook</a>, which include three different types of battles, riots/protests, violence against civilians and remote violence. The figures are aggregated per region on a per month timeframe.">Conflict <span class="glyphicon glyphicon-info-sign"></span></a>
+                    <br>
+                    <a tabindex="0" class="popover-tr" data-toggle="popover" data-trigger="focus" data-html="true" data-content="Based on the <a href='https://www.acleddata.com/'>ACLED dataset</a>, engine sums all the fatalities for each region aggregated per month. ACLED only codes estimated casualties when reported by source materials. It cannot verify the numbers reported from sources and does not use fatalities as the basis for event inclusion">Fatalities <span class="glyphicon glyphicon-info-sign"></span></a>
+                    <br>
+                    <a tabindex="0" class="popover-tr" data-toggle="popover" data-trigger="focus" data-html="true" data-content="Provided by <a href='https://data2.unhcr.org/en/documents/download/53888'>UNHCR PRMN</a> which identifies and reports on displacements (including returns). The engine separates departures and arrivals for each region, per month. Only figures collected by PRMN enumerators are reported. Not all displacements in Somalia are captured. Reports of displacement figures can be seen as indicators of potentially larger movements.">Displacement <span class="glyphicon glyphicon-info-sign"></span></a>
+                    <br>
+                    <a tabindex="0" class="popover-tr" data-toggle="popover" data-trigger="focus" data-html="true" data-content="Based on <a href='http://www.fsnau.org/ids/index.php'>FSNAU</a>&rsquo;s integrated database system (IDS). It is a compilation of a market price monitoring system that collect and analyse weekly price data on twenty-four commodities and two exchange rates across thirty-six markets throughout Somalia. Project JETSON used for the first prototype only: water drum and goats local quality prices, aggregated per region and month.">Market Prices <span class="glyphicon glyphicon-info-sign"></span></a>
+                    <br>
+                    <a tabindex="0" class="popover-tr" data-toggle="popover" data-trigger="focus" data-html="true" data-content="Based on <a href='http://frrmis.faoso.net/rainfall/index'>FAO-SWALIM data</a>. The monthly average of all available rain stations per region is calculated. The gauge readers compile the rain average data in mm.">Climate Water (Rainfall) <span class="glyphicon glyphicon-info-sign"></span></a>
+                    <br>
+                    <a tabindex="0" class="popover-tr" data-toggle="popover" data-trigger="focus" data-html="true" data-content="Based on <a href='http://sddr.faoswalim.org/riverflow_query.php?catid=1&subid=17&mapsubid=20'>FAO-SWALIM data</a>. The monthly average of all available river stations for both Juba and Shabelle Rivers. The average represents the total monthly river discharge (in cumecs).">Surface Water (Rivers) <span class="glyphicon glyphicon-info-sign"></span></a>
+                    <button class="btn btn-primary" id="engineshow"><img src="img/code.svg"/>SHOW ENGINE VARIABLES</button>
                 </div>
                 <div class="col-sm-9">
                     <div class="number-holder">
                         <h5 class="num-date">october 2017</h5>
-                        <h1>0.8m</h1>
+                        <h1>9.0K</h1>
                         <h6>predicted displacement</h6>
                     </div>
                 </div>
             </div>
         </div>
-        
-                <iframe class="engine-if" src="https://unhcrinnovation.shinyapps.io/engine/" width="100%" height="100%"></iframe>
+        <div class="engine-bg"></div>
+        <div class="engine-if">
+            <iframe class="iframe" src="https://unhcrinnovation.shinyapps.io/engine/" height="100%" title="Predictive Engine"></iframe><button class="btn btn-primary" id="enginehide"><img src="img/code.svg"/>HIDE ENGINE VARIABLES</button>
+        </div>
     </section>
     <section id="conclusion">
         <div class="container">
@@ -164,7 +355,7 @@
                         <div class="card-caption">
                             <h3>The Process</h3>
                             <p>The Jetson experiment is the first step in understanding the data about a) the population flow, and b) some of the most common variables that are observed during population movement. </p>
-                            <button class="btn btn-invert" id="prc_btn"><img src="img/read.svg"/> Read more</button>
+                            <button class="btn btn-invert" id="prc_btn" title="Click to read more about The Process"><img src="img/read.svg"/> Read more</button>
                         </div>
                     </div>
                 </div>
@@ -174,7 +365,7 @@
                         <div class="card-caption">
                             <h3>The Data</h3>
                             <p>The project uses both structured, and unstructured data points. Examples of structured data are: conflict data, population data, environmental data, to mention some.</p>
-                            <button class="btn btn-invert" id="dta_btn"><img src="img/read.svg"/> Read more</button>
+                            <button class="btn btn-invert" id="dta_btn" title="Click to read more about Data"><img src="img/read.svg" /> Read more</button>
                         </div>
                     </div>
                 </div>
@@ -199,7 +390,7 @@
         </div>
     </section>
     <footer>
-        © UNHCR Innovation 2017
+        UNHCR Innovation Service, 2017
     </footer>
 
     <div class="off-canvas-content" id="process">
