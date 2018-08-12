@@ -2,443 +2,411 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Jetson Beta</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000E4A" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Project Jetson</title>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/themify-icons.css" rel="stylesheet">
-    <link href="css/map.css" rel="stylesheet">
-    <link href="vendor/rangeslider.js-2.3.0/rangeslider.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="favicon.ico" rel="icon" type="image/ico">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 
 <body>
-
-    <!-- start slow page load detect -->
-
-    <style>
-        html {
-            position: relative;
-        }
-        
-        #slow-notice {
-            width: 300px;
-            position: absolute;
-            top: 0;
-            left: 50%;
-            margin-left: -160px;
-            background-color: #F0DE7D;
-            text-align: center;
-            z-index: 100;
-            padding: 10px;
-            font-family: sans-serif;
-            font-size: 12px;
-        }
-        
-        #slow-notice a,
-        #slow-notice .dismiss {
-            color: #000;
-            text-decoration: underline;
-            cursor: pointer;
-        }
-        
-        #slow-notice .dismiss-container {
-            text-align: right;
-            padding-top: 10px;
-            font-size: 10px;
-        }
-    </style>
-    <script>
-        function setCookie(cname, cvalue, exdays) {
-            var d = new Date();
-            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-            var expires = "expires=" + d.toGMTString();
-            document.cookie = cname + "=" + cvalue + ";path=/;" + expires;
-        }
-
-        function getCookie(cname) {
-            var name = cname + "=";
-            var ca = document.cookie.split(';');
-            for (var i = 0; i < ca.length; i++) {
-                var c = ca[i].trim();
-                if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
-            }
-            return "";
-        }
-
-        if (getCookie('dismissed') != '1') {
-            var html_node = document.getElementsByTagName('html')[0];
-            var div = document.createElement('div');
-            div.setAttribute('id', 'slow-notice');
-
-            var slowLoad = window.setTimeout(function() {
-                var t1 = document.createTextNode("The website is taking a long time to load.");
-                var br = document.createElement('br');
-                var t2 = document.createTextNode("You can switch to the ");
-                var a = document.createElement('a');
-                a.setAttribute('href', '/jetson-beta-preproduction/lite');
-                a.innerHTML = 'Light Weight Site';
-
-                var dismiss = document.createElement('span');
-                dismiss.innerHTML = '[x] dismiss';
-                dismiss.setAttribute('class', 'dismiss');
-                dismiss.onclick = function() {
-                    setCookie('dismissed', '1', 1);
-                    html_node.removeChild(div);
-                }
-
-                var dismiss_container = document.createElement('div');
-                dismiss_container.appendChild(dismiss);
-                dismiss_container.setAttribute('class', 'dismiss-container');
-
-                div.appendChild(t1);
-                div.appendChild(br);
-                div.appendChild(t2);
-                div.appendChild(a);
-                div.appendChild(dismiss_container);
-
-                html_node.appendChild(div);
-
-
-            }, 1000);
-
-            window.addEventListener('load', function() {
-                try {
-                    window.clearTimeout(slowLoad);
-                    html_node.removeChild(div);
-                } catch (e) {
-                    // that's okay.
-                }
-
-            });
-        }
-    </script>
-
-    
-    <!-- end slow page load detect -->
-    
-    <header>
-        <div class="wrapper">
-            <div class="scene">
-                <div class="layer" data-depth="0.15">
-                    <div class="layer-1"></div>
-                </div>
-            </div>
-        </div>
-        <div class="top-menu">
-
-            <div class="header-logo">
-                <!--                <img src="img/logo.png" alt="UNHCR Innovation logo" />-->
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"><img src="img/logo-innovation-service.png" /> </a>
             </div>
 
-            <!--
-            <a class="share" href="#">
-                <img src="img/share.svg" />
-            </a>
--->
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="jetsonnav">
+            </div>
+            <!-- /.navbar-collapse -->
         </div>
-        <div class="header-caption">
+        <!-- /.container-fluid -->
+    </nav>
+    <section class="hero">
+        <div class="hero-caption">
             <div class="container">
-                <h4>Welcome to</h4>
-                <h2>Project Jetson</h2>
-                <p>Welcome to the UNHCR Innovation Service’s displacement flow simulation for the Somalia situation. This is an experiment that combines data science, design, and strategic communications. We continuously develop the back-end (the prediction engine) of this website simulation to improve predictions as we receive, collate, and analyse new, and improved data sets.</p>
-                <!--
-                <button class="play-button">
-                <img src="img/play.svg" />
-                </button>
--->
-            </div>
-        </div>
-
-        <nav class="rel-nav">
-            <div class="container">
-                <ul>
-                    <li>
-                        <a href="#about"> <img src="img/info.svg" /><span>About Project</span></a>
-                    </li>
-                    <li>
-                        <a href="#timeline"> <img src="img/map.svg" /><span>MAP TIMELINE</span></a>
-                    </li>
-                    <li>
-                        <a href="#model"> <img src="img/predictive.svg" /><span>PREDICTIVE MODEL</span></a>
-                    </li>
-                    <li>
-                        <a href="#conclusion"> <img src="img/summary.svg" /><span>Conclusion</span></a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-    <section id="about">
-        <div class="container">
-            <h3>ABOUT PROJECT</h3>
-            <p>Jetson is a project aimed at providing better data analytics to make better decisions to adequately prepare for contingencies in forced displacement situations. The Predictive Analytics Engine (Jetson) is an applied predictive analytics experiment taking concrete steps to provide insights on the future of displacement. Jetson was launched by UNHCR’s Innovation Service in 2017 to better understand how data can be used to predict movements of people in Sub-Saharan Africa, starting with the Horn of Africa.</p>
-        </div>
-    </section>
-    <section id="timeline">
-        <div class="container">
-            <h3>MAP STORY</h3>
-            <p>The map displays the relationship between conflict and displacement in Somalia from 2010 to 2017. The aim for the map is to demonstrate the general trends of both variables and to visualise a bird's eye view on displacement and conflict. The visualisation uses the Google Maps API and a custom built data visualisation engine. The data points are grouped by month of reported fatalities in conflict zones and displaced populations per region. The custom module processes over 6 million bytes of data from a CSV file and parses the values onto the map to display volume of seven years of displacement and severity of violent conflict.</p>
-        </div>
-    </section>
-    <div class="map" id="map">
-        <div id="main_content">
-            <div id="map-canvas" class="map" aria-label="Conflict and Displacement Data Map"></div>
-            <div id="toggles">
-                <div class="toggle-row">
-                    <p><span class="ti-view-list"></span> Layers</p>
-                </div>
-                <div class="toggle-row">
-                    <input id="display_lines" type="checkbox" value="display_lines" checked>
-                    <label for="display_lines">Displacement<br>
-                    <h5><span class="departure"></span>Departures</h5>
-                    <h5><span class="arrival"></span>Arrivals</h5>
-                    </label>
-                </div>
-                <div class="toggle-row">
-                    <input id="display_heatmaps" type="checkbox" value="display_heatmaps" checked>
-                    <label for="display_heatmaps">Conflicts</label>
-                </div>
-            </div>
-            <div id="controls_container">
-
-                <div class="play-date">
-                    <!--                    <button id="autoplay"><span class="ti-control-play"></span></a>-->
-                    <div id="month_year"></div>
-                </div>
-
-                <div class="button-wrapper">
-                    <button class="yr-btn" id="yr_2010">2010</button>
-                    <button class="yr-btn" id="yr_2011">2011</button>
-                    <button class="yr-btn" id="yr_2012">2012</button>
-                    <button class="yr-btn" id="yr_2013">2013</button>
-                    <button class="yr-btn" id="yr_2014">2014</button>
-                    <button class="yr-btn" id="yr_2015">2015</button>
-                    <button class="yr-btn" id="yr_2016">2016</button>
-                    <button class="yr-btn" id="yr_2017">2017</button>
-                </div>
-
-                <input id="slider" type="range" value="0" />
-            </div>
-        </div>
-    </div>
-    <section id="model">
-        <div class="container">
-            <h3>Engine story</h3>
-            <p>The data behind the engine is anonymized, aggregated per month and per region. Project JETSON uses machine-learning for building a nonparametric algorithm (model) for each region. The models used for each region represent the best &lsquo;fit&rsquo; that can explains the behaviour of seven years of historical data. The target variable (y) is # of arrivals for each region.
-                <p>
-                    The model is trained with data until 30 June 2017 and the date that the predictive *algorithm* was built is 1 September 2017. The engine is built in<a href="https://shiny.rstudio.com"> Shiny,</a> a package for R.
-                    <p>
-                        The algorithm for our first prototype is <u>Bay region</u>, as shown:
-                        <div class="well">
-                            <p><em>Bay_CurrentRegion</em> = max(4.88281349617007*delay(Awdal_CurrentRegion, 1) + 1.70985734411931*delay(Sanaag_CurrentRegion, 1) + 1.6698879385747*delay(Sanaag_FutureRegion, 1) + 2.02695796095132*delay(Nugaal_FutureRegion, 10) + 2.35314983669832e-8*delay(Bari_BeforeRegion, 1)^3*delay(Woqooyi_Galbeed_BeforeRegion, 1) + delay(Nugaal_FutureRegion, 3) - smm(delay(Jubbada_Hoose_FutureRegion, 1), 3) - 0.392410307797819*delay(Togdheer_CurrentRegion, 1), 1.70985734411931*delay(Sanaag_CurrentRegion, 1))</p>
-                        </div>
-                        <p>
-                            The goodness of fit of the available data for this model is R2 = 0.85503337
-                            <p>
-                                For developers, to implement algorithm function: </p>
-                            <table border="0" cellspacing="0" cellpadding="0" class="table">
-                                <tr>
-                                    <td valign="top">
-                                        <p>Delayed Variable </p>
-                                    </td>
-                                    <td valign="top">
-                                        <p>delay(x,num_rows) </p>
-                                    </td>
-                                    <td valign="top">
-                                        <p>Returns the value of the x variable num_rows prior to the current row </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td valign="top">
-                                        <p>Simple Moving Average </p>
-                                    </td>
-                                    <td valign="top">
-                                        <p>sma(x,num_rows) </p>
-                                    </td>
-                                    <td valign="top">
-                                        <p>Returns the average value of the last num_rows values of the x variable </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td valign="top">
-                                        <p>Maximum </p>
-                                    </td>
-                                    <td valign="top">
-                                        <p>max(x,y) </p>
-                                    </td>
-                                    <td valign="top">
-                                        <p>Returns the maximum (signed) result of x and y for the data point </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td valign="top">
-                                        <p>Modified Moving Average </p>
-                                    </td>
-                                    <td valign="top">
-                                        <p>mma (x,num_rows) </p>
-                                    </td>
-                                    <td valign="top">
-                                        <p>Returns the modified average value of the last num_rows values of the x variable </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td valign="top">
-                                        <p>Simple Moving Median </p>
-                                    </td>
-                                    <td valign="top">
-                                        <p>smm(x,num_rows) </p>
-                                    </td>
-                                    <td valign="top">
-                                        <p>Returns the median value of the last num_rows values of the x variable. If there are an even number of values, smm returns the first value, at the floor(length / 2) index. </p>
-                                    </td>
-                                </tr>
-                            </table>
-                            <div class="circle-holder">
-                                <div class="circle data-circle">data</div>
-                                <div class="circle data-variables">variables</div>
-                                <div class="circle data-algorithm">algorithm</div>
-                                <div class="circle data-visualisation">visualisation</div>
-                                <div class="circle single-circle">the engine</div>
-                            </div>
-        </div>
-    </section>
-    <section id="engine">
-        <div class="container-fluid">
-            <div class="row engine-row">
-                <div class="col-sm-3 variables-list">
-                    <h3>Predictive engine</h3>
-
-                    <a tabindex="0" class="popover-tr" data-toggle="popover" data-trigger="focus" data-html="true" data-content="Based on the <a href='https://www.acleddata.com/'>ACLED dataset,</a> the engine sums all six main event types from <a href='https://www.acleddata.com/wp-content/uploads/2017/01/ACLED_Codebook_2017.pdf'>ACLED Codebook</a>, which include three different types of battles, riots/protests, violence against civilians and remote violence. The figures are aggregated per region on a per month timeframe.">Conflict <span class="glyphicon glyphicon-info-sign"></span></a>
-                    <br>
-                    <a tabindex="0" class="popover-tr" data-toggle="popover" data-trigger="focus" data-html="true" data-content="Based on the <a href='https://www.acleddata.com/'>ACLED dataset</a>, engine sums all the fatalities for each region aggregated per month. ACLED only codes estimated casualties when reported by source materials. It cannot verify the numbers reported from sources and does not use fatalities as the basis for event inclusion">Fatalities <span class="glyphicon glyphicon-info-sign"></span></a>
-                    <br>
-                    <a tabindex="0" class="popover-tr" data-toggle="popover" data-trigger="focus" data-html="true" data-content="Provided by <a href='https://data2.unhcr.org/en/documents/download/53888'>UNHCR PRMN</a> which identifies and reports on displacements (including returns). The engine separates departures and arrivals for each region, per month. Only figures collected by PRMN enumerators are reported. Not all displacements in Somalia are captured. Reports of displacement figures can be seen as indicators of potentially larger movements.">Displacement <span class="glyphicon glyphicon-info-sign"></span></a>
-                    <br>
-                    <a tabindex="0" class="popover-tr" data-toggle="popover" data-trigger="focus" data-html="true" data-content="Based on <a href='http://www.fsnau.org/ids/index.php'>FSNAU</a>&rsquo;s integrated database system (IDS). It is a compilation of a market price monitoring system that collect and analyse weekly price data on twenty-four commodities and two exchange rates across thirty-six markets throughout Somalia. Project JETSON used for the first prototype only: water drum and goats local quality prices, aggregated per region and month.">Market Prices <span class="glyphicon glyphicon-info-sign"></span></a>
-                    <br>
-                    <a tabindex="0" class="popover-tr" data-toggle="popover" data-trigger="focus" data-html="true" data-content="Based on <a href='http://frrmis.faoso.net/rainfall/index'>FAO-SWALIM data</a>. The monthly average of all available rain stations per region is calculated. The gauge readers compile the rain average data in mm.">Climate Water (Rainfall) <span class="glyphicon glyphicon-info-sign"></span></a>
-                    <br>
-                    <a tabindex="0" class="popover-tr" data-toggle="popover" data-trigger="focus" data-html="true" data-content="Based on <a href='http://sddr.faoswalim.org/riverflow_query.php?catid=1&subid=17&mapsubid=20'>FAO-SWALIM data</a>. The monthly average of all available river stations for both Juba and Shabelle Rivers. The average represents the total monthly river discharge (in cumecs).">Surface Water (Rivers) <span class="glyphicon glyphicon-info-sign"></span></a>
-                    <button class="btn btn-primary" id="engineshow"><img src="img/code.svg"/>SHOW ENGINE VARIABLES</button>
-                </div>
-                <div class="col-sm-9">
-                    <div class="number-holder">
-                        <h5 class="num-date">october 2017</h5>
-                        <h1>9.0K</h1>
-                        <h6>predicted displacement</h6>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1>Project Jetson</h1>
+                        <p>Welcome to UNHCR Innovation Service’s Project Jetson website. Jetson is a machine-learning based application aimed at providing predictions on displaced population movement for the Somalia situation.</p>
+                        <a href="#intro" class="btn"><span class="ti-arrow-down"></span> Find out more</a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="engine-bg"></div>
-        <div class="engine-if">
-            <iframe class="iframe" src="https://unhcrinnovation.shinyapps.io/engine/" height="100%" title="Predictive Engine"></iframe><button class="btn btn-primary" id="enginehide"><img src="img/code.svg"/>HIDE ENGINE VARIABLES</button>
+    </section>
+
+    <section class="intro" id="intro">
+        <div class="container">
+            <h2>Jetson measures multiple data sources and variables to see how changes over time affect the movement of UNHCR’s persons of concern, particularly refugees and internally displaced people (IDPs).</h2>
+            <p>
+                This experimental project that combines data science and statistical processes, design-thinking techniques, and qualitative research methods. It was launched by UNHCR’s Innovation Service in May 2017 to make better decisions with regards to population movements in the Horn of Africa.
+                <p>
+                    Project Jetson, with its machine-learned predictive analytics engine, is first of its kind in the humanitarian sector. The overall goal is to expand to more regions with improved automation processes and publish one deployable package for partners and other audiences to benefit from it.
+
+                </p>
         </div>
     </section>
-    <section id="conclusion">
+
+    <section class="prediction">
         <div class="container">
-            <h3>The Challenge</h3>
-            <p>One of the most pressing challenges for humanitarian agencies in trying to predict population movement is the information gap that exists when many people move from one place to another. This is particularly challenging, during emergencies, when the ‘fluid or rapid’ movement makes it difficult for humanitarian actors to track and estimate arrivals, and departures. In consequence, this challenge affects planning, funding of assistance and services. The challenge is exacerbated by: Lack of access to territory: referring to regions with ongoing violent conflict, to occupied territories and/or geographical areas where humanitarian actors are not present or access is denied. Lack of resources: lack of financial or human resources to deploy enumerators to collect data from specific sources or geographical locations. Lack of informants: collecting data from specific sources, or a particular group can bias the data Lack of validation: sometimes information verification is conducted only by participant observation (visual) and/or the data provided by the informants could be partial or inaccurate for diverse number of reasons.
+            <div class="map-holder">
+                <img src="img/africa.svg" alt="Africa" />
+            </div>
+            <h4><span class="highlight">ARRIVALS PREDICTED IN </span> <span class="ti-location-pin"></span> BAY, SOMALIA</h4>
+            <h1 class="prediction-number">
+                <span class="from_num">11,584</span>—<span id="to_num">20,161</span>
+                <!-- span id="pred_accuracy">BASED ON 93% MODEL ACCURACY*</span -->
+                <span id="pred_date">01.02.2018 — 28.02.2018</span>
+            </h1>
+            <a class="downloadpdf" href="https://unhcrinnovation.shinyapps.io/Somalia/" target="_blank">Explore the engine <span class="ti-panel"></span></a>
+            <p>The above range is based on different computer models that are selected based on two factors: 1) the best model data that ‘fits’ the historical data (R^2), and 2) its mean absolute error (MAE).
+                <br> The MAE measures the accuracy of future month predictions, and is the difference between the future predictive arrivals vs. actual future arrivals. In short, it describes the margin of error of arrivals. So the higher the MAE, the less accurate the prediction. The MAE varies from model to model.
+                <br> R^2 is the value of how close the model is based on historical data. The closer (or fit) the model, the higher the value, with 1.0 being the most ideal fit.
             </p>
         </div>
     </section>
-    <div class="expand-wrapper" id="prc_data">
-        <div class="container-fluid">
+
+    <section class="engine">
+        <div class="container">
+            <h2>Project Jetson Version 3</h2>
+            <h3>What’s new?</h3>
+            <p>Version 1 and 2 focused on the concept of the predictive analytics engine and simulated arrival figures. Version 3 provides a functioning technology and model that predicts regional arrivals with 75% to 99% accuracy of the model.
+                <p>
+                    Design: The newest version of Jetson provides a lighter, faster, and a simpler user interface with the key focus on predicted monthly arrival figures rather than a simulation of population from version 1 and 2.
+                    <p>
+                        Automation Process: 50% of processes completed in version 1 and 2 were done by humans but are now performed automatically, by machines, freeing up valuable time for further development and expansion of prediction regions. We are still refining the processes to be almost semi-automated (still humans are needed to ‘click’ the button to execute the various processes). .
+                    </p>
+                    <h3>Our collaborators and partners:</h3>
+                    <h4>Our data sources and/or main project partners:</h4>
+                    <p>Climate: <a href="http://sddr.faoswalim.org/climate_aws.php?catid=2&amp;subid=16&amp;mapsubid=18">FAO-SWALIM</a>, <a href="https://www.wmo.int/cpdb/somalia">WMO</a>, <a href="http://www.icpac.net">IGAD-ICPAC</a>, <a href="http://www.unitar.org/unosat/maps/SOM">UNOSAT</a>, <a href="http://climate4development.worldbank.org/open/">World Bank</a></p>
+                    <p>Infrastructure: <a href="http://www.unitar.org/unosat/maps/HOA">UNOSAT</a></p>
+                    <p>Conflict: <a href="http://www.acleddata.com">ACLED</a></p>
+                    <p>Food Security: <a href="http://www.fsnau.org/ipc/ipc-map">FAO-FSNAU</a>, <a href="http://www.fews.net/east-africa/somalia">FEWES</a></p>
+                    <p>Population: <a href="http://data.unhcr.org">UNHCR</a>, <a href="http://reliefweb.int/report/somalia/unhcr-somalia-protection-return-monitoring-network-prmn-notes-methodology">PRMN</a>
+                        <p>
+                            Data Science support: <a href="http://www.unglobalpulse.org">UN Global Pulse</a>, <a href="https://www.hrbdt.ac.uk">Essex University,</a> <a href="https://www.uptake.org/">Uptake.org</a>
+                            <p>&nbsp;</p>
+        </div>
+    </section>
+
+    <section class="articles">
+        <div class="container">
+            <h2>More information and related articles</h2>
             <div class="row">
-                <div class="col-sm-6 process-card">
-                    <div class="row card-row">
-                        <div class="card-bg"></div>
-                        <div class="card-caption">
-                            <h3>The Process</h3>
-                            <p>The Jetson experiment is the first step in understanding the data about a) the population flow, and b) some of the most common variables that are observed during population movement. </p>
-                            <button class="btn btn-invert" id="prc_btn" title="Click to read more about The Process"><img src="img/read.svg"/> Read more</button>
-                        </div>
+                <div class="col-sm-6 single-article-thumb">
+                    <div class="thumb-cover">
+                        <h2>How artificial intelligence can be used to predict Africa’s next migration crisis</h2>
+                        <h5>Explorations</h5>
+                        <p>- Article</p>
                     </div>
+                    <a href="http://www.unhcr.org/innovation/how-artificial-intelligence-can-be-used-to-predict-africas-next-migration-crisis/" target="_blank">
+                        <div class="thumb-hover">
+                            <div class="read-cont">
+                                <span class="ti-book"></span>
+                                <a href="http://www.unhcr.org/innovation/how-artificial-intelligence-can-be-used-to-predict-africas-next-migration-crisis/" target="_blank">Read article</a>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-                <div class="col-sm-6 data-card">
-                    <div class="row card-row">
-                        <div class="card-bg"></div>
-                        <div class="card-caption">
-                            <h3>The Data</h3>
-                            <p>The project uses both structured, and unstructured data points. Examples of structured data are: conflict data, population data, environmental data, to mention some.</p>
-                            <button class="btn btn-invert" id="dta_btn" title="Click to read more about Data"><img src="img/read.svg" /> Read more</button>
-                        </div>
+                <div class="col-sm-6 single-article-thumb">
+                    <div class="thumb-cover">
+                        <h2>Use of digital data for insights into forced displacement</h2>
+                        <h5>White Paper</h5>
+                        <p>- Article</p>
                     </div>
+                    <a href="http://www.unhcr.org/innovation/new-paper-from-un-global-pulse-and-unhcr-explores-use-of-digital-data-for-insights-into-forced-displacement/" target="_blank">
+                        <div class="thumb-hover">
+                            <div class="read-cont">
+                                <span class="ti-book"></span>
+                                <a href="http://www.unhcr.org/innovation/new-paper-from-un-global-pulse-and-unhcr-explores-use-of-digital-data-for-insights-into-forced-displacement/" target="_blank">Read article</a>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="future">
+        <div class="container">
+            <h3>Jetson’s next steps</h3>
+            <p>The next steps for Project Jetson are to improve the software deployment of the service and introduce new prediction regions.
+                <p>
+                    We aim to have the predictive analytics software as a complete package that can be installed and run locally, by operations (and in some cases individuals).
+                    <p>
+                        The Jetson complete package will consist of the following processes:
+                    </p>
+                    <br>
+                    <ol>
+                        <li>
+                            <p>Collecting data from multiple online sources</p>
+                        </li>
+                        <li>
+                            <p>Transforming data into-machine readable formats and pushing it online</p>
+                        </li>
+                        <li>
+                            <p>Running the predictive analytics algorithms</p>
+                        </li>
+                        <li>
+                            <p>Analysing the model's results</p>
+                        </li>
+                        <li>
+                            <p>Running the analysed statistical correlations to compare model's accuracy vs. actual figures</p>
+                        </li>
+                        <li>
+                            <p>Detecting the arrival range (predicted population arrivals)</p>
+                            <ul>
+                                <li>
+                                    <p>Deciding on best model according to human decision-making rules</p>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>Communicating and visualizing the results for the operation</p>
+                        </li>
+                    </ol>
+                    <br>
+                    <p>The deployable package will also include a model monitoring element that picks the best algorithm for the next month and detects the population arrival range, according to analysed correlations. The arrival range on the website is the result of this process.</p>
+                    <br>
+                    <p>The automation effort of all technical processes involved will be continuing, therefore minimising human decision making and ‘interference’ where not relevant. This will leave more resources for the Jetson team to focus on top line decisions for the predicted arrivals and the project in general.
+                    </p>
+                    <br>
+                    <p>&nbsp;</p>
+        </div>
+    </section>
+
+    <section class="faqs">
+        <div class="container">
+            <h3>FAQs</h3>
+            <div class="row">
+                <div class="col-sm-4">
+                    <h4 data-toggle="modal" data-target="#q1"><span class="num"><span class="ti-comment-alt"></span></span> <strong>Why a predictive analytics project?</strong></h4>
+                </div>
+                <div class="col-sm-4">
+                    <h4 data-toggle="modal" data-target="#q2"><span class="num"><span class="ti-comment-alt"></span></span> <strong>What are the goals of the project?</strong></h4>
+                </div>
+                <div class="col-sm-4">
+                    <h4 data-toggle="modal" data-target="#q3"><span class="num"><span class="ti-comment-alt"></span></span> <strong>What is Jetson technology based on?</strong></h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <h4 data-toggle="modal" data-target="#q4"><span class="num"><span class="ti-comment-alt"></span></span> <strong>Why aren’t you predicting the entire world</strong></h4>
+                </div>
+                <div class="col-sm-4">
+                    <h4 data-toggle="modal" data-target="#q5"><span class="num"><span class="ti-comment-alt"></span></span> <strong>What are your project assumptions?</strong></h4>
+                </div>
+                <div class="col-sm-4">
+                    <h4 data-toggle="modal" data-target="#q6"><span class="num"><span class="ti-comment-alt"></span></span> <strong>What are the variables for Jetson?</strong></h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6 copyright">
+                    <p>Copyright 2018</p>
+                </div>
+                <div class="col-xs-6 back-home">
+                    <a href="http://innovation.unhcr.org" target="_blank">Main site <span class="ti-world"></span></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- modals -->
+
+    <div class="modal fade" id="q1" tabindex="-1" role="dialog" aria-labelledby="q1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">What is the challenge?</h4>
+                </div>
+                <div class="modal-body">
+                    <p>One of the most pressing challenges for humanitarian agencies in trying to predict population movement (population flow) is the information gap that exists when many people move from one place to another. This is particularly challenging during emergencies when the ‘fluid or rapid’ movement makes it difficult for humanitarian actors to track and estimate arrivals, and departures. In consequence, this challenge affects planning, emergency preparedness, funding of assistance, and operational services. The challenge is exacerbated by: A) Lack of access to territory: referring to regions with ongoing violent conflict, to occupied territories and/or geographical areas where humanitarian actors are not present or access is denied. B) Lack of resources: lack of financial or human resources to deploy enumerators to collect data from specific sources or geographical locations. C) Lack of informants: collecting data from specific sources or a particular group can bias the data D) Lack of validation: sometimes information verification is conducted only by participant observation (visual) and/or the data provided by the informants could be partial or inaccurate for diverse number of reasons.
+                    </p>
                 </div>
             </div>
         </div>
     </div>
-    <section id="future">
-        <div class="container">
-            <h3>The Future</h3>
-            <p>The Jetson experiment is a simple simulation model with basic human-made rules. This is the type of modelling that is used for predicting movements in ant colonies, or in financial markets. As we gather data, the model and the pattern combination becomes more complex. We aim to analyze all possible combination of variables: a) macro variables (external) such as conflict, climate and food insecurity data, but also b) behavioral or micro variables such as particular population vulnerabilities, intent of movement and other multiple contextual variables that can be later be connected by a machine-learning algorithm. Initial research explorations for this more comprehensive model are related to having a robust agent-based modeling and simulation (ABMS) or conducting a sensitivity analysis of system dynamics modeling. The project also intends to put a spotlight on humanitarian, and development actors to provide their data in a systematic way, in order for computers to read it and process it automatically, which means passing from a predictive analytics phase to a prescriptive analytics phase.
-                <p>
-                    4 Project Assumptions
-                </p>
-                <ol>
-                    <li>
-                        The project is focused only in the population flow, both across borders and internally. This means the main research purpose is to measure changes in the population in an specific period of time (e.g. a month)</li>
-                    <li>There is not one single major cause of forced displacement. There are many causes (variables) and an infinite combination of these variables, along with behavioral human patterns that lead to forced displacement. The objective of the model is not to find the cause (why?) but to explain how are people moving (patterns)</li>
-                    <li>This project attempts to find interesting, and meaningful patterns in data by making assumptions from the data our partners are providing, particularly when data is not available, or is incomplete. </li>
-                    <li>Some of the assumptions “do not need a model to tell a person that” the assumption is correct. Building a model goes beyond identifying the assumptions’ characteristics (e.g. we do not need a model to know people are forced to flee due to conflict). However, the model attempts to find the best combination that could predict the target variable, in this case: population flow numbers and geographical locations, in an specific period of time.</li>
 
-                </ol>
+    <div class="modal fade" id="q2" tabindex="-1" role="dialog" aria-labelledby="q2">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">What are the goals of the project?</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        <ol>
+                            <li>To provide predictions on population movement during displacement situations for UNHCR and other partners to make better operational decisions</li>
+                            <li>The project also intends to put a spotlight on humanitarian, and development actors to share their data in a systematic way, in order for computers to read it and process it automatically, which means passing from a predictive analytics phase to a prescriptive analytics phase.
+                            </li>
+                            <li>
+                                To serve a case of the power of open data. For other developers, statisticians, data and computer scientists to build their own models and applications with UNHCR data.
+                            </li>
+                        </ol>
+                    </p>
+                </div>
+            </div>
         </div>
-    </section>
-    <footer>
-        UNHCR Innovation Service, 2017
-    </footer>
+    </div>
 
-    <div class="off-canvas-content" id="process">
-        <div class="container">
-            <h3>The Process</h3>
-            <p>The Jetson experiment is the first step in understanding the data about a) the population flow, and b) some of the most common variables that are observed during population movement. Responding to the questions: where, when, and how many people are being displaced is key for future contingency planning. The experiment focuses particularly on catalysts that may cause people to flee their homes in the Somalia. The main objective is to make predictions about potential displacement events by utilizing data mining, statistics, modeling, and machine-learning to analyse different data, and yield preliminary conclusions.
-                <p>
-                    The project aims to raise awareness of the importance of humanitarian planning in terms of having access to technically-open data. What this means is that data is in a machine-readable format. It also aims to showcase the what role data science, design, and predictive analytics application can play in the humanitarian sector. Finally, the ultimate goal is to improve the quality, and access to assistance and services for persons who are forcibly displaced. The project is useful to identify, and map existing humanitarian data gaps and services in select operations in order to improve access to demand-driven, insightful information in education, energy and the environment, connectivity, business models/cash, and other key areas.</p>
+    <div class="modal fade" id="q3" tabindex="-1" role="dialog" aria-labelledby="q3">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">What is Jetson technology based on?</h4>
+                </div>
+                <div class="modal-body">
+                    <p>On forecasting statistical techniques and open-source machine-learning software for modeling. The scripts and the aggregated and anonymized datasets will be published in UNHCR github once the experiment is finished.
+                    </p>
+                </div>
+            </div>
         </div>
-        <button class="close-btn">
-            <img src="img/close.svg"/>
-        </button>
     </div>
-    <div class="off-canvas-content" id="data">
-        <div class="container">
-            <h3>The Data</h3>
-            <p>The project uses both structured, and unstructured data points. Examples of structured data are: conflict data, population data, environmental data, to mention some. Examples of unstructured data are: weather and climate data, deforestation satellite imagery, free-text in surveys fields, social media, to mention some. The Jetson experiment aims to portray the relevance of humanitarian, and development partners collecting, systematizing, analyzing and publishing data derived from their work. Jetson aims to set a precedent of applied predictive analytics to the work of the humanitarian sector, by strengthening coordination, planning and compilation of data. </p>
+
+    <div class="modal fade" id="q4" tabindex="-1" role="dialog" aria-labelledby="q3">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Why don’t you predict the whole world?</h4>
+                </div>
+                <div class="modal-body">
+                    <p>We are currently at testing phase, and will eventually start adding more regions and situations to the experiment.</p>
+                </div>
+            </div>
         </div>
-        <button class="close-btn">
-            <img src="img/close.svg"/>
-        </button>
     </div>
-    <!-- Global Site Tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-52484005-14"></script>
+
+    <div class="modal fade" id="q5" tabindex="-1" role="dialog" aria-labelledby="q3">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">What are your project assumptions?</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        <ul>
+                            <li>The project is focused only in the population flow, both across borders (refugees) and internally (IDPs). This means the main research purpose is to measure changes in the population in an specific period of time (e.g. a month).
+                            </li>
+                            <li>There is not one single major cause of forced displacement. There are many causes (variables) and an infinite combination of these variables, along with behavioral human patterns that lead to forced displacement. The objective of the model is not to find the cause (why?) but to explain how are people moving (patterns).</li>
+                            <li>This project attempts to find interesting and meaningful patterns in data by making assumptions from the data our partners are providing, particularly when data is not available, or is incomplete.</li>
+                            <li>Some of the assumptions do not need a model to tell that the assumption is correct. Building a model goes beyond identifying the assumptions’ characteristics (e.g. we do not need a model to know people are forced to flee due to conflict). However, the model attempts to find the best combination that could predict the target variable, in this case: population flow numbers and geographical locations, in an specific period of time.</li>
+
+                        </ul>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="q6" tabindex="-1" role="dialog" aria-labelledby="q3">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">What are the variables for Jetson?</h4>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li>
+                            <p>Current number of Persons of Concern (PoC) per region per month</p>
+                        </li>
+                        <li>
+                            <p>Departures number of PoC per region per month</p>
+                        </li>
+                        <li>
+                            <p>Arrivals number of PoC per region per month</p>
+                        </li>
+                        <li>
+                            <p>Number of fatalities per region per month</p>
+                        </li>
+                        <li>
+                            <p>Number of violent conflict incidents per region per month</p>
+                        </li>
+                        <li>
+                            <p>River levels per river per month</p>
+                        </li>
+                        <li>
+                            <p>River discharge per river per month</p>
+                        </li>
+                        <li>
+                            <p>Rainfall average per region per month</p>
+                        </li>
+                        <li>
+                            <p>Water drum price per region per month</p>
+                        </li>
+                        <li>
+                            <p>Local goat Price per region per month</p>
+                        </li>
+                    </ul>
+                    <br />
+                    <ul>
+                        <li>
+                            <p>The data behind the engine is anonymized, aggregated per month and per region and complies with <a href="http://www.refworld.org/pdfid/55643c1d4.pdf" target="_blank">UNHCR Data Protection policy</a> standards</p>
+                        </li>
+                        <li>
+                            <p>The models used for each region in the engine represent the top 3 best ‘fit’ functions that can explain the behaviour of seven years of historical data. The target variable (y) is number of arrivals for each region.</p>
+                        </li>
+                        <li>
+                            <p>The model is trained with data until 30 June 2017 and the date that the predictive algorithm was built is 1 September 2017.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-52484005-16"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
         function gtag() {
-            dataLayer.push(arguments)
-        };
+            dataLayer.push(arguments);
+        }
         gtag('js', new Date());
 
-        gtag('config', 'UA-52484005-14');
+        gtag('config', 'UA-52484005-16');
     </script>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="js/parallax.min.js"></script>
+
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/iframeResizer.js "></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg9Y7T1xOS_PPeDsCS2AL221x72a1I5k0&libraries=geometry,visualization"></script>
-    <script src="vendor/rangeslider.js-2.3.0/rangeslider.min.js"></script>
-    <script src="vendor/papaparse.min.js"></script>
-    <script src="js/whenInViewport.min.js"></script>
-    <script src="js/richmarker.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/app.js"></script>
 </body>
 
 </html>
