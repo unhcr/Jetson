@@ -1,16 +1,77 @@
-$(window).on('load', function () {
-    // $('#disclaimer').modal('show');
-});
+$.ajax({
+    url: 'http://www.unhcr.org/innovation/wp-json/wp/v2/pages/27745',
+    type: 'GET',
+    success: function (data) {
 
-$('section').not('.prediction, .faqs, .articles').each(function () {
-    if ($(this).height() > 500) {
-        $(this).addClass('minified').append('<div class="more view"><button class="showme"><span class="ti-arrow-down"></span> Expand this section </button><button class="hideme"><span class="ti-arrow-up"></span> Minimise this section</button></div>');
-        $('.more').unbind('click').click(function (e) {
-            e.stopPropagation();
-            $(this).parent().toggleClass('minified');
-            $(this).toggleClass('view');
-            console.log($(this).parent().attr('class'))
-        })
+
+        // Section
+
+        $('.hero .content').prepend(data.acf.intro);
+        $('.intro .content').prepend(data.acf.first_section);
+        $('.prediction .content').prepend(data.acf.jetson_models);
+        $('.engine .content').prepend(data.acf.second_section);
+
+
+
+        // Articles
+
+        $('.article-one h2').html(data.acf.articles[0].article_title);
+        $('.article-one h5').html(data.acf.articles[0].article_type);
+        $('.article-one a').attr('a', data.acf.articles[0].article_link);
+
+        $('.article-two h2').html(data.acf.articles[1].article_title);
+        $('.article-two h5').html(data.acf.articles[1].article_type);
+        $('.article-two a').attr('a', data.acf.articles[1].article_link);
+
+
+
+        // FAQS
+
+        var faqlist = data.acf.faqs;
+        var ids = 0;
+
+        faqlist.forEach(function (i) {
+            ids = ids + 1;
+            $('.faqs-row').append('<div class="col-sm-4"><h4 data-toggle="modal" data-target="#q' + ids + '"><span class="num"><span class="ti-comment-alt"></span></span> <strong>' + i.faq_title + '</strong></h4></div>');
+
+            $('body').append('<div class="modal fade" id="q' + ids + '" tabindex="-1" role="dialog" aria-labelledby="q' + ids + '"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title">' + i.faq_title + '</h4></div><div class="modal-body">' + i.faq_content + '</div></div></div></div>');
+
+
+            setTimeout(function () {
+                $('.loader').fadeOut(300);
+            }, 1000);
+            
+
+            setTimeout(function () {
+                $('#disclaimer').modal('show');
+            }, 2300);
+
+
+        });
+
+        // Disclaimer
+
+
+        $('#disclaimer .content').html(data.acf.disclaimer);
+
+
+
+        // Terms
+
+
+        $('.page-content .content').html(data.acf.terms_of_use);
+
+        $('section').not('.prediction, .faqs, .articles, .page-content').each(function () {
+            if ($(this).height() > 500) {
+                $(this).addClass('minified').append('<div class="more view"><button class="showme"><span class="ti-arrow-down"></span> Expand this section </button><button class="hideme"><span class="ti-arrow-up"></span> Minimise this section</button></div>');
+                $('.more').unbind('click').click(function (e) {
+                    e.stopPropagation();
+                    $(this).parent().toggleClass('minified');
+                    $(this).toggleClass('view');
+                    console.log($(this).parent().attr('class'))
+                })
+            }
+        });
     }
 });
 
@@ -359,45 +420,44 @@ function drawRegionsMap() {
 
     $('#show_map').click(function () {
 
-            var data = google.visualization.arrayToDataTable(mapdata);
+        var data = google.visualization.arrayToDataTable(mapdata);
 
-            // console.log(mapdata);
+        // console.log(mapdata);
 
-            var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
 
-            $("#regions_div").slideToggle("normal", function () {
-                    chart.draw(data, options);
+        $("#regions_div").slideToggle("normal", function () {
+            chart.draw(data, options);
 
-                    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-                    const d = new Date(month);
-                    month = monthNames[d.getMonth()];
+            const d = new Date(month);
+            month = monthNames[d.getMonth()];
 
-                    $(".map-title h2").html('<span class="ti-calendar"></span> Predictions for the month of ' + month);
-                    $(".map-title").toggle();
+            $(".map-title h2").html('<span class="ti-calendar"></span> Predictions for the month of ' + month);
+            $(".map-title").toggle();
 
-                    var now = new Date();
-                    current = new Date(now.getFullYear(), now.getMonth() + 1, 1);
-                    var montharr = new Array();
-                    montharr[0] = "January";
-                    montharr[1] = "February";
-                    montharr[2] = "March";
-                    montharr[3] = "April";
-                    montharr[4] = "May";
-                    montharr[5] = "June";
-                    montharr[6] = "July";
-                    montharr[7] = "August";
-                    montharr[8] = "September";
-                    montharr[9] = "October";
-                    montharr[10] = "November";
-                    montharr[11] = "December";
+            var now = new Date();
+            current = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+            var montharr = new Array();
+            montharr[0] = "January";
+            montharr[1] = "February";
+            montharr[2] = "March";
+            montharr[3] = "April";
+            montharr[4] = "May";
+            montharr[5] = "June";
+            montharr[6] = "July";
+            montharr[7] = "August";
+            montharr[8] = "September";
+            montharr[9] = "October";
+            montharr[10] = "November";
+            montharr[11] = "December";
 
-                    var nextmonth = montharr[current.getMonth()];
-                    if(month != nextmonth)
-                        {
-                            $('.warning').show();
-                        }
+            var nextmonth = montharr[current.getMonth()];
+            if (month != nextmonth) {
+                $('.warning').show();
+            }
 
-            });
+        });
     });
 }

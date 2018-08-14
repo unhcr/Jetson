@@ -39,7 +39,7 @@ h3 {
 }
 
 p,
-ul li {
+ul li, ol li {
     font-family: 'proxima';
     font-size: 18px;
 }
@@ -49,6 +49,65 @@ body {
     color: #000E4A;
     height: 100%;
     font-family: 'proxima';
+}
+
+.loader
+{
+    position:fixed;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    z-index:3;
+    background:#000E4A;
+
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    text-align: center;
+}
+
+.loader .logo
+{
+    width:350px;
+    max-width:60%
+}
+
+@keyframes flickerAnimation {
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+@-o-keyframes flickerAnimation{
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+@-moz-keyframes flickerAnimation{
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+@-webkit-keyframes flickerAnimation{
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+
+.loader .logo {
+   -webkit-animation: flickerAnimation 2s infinite;
+   -moz-animation: flickerAnimation 2s infinite;
+   -o-animation: flickerAnimation 2s infinite;
+    animation: flickerAnimation 2s infinite;
 }
 
 img {
@@ -91,7 +150,7 @@ img {
 
 .navbar-default {
     border: none;
-    background: none;
+    background: #000E4A;
     border-radius: 0;
     margin: 0;
     border-bottom-color: #000E4A;
@@ -112,6 +171,11 @@ section {
     position:relative;
 }
 
+.page-content
+{
+    overflow: inherit;
+}
+
 section ol {
     padding-left: 15px;
 }
@@ -123,7 +187,7 @@ section ol li {
 section a {
     color: inherit;
     border-bottom: 2px solid;
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 section ul {
@@ -143,7 +207,7 @@ section .more
     right:0;
     z-index:2;
     text-align:center;
-    padding:150px 30px 30px;
+    padding:140px 30px 30px;
     background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 70%, rgba(255,255,255,1) 100%);
 background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 70%,rgba(255,255,255,1) 100%);
 background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 70%,rgba(255,255,255,1) 100%);
@@ -159,7 +223,7 @@ section .more button
     border-radius:2px;
     font-family: 'proximamedium';
     text-transform: uppercase;
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing:2px;
     box-shadow:0 2px 5px rgba(0, 14, 74, .3);
     transition: all ease-in-out .2s;
@@ -209,7 +273,6 @@ section .more.view .showme
     bottom: 0;
     left: 0;
     right: 0;
-    text-align: center;
     padding: 15% 0 10%;
     background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.34) 78%, rgba(0, 0, 0, 0.34) 100%);
     background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.34) 78%, rgba(0, 0, 0, 0.34) 100%);
@@ -434,7 +497,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00f4f4f4', e
     border-radius:2px;
     font-family: 'proximamedium';
     text-transform: uppercase;
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing:2px;
     box-shadow:0 2px 5px rgba(0, 14, 74, .3);
     background: #fff;
@@ -684,7 +747,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ecf8ff', e
 .articles .single-article-thumb a {
     font-family: 'proximamedium';
     text-transform: uppercase;
-    font-size: 10px;
+    font-size: 11px;
     color:000E4A;
     letter-spacing: 1px;
     text-decoration: none;
@@ -801,6 +864,12 @@ footer .copyright {
 footer .back-home {
     text-align: right;
     opacity: .6
+}
+
+footer .back-home a
+{
+    margin-left:15px;
+    display:inline-block;
 }
 
 footer .back-home a:hover {
