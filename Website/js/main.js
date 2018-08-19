@@ -10,6 +10,7 @@ $.ajax({
         $('.intro .content').prepend(data.acf.first_section);
         $('.prediction .content').prepend(data.acf.jetson_models);
         $('.engine .content').prepend(data.acf.second_section);
+        $('.epilogue .content').prepend(data.acf.third_section);
 
 
 
@@ -38,8 +39,8 @@ $.ajax({
 
 
             setTimeout(function () {
-                $('.loader').fadeOut(300);
-            }, 1000);
+                $('.loader').fadeOut(200);
+            }, 600);
             
 
             setTimeout(function () {

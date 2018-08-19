@@ -24,6 +24,11 @@
 </head>
 
 <body>
+    <div class="loader">
+        <div class="logo">
+            <img src="img/logo-innovation-service.png" />
+        </div>
+    </div>
     <nav class="navbar navbar-default">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -39,77 +44,20 @@
         <!-- /.container-fluid -->
     </nav>
     <div class="hero">
-				<canvas class="scene scene--full" id="scene"></canvas>
-				<script type="x-shader/x-vertex" id="wrapVertexShader">
-					attribute float size;
-					attribute vec3 color;
-					varying vec3 vColor;
-					void main() {
-						vColor = color;
-						vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
-						gl_PointSize = size * ( 350.0 / - mvPosition.z );
-						gl_Position = projectionMatrix * mvPosition;
-					}
-				</script>
-				<script type="x-shader/x-fragment" id="wrapFragmentShader">
-					varying vec3 vColor;
-					uniform sampler2D texture;
-					void main(){
-						vec4 textureColor = texture2D( texture, gl_PointCoord );
-						if ( textureColor.a < 0.3 ) discard;
-						vec4 color = vec4(vColor.xyz, 1.0) * textureColor;
-						gl_FragColor = color;
-					}
-				</script>
-                <div class="hero-caption">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-8 col-sm-offset-2">
-                                <h1>Project Jetson</h1>
-                                <p>Welcome to UNHCR Innovation Service’s Project Jetson website. Jetson is a machine learning-based experiment with the purpose of providing predictions about the movement of people who are forced to flee.
-<p>
-This experimental project combines data science,  statistical processes, design-thinking techniques, and qualitative research methods. It started in May 2017 with field operation question and one goal: to assist them in making better decisions on population movements in the Horn of Africa, particularly about Somalia situation. Somalia is then, Project Jetson’s main case-study. 
-<p>
-Jetson is focused on predicting forced displacement movement, through analyzing external factors and variables as well as internal UNHCR data.
-</p>
-                                <a href="#intro" class="btn"><span class="ti-arrow-down"></span> Find out more</a>
-                            </div>
-                        </div>
+        <div class="hero-caption">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 content">
+                        <a href="#intro" class="btn"><span class="ti-arrow-down"></span> Find out more</a>
                     </div>
                 </div>
+            </div>
+        </div>
     </div>
 
     <section class="intro" id="intro">
-        <div class="container">
-            <h2>About the data </h2>
-            <p>The data behind the experiment is the “heart” of the overall process. Multiple data inputs are put into the machine. All data is anonymized and disaggregated per region and per month. The outcome dataset is a combination of seven years of “predictor” factors for overall forced displacement movement. 
-<p>
-These “predictors” were either suggested by the UNHCR operation staff and/or refugees themselves, derived from a human-centered approach validation process (focus groups/semi-structured interviews). 
-<p>
-The predictor factors are: 
-    <ul>
-            <li>weather and climate data</li>
-            <li>conflict data</li>
-            <li>market prices data</li>
-            <li>population movement historical data (both for internally displaced people and refugees)</li>
-            </ul>
-<p>
-Open data is key for Jetson engine to work properly. Having technically and legally open data allows humanitarian actors to make live-saving decisions to help those people who are on the flight. For example, knowing the amount of people arriving at a certain time to a particular region can allow them to prepare for eventual contingencies, or plan humanitarian aid and human resources to be deployed or identify and attend to those who are most vulnerable first upon arrival. Jetson represents then a new way of processing data  - with computer/data science- but also an example on how collaboration for open data could potentially, alleviate human suffering and save lives.
-<p>
-UNHCR Innovation Services wants Project Jetson to become an open process: the overall goal of the project is to create have a functioning prototype that other UNHCR operations and other humanitarian partners could utilize with their own data sets. For this to be possible, many data sets should be duly processed (e.g. anonymized, cleaned) and openly shared in,  ideally,  one single data portal. In order to predict, collaboration and partnerships are imperative.  
-</p>
+        <div class="container content">
             
-            
-                    <h3>Our collaborators and partners:</h3>
-                    <h4>Our data sources and/or main project partners:</h4>
-                    <p>Climate: <a href="http://sddr.faoswalim.org/climate_aws.php?catid=2&amp;subid=16&amp;mapsubid=18">FAO-SWALIM</a>, <a href="https://www.wmo.int/cpdb/somalia">WMO</a>, <a href="http://www.icpac.net">IGAD-ICPAC</a>, <a href="http://www.unitar.org/unosat/maps/SOM">UNOSAT</a>, <a href="http://climate4development.worldbank.org/open/">World Bank</a></p>
-                    <p>Infrastructure: <a href="http://www.unitar.org/unosat/maps/HOA">UNOSAT</a></p>
-                    <p>Conflict: <a href="http://www.acleddata.com">ACLED</a></p>
-                    <p>Food Security: <a href="http://www.fsnau.org/ipc/ipc-map">FAO-FSNAU</a>, <a href="http://www.fews.net/east-africa/somalia">FEWES</a></p>
-                    <p>Population: <a href="http://data.unhcr.org">UNHCR</a>, <a href="http://reliefweb.int/report/somalia/unhcr-somalia-protection-return-monitoring-network-prmn-notes-methodology">PRMN</a>
-                        <p>
-                            Data Science support: <a href="http://www.unglobalpulse.org">UN Global Pulse</a>, <a href="https://www.hrbdt.ac.uk">Essex University,</a> <a href="https://www.uptake.org/">Uptake.org</a>
-                            <p>&nbsp;</p>
         </div>
     </section>
 
@@ -161,66 +109,13 @@ UNHCR Innovation Services wants Project Jetson to become an open process: the ov
                 </div>
             </div>
 
-            <h3>About the map</h3>
-            <p>The map was requested by UNHCR Somalia operation as a red-light style of visualization. It portrays the level of critically for movement. Moderate means Jetson is predicting the arrivals of next month within the range of the average arrivals of the past 3 months. High means the machine prediction of arrivals is higher than the average but less than 100% increase in arrivals, and Critical means is double the average (more than 100% increase</p>
-
-            <h3>About the engine</h3>
-            <p>The graphs above are based on different models that are selected based on seven different statistical or computer-science methods: : 1) the best model data that ‘fits’ the historical data (R^2), 2) its mean absolute error (MAE); 3) the multiple imputation by chained equations (MICE) seed value of 50 randomly-selected historical values; 4) the percentage of computer prediction accuracy (ACC); 5) Bayesian information criterion (BIC); Akaike information criterion (AIC) and; 7) a simple pearson correlation coefficient (PCC) for either the past 20 months (ACC/PCC) and/or the overall seven years of data (rest).
-                <p>
-                    All these model selection methods mentioned above attempt measure the accuracy of future month predictions, and is the difference between the future predictive arrivals vs. actual arrivals. In short, it describes the margin of error of arrivals done by the machine vs. the reality. For example, the higher the MAE, the less accurate the prediction. R^2 is the value of how close the model is based on historical data. The closer (or fit) the model, the higher the value, with 1.0 being the most ideal fit. Each model will have different results of each of the five measures.
-                </p>
+            <div class="content"></div>
         </div>
     </section>
 
     <section class="engine">
-        <div class="container">
-            <h2>Project Jetson Version 1.0</h2>
-            <h3>What’s new?</h3>
-            <p>Version 1.0 is the first public version of Jetson. The previous versions to convey the information focused only on the concept of the predictive analytics engine and simulated arrival figures. This version provides functioning models that predicts each region arrivals with 60% to 110% accuracy, depending on the region. The more missing data in a particular region, the less accurate is the machine to calculate results.
-                <p>
-                    In version 1.0, we have improved, and added:
-                    <ul>
-                        <li>Automation processes (back-end)</li>
-                        <li>Map with level of criticality of displacement</li>
-                        <li>Included end-user feedback</li>
-                        <li><a href="https://github.com/unhcr/Project_JETSON" target="_blank">Github site</a></li>
-                        <li>And a Communications strategy to share results with the general public.</li>
-                    </ul>
-
-
-
-
-
-                    <p>
-                        <i>Design:</i> The version 1.0 of Jetson provides a lighter, faster, and a simpler user interface with the key focus on predicted monthly arrival figures rather than a simulation of population from previous versions.
-                        <p>
-                            <i>Automation Process:</i> 50% of processes completed in previous versions of Jetson were done by humans but are now performed automatically, by the machine. Actually is done by different computer applications (see Github), freeing up valuable time for further development and expansion of prediction regions. We are still refining the processes to be almost semi-automated. Still humans are needed to ‘click’ the run button to execute the various processes.
-                            <p>
-                                <b>We are currently working on:</b><br> The next steps for Project Jetson are to improve the software deployment of the service and introduce new prediction regions.
-                                <p>
-                                    <ul>
-                                        <li>Our team is working on a neural network machine-learning process [link to Rebe’s blog], with seasonality elements (e.g. rain seasonal patterns affected by extreme weather events)</li>
-                                        <li>With University of Essex and UNOSAT, we are working on a machine learning-based classification model for climate and conflict variables. </li>
-                                        <li>Our team aims to have the predictive analytics software as a complete package that can be installed and run locally, by other UNHCR operations or partners.</li>
-                                    </ul>
-                                    <p>
-                                        The Jetson complete package will consist of the following processes:
-                                        <ul>
-                                            <li>Collecting data from multiple online sources</li>
-                                            <li>Transforming data into-machine readable formats and pushing it online</li>
-                                            <li>Running the predictive analytics algorithms</li>
-                                            <li>Analysing the model's results</li>
-                                            <li>Running the analysed statistical correlations to compare model's accuracy vs. actual figures</li>
-                                            <li>Detecting the arrival range (predicted population arrivals)</li>
-                                            <li>Deciding on best model according to human decision-making rules</li>
-                                            <li>Communicating and visualizing the results for the operation</li>
-                                        </ul>
-
-                                        <p>
-                                            The deployable package will also include a model monitoring element that picks the best algorithm for the next month and detects the population arrival range, according to analysed correlations. The arrival range on the website is the result of this process.
-                                            <p>
-                                                The automation effort of all technical processes involved will be continuing, therefore minimising human decision making and ‘interference’ where not relevant. This will leave more resources for the Jetson team to focus on top line decisions for the predicted arrivals and the project in general.
-                                            </p>
+        <div class="container content">
+            
         </div>
     </section>
 
@@ -228,20 +123,20 @@ UNHCR Innovation Services wants Project Jetson to become an open process: the ov
         <div class="container">
             <h2>More information and related articles</h2>
             <div class="row">
-                <div class="col-sm-6 single-article-thumb">
+                <div class="col-sm-6 single-article-thumb article-one">
                     <div class="thumb-cover">
                         <span class="ti-book art-icon"></span>
-                        <h2>How artificial intelligence can be used to predict Africa’s next migration crisis</h2>
-                        <h5>Explorations</h5>
-                                <a href="http://www.unhcr.org/innovation/how-artificial-intelligence-can-be-used-to-predict-africas-next-migration-crisis/" target="_blank"><span class="ti-new-window"></span> Read article</a>
+                        <h2></h2>
+                        <h5></h5>
+                                <a href="" target="_blank"><span class="ti-new-window"></span> Read article</a>
                     </div>
                 </div>
-                <div class="col-sm-6 single-article-thumb">
+                <div class="col-sm-6 single-article-thumb article-two">
                     <div class="thumb-cover">
                         <span class="ti-book art-icon"></span>
-                        <h2>Jetson: insights into building a predictive analytics platform for displacement</h2>
-                        <h5>Interview</h5>
-                                <a href="http://www.unhcr.org/innovation/jetson-insights-into-building-a-predictive-analytics-platform-for-displacement/" target="_blank"><span class="ti-new-window"></span> Read article</a>
+                        <h2></h2>
+                        <h5></h5>
+                                <a href="" target="_blank"><span class="ti-new-window"></span> Read article</a>
                     </div>
                 </div>
             </div>
@@ -252,26 +147,14 @@ UNHCR Innovation Services wants Project Jetson to become an open process: the ov
     <section class="faqs">
         <div class="container">
             <h3>FAQs</h3>
-            <div class="row">
-                <div class="col-sm-4">
-                    <h4 data-toggle="modal" data-target="#q1"><span class="num"><span class="ti-comment-alt"></span></span> <strong>Why a predictive analytics project?</strong></h4>
-                </div>
-                <div class="col-sm-4">
-                    <h4 data-toggle="modal" data-target="#q2"><span class="num"><span class="ti-comment-alt"></span></span> <strong>What are the goals of the project?</strong></h4>
-                </div>
-                <div class="col-sm-4">
-                    <h4 data-toggle="modal" data-target="#q3"><span class="num"><span class="ti-comment-alt"></span></span> <strong>What is Jetson technology based on?</strong></h4>
-                </div>
-                <div class="col-sm-4">
-                    <h4 data-toggle="modal" data-target="#q4"><span class="num"><span class="ti-comment-alt"></span></span> <strong>Why aren’t you predicting the entire world</strong></h4>
-                </div>
-                <div class="col-sm-4">
-                    <h4 data-toggle="modal" data-target="#q5"><span class="num"><span class="ti-comment-alt"></span></span> <strong>What are your project assumptions?</strong></h4>
-                </div>
-                <div class="col-sm-4">
-                    <h4 data-toggle="modal" data-target="#q6"><span class="num"><span class="ti-comment-alt"></span></span> <strong>What are the variables for Jetson?</strong></h4>
-                </div>
+            <div class="row faqs-row">
             </div>
+        </div>
+    </section>
+
+    <section class="epilogue">
+        <div class="container content">
+            
         </div>
     </section>
 
@@ -282,6 +165,8 @@ UNHCR Innovation Services wants Project Jetson to become an open process: the ov
                     <p>Copyright 2018</p>
                 </div>
                 <div class="col-xs-6 back-home">
+                    <a href="http://www.unhcr.org/privacy-policy.html" target="_blank">Privacy Policy</a>
+                    <a href="terms.html" target="_blank">Terms of Use</a>
                     <a href="http://innovation.unhcr.org" target="_blank">Main site <span class="ti-world"></span></a>
                 </div>
             </div>
@@ -297,170 +182,10 @@ UNHCR Innovation Services wants Project Jetson to become an open process: the ov
                 <div class="modal-header">
                     <h4 class="modal-title">Disclaimer</h4>
                 </div>
-                <div class="modal-body">
-                    <p>Project Jetson is a predictive analytics project aimed at providing predictions on displaced population movement for the Somalia situation launched by UNHCR’s Innovation Service. The purpose of this website is to enhance information-sharing of data innovation processes. The information shown on this site should be viewed as indicators of potential movements and their underlying causes. UNHCR does not represent or endorse the accuracy or reliability of any advice, opinion, or analysis developed as a result of the use of predictions data provided on this website. Reliance upon any such advice, opinion or analysis is at your own risk. If you would like to know more about Project Jetson, please reach out to UNHCR Innovation Service, at <a href="mailto:innovation@unhcr.org" target="_blank">innovation@unhcr.org</a>.
-                        <br> We use cookies and other identifiers to help improve your online experience. By using our website you are agreeing to this. Read our <a href="http://www.unhcr.org/privacy-policy.html">privacy policy</a> to find out what cookies are used for and how to change your settings.</p>
+                <div class="modal-body content">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Agree and Continue</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="q1" tabindex="-1" role="dialog" aria-labelledby="q1">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">What is the challenge?</h4>
-                </div>
-                <div class="modal-body">
-                    <p>One of the most pressing challenges for humanitarian agencies in trying to predict population movement (population flow) is the information gap that exists when people move from one place to another. This is particularly challenging during emergencies when the ‘fluid or rapid’ movement makes it difficult for humanitarian actors to track and estimate arrivals, and departures. In consequence, this challenge affects planning, emergency preparedness, funding of assistance, and operational services. The challenge is exacerbated by: 
-                        <ol>
-                        <li>Lack of access to territory: referring to regions with ongoing violent conflict, to occupied territories and/or geographical areas where humanitarian actors are not present or access is denied.</li>
-                        <li>Lack of resources: lack of financial or human resources to deploy enumerators to collect data from specific sources or geographical locations. 
-</li>
-                        <li>Lack of informants: collecting data from specific sources or a particular group can bias the data 
-</li>
-                        <li>Lack of validation: sometimes information verification is conducted only by participant observation (visual) and/or the data provided by the informants could be partial or inaccurate for diverse number of reasons.
-</li>
-                    </ol>
-
-
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="q2" tabindex="-1" role="dialog" aria-labelledby="q2">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">What are the goals of the project?</h4>
-                </div>
-                <div class="modal-body">
-                    <p>
-                        <ol>
-                            <li>To provide predictions on population movement during displacement situations for UNHCR and other partners to make better operational decisions</li>
-                            <li>The project also intends to put a spotlight on humanitarian, and development actors to share their data in a systematic way, in order for computers to read it and process it automatically, which means passing from a predictive analytics phase to a prescriptive analytics phase.
-                            </li>
-                            <li>
-                                To serve a case of the power of open data. For other developers, statisticians, data and computer scientists to build their own models and applications with UNHCR data.
-                            </li>
-                        </ol>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="q3" tabindex="-1" role="dialog" aria-labelledby="q3">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">What is Jetson technology based on?</h4>
-                </div>
-                <div class="modal-body">
-                    <p>On forecasting statistical techniques and open source-based applications for modelling. The scripts and the aggregated and anonymized datasets will be published in UNHCR github once the experiment is finished.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="q4" tabindex="-1" role="dialog" aria-labelledby="q3">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Why don’t you predict the whole world?</h4>
-                </div>
-                <div class="modal-body">
-                    <p>We are in development stage of the project and looking into adding more regions and situations to the experiment. Each region and country have different elements as predictors, therefore there is a need to collect specific data according to context.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="q5" tabindex="-1" role="dialog" aria-labelledby="q3">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">What are your project assumptions?</h4>
-                </div>
-                <div class="modal-body">
-                    <p>
-                        <ol>
-                            <li>The project is focused only in the population flow, both across borders (refugees) and internally (IDPs). This means the main research purpose is to measure changes in the population in an specific period of time (e.g. a month).</li>
-<li>There is not one single major cause of forced displacement. There are many causes (variables) and an infinite combination of these variables, along with behavioral human patterns that lead to forced displacement. The objective of the model is not to find the cause (why?) but to explain how are people moving (patterns).</li>
-<li>This project attempts to find interesting and meaningful patterns in data by making assumptions from the data our partners are providing, particularly when data is not available, or is incomplete.</li>
-<li>Some of the assumptions do not need a model to tell that the assumption is correct. Building a model goes beyond identifying the assumptions’ characteristics (e.g. we do not need a model to know people are forced to flee due to conflict). However, the model attempts to find the best combination that could predict the target variable, in this case: population flow numbers and geographical locations, in an specific period of time.</li>
-
-                        </ol>
-
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="q6" tabindex="-1" role="dialog" aria-labelledby="q3">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">What are the variables for Jetson?</h4>
-                </div>
-                <div class="modal-body">
-                    <ul>
-                        <li>
-                            <p>Current number of Persons of Concern (PoC) per region per month</p>
-                        </li>
-                        <li>
-                            <p>Departures number of PoC per region per month</p>
-                        </li>
-                        <li>
-                            <p>Arrivals number of PoC per region per month</p>
-                        </li>
-                        <li>
-                            <p>Number of fatalities per region per month</p>
-                        </li>
-                        <li>
-                            <p>Number of violent conflict incidents per region per month</p>
-                        </li>
-                        <li>
-                            <p>River levels per river per month</p>
-                        </li>
-                        <li>
-                            <p>River discharge per river per month</p>
-                        </li>
-                        <li>
-                            <p>Rainfall average per region per month</p>
-                        </li>
-                        <li>
-                            <p>Water drum price per region per month</p>
-                        </li>
-                        <li>
-                            <p>Local goat Price per region per month</p>
-                        </li>
-                    </ul>
-                    <br />
-                    <ul>
-                        <li>
-                            <p>The data behind the engine is anonymized, aggregated per month and per region and complies with <a href="http://www.refworld.org/pdfid/55643c1d4.pdf" target="_blank">UNHCR Data Protection policy</a> standards</p>
-                        </li>
-                        <li>
-                            <p>The models used for each region in the engine represent the top 3 best ‘fit’ functions that can explain the behaviour of seven years of historical data. The target variable (y) is number of arrivals for each region.</p>
-                        </li>
-                        <li>
-                            <p>The model is trained with data until 30 June 2017 and the date that the predictive algorithm was built is 1 September 2017.</p>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -490,10 +215,6 @@ UNHCR Innovation Services wants Project Jetson to become an open process: the ov
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/hero-anim.js"></script>
-    <script src="js/three.min.js"></script>
-    <script src="js/TweenMax.min.js"></script>
-    <script src="js/hero-animset.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/1.1.0/exceljs.min.js">
     </script>
