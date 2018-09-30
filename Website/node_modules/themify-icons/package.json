@@ -1,0 +1,19 @@
+{
+  "name": "themify-icons",
+  "version": "1.0.0",
+  "description": "Themify Icons SCSS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aastrong/themify-icons.scss.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aastrong/themify-icons.scss/issues"
+  },
+  "homepage": "https://github.com/aastrong/themify-icons.scss#readme"
+}
