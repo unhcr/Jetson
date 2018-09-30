@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../lib/utils/promish.js"],"names":["module","exports","Promish"],"mappings":"AAAA;;AAEAA,OAAOC,OAAP,GAAiB;AACfC,WAAS;AADM,CAAjB","file":"promish.js","sourcesContent":["'use strict';\r\n\r\nmodule.exports = {\r\n  Promish: null\r\n};\r\n"]}
