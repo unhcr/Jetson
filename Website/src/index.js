@@ -11,7 +11,7 @@ import "./style.scss";
 Chart.defaults.line.spanGaps = true;
 
 $.ajax({
-  url: "http://www.unhcr.org/innovation/wp-json/wp/v2/pages/27745",
+  url: "https://www.unhcr.org/innovation/wp-json/wp/v2/pages/27745",
   // url: "json/data.json",
   type: "GET",
   success: data => {
