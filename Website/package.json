@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "main": "index.js",
   "repository": "https://github.com/babusi/Jetson.git",
-  "author": "Robert Scott <rs@robsco.info>",
+  "author": "Babusi Nyoni <hello@babusinyoni.com>",
   "license": "UNLICENSED",
   "dependencies": {
     "@babel/core": "^7.0.0",
@@ -28,6 +28,7 @@
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.0",
+    "swiper": "^4.5.0",
     "themify-icons": "^1.0.0",
     "url-loader": "^1.1.1",
     "webpack": "^4.17.2",
