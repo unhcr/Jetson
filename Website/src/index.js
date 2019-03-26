@@ -9,10 +9,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.scss";
 
 Chart.defaults.line.spanGaps = true;
+var data;
 
 $.ajax({
-  url: "https://www.unhcr.org/innovation/wp-json/wp/v2/pages/27745",
-  // url: "json/data.json",
+ // url: "https://www.unhcr.org/innovation/wp-json/wp/v2/pages/27745",
+    url: "json/data.json",
   type: "GET",
   success: data => {
     // Section
@@ -25,11 +26,11 @@ $.ajax({
     // Articles
     $(".article-one h2").html(data.acf.articles[0].article_title);
     $(".article-one h5").html(data.acf.articles[0].article_type);
-    $(".article-one a").attr("a", data.acf.articles[0].article_link);
+    $(".article-one a").attr("href", data.acf.articles[0].article_link);
 
     $(".article-two h2").html(data.acf.articles[1].article_title);
     $(".article-two h5").html(data.acf.articles[1].article_type);
-    $(".article-two a").attr("a", data.acf.articles[1].article_link);
+    $(".article-two a").attr("href", data.acf.articles[1].article_link);
 
     // FAQS
     var faqlist = data.acf.faqs;
@@ -409,7 +410,7 @@ const getCombinedData = () => {
       console.log("Workbooks loaded.");
 
       $(".loader").fadeOut(200, function() {
-        $("#disclaimer").modal("show");
+        // $("#disclaimer").modal("show");
         $("section")
           .not(".prediction, .faqs, .articles, .page-content")
           .each(function() {
@@ -417,7 +418,7 @@ const getCombinedData = () => {
               $(this)
                 .addClass("minified")
                 .append(
-                  '<div class="more view"><button class="showme"><span class="ti-arrow-down"></span> Expand this section </button><button class="hideme"><span class="ti-arrow-up"></span> Minimise this section</button></div>'
+                  '<div class="more view"><div class="container"><button class="showme btn"><span class="ti-arrow-down"></span> Expand this section </button><button class="hideme btn"><span class="ti-arrow-up"></span> Minimise this section</button></div></div>'
                 );
               $(".more")
                 .unbind("click")
