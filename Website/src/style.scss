@@ -460,16 +460,16 @@ section .more.view .showme {
 
 .map-container {
     margin: 30px auto 0;
-    border-radius: 5px;
+    border-radius: 2px;
     overflow: hidden;
     position: relative;
-    background: #0072BC;
 }
 
 #regions_div {
-    border-radius: 0 0 15px 15px;
+    border-radius: 0 0 2px 2px;
     overflow: hidden;
-    background: #0072BC;
+    color: #0072BC;
+    background:#fff;
     width: 100%;
     height: 600px;
     display: none;
@@ -481,16 +481,16 @@ section .more.view .showme {
 }
 
 .map-title {
-    background: #0072BC;
-    border-radius: 15px 15px 0 0;
+    color: #0072BC;
+    background: #fff;
+    border-radius: 2px 2px 0 0;
     display: none;
 }
 
 .map-title h2 {
-    color: #fff;
     font-family: 'proximamedium';
     font-size: 16px;
-    padding: 15px 40px 0;
+    padding: 15px 40px;
     display: inline-block;
     margin: 0 auto;
     border-radius: 0 0 15px 15px;
@@ -512,7 +512,7 @@ section .more.view .showme {
     position: absolute;
     bottom: 20px;
     right: 20px;
-    color: #fff;
+    color: #0072BC;
     z-index: 3;
     width: 300px;
 }
@@ -531,31 +531,23 @@ section .more.view .showme {
 }
 
 .key .colours span.moderate {
-    background: #2d5cf5;
+    background: #0072BC;
 }
 
 .key .colours span.high {
-    background: #b500ff;
+    background: #4D00BC;
 }
 
 .key .colours span.critical {
-    background: #ff0000;
+    background: #BC0094;
 }
 
 .key .labels span {
     cursor: pointer;
-}
-
-.key .labels .moderate {
-    float: left;
-}
-
-.key .labels .high {
-    float: none;
-}
-
-.key .labels .critical {
-    float: right;
+    width: 33.3333333333%;
+    display:inline-block;
+    float:left;
+    text-align: center;
 }
 
 .map-container .warning {

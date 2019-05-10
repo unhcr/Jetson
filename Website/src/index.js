@@ -459,15 +459,15 @@ GoogleCharts.load(drawRegionsMap, {
 var options = {
     legend: "none",
     region: "SO",
-    backgroundColor: "#000E4A",
+    backgroundColor: "#ffffff",
     enableRegionInteractivity: true,
     resolution: "provinces",
     colorAxis: {
         minValue: 0,
         values: [0, 1, 2, 3],
-        colors: ["#000E4A", "#2c5df5", "#b400ff", "#ff0000"]
+        colors: ["#ffffff", "#0072BC", "#4D00BC", "#BC0094"]
     },
-    datalessRegionColor: "#000E4A"
+    datalessRegionColor: "#ffffff"
 };
 
 /* Start data parse */
