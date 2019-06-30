@@ -5,6 +5,7 @@ import {
 } from "google-charts";
 import iso3166 from "iso-3166-2";
 import Chart from "chart.js";
+import UniversalTilt from 'universal-tilt.js';
 import Swiper from "swiper";
 import {
     downloadAndLoadWorkbook
@@ -16,13 +17,19 @@ import "./style.scss";
 Chart.defaults.line.spanGaps = true;
 var data;
 
+var shapeanimations = ['fast-spin-right', 'fast-spin-left', 'spin-left', 'spin-right']
+$('.anim-shape').each(function () {
+  var rand = ~~(Math.random() * shapeanimations.length)
+  $(this).addClass(shapeanimations[rand])
+});
+
 $.ajax({
     // url: "https://www.unhcr.org/innovation/wp-json/wp/v2/pages/27745",
     url: "json/data.json",
     type: "GET",
     success: data => {
         // Section
-        $(".hero .content").prepend(data.acf.intro);
+        $(".hero-caption .content").prepend(data.acf.intro);
         $(".intro .content").prepend(data.acf.first_section);
         $(".prediction .content").prepend(data.acf.jetson_models);
         $(".engine .content").prepend(data.acf.second_section);
@@ -67,115 +74,132 @@ $.ajax({
         // Disclaimer
         $("#disclaimer .content").html(data.acf.disclaimer);
     }
-});
+}).done(function () {
 
-$(() => {
-    $('[data-toggle="tooltip"]').tooltip();
-});
 
-// Slider
+    $(() => {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
 
-var sourcesswiper = new Swiper('#sources', {
-    slidesPerView: 6,
-    spaceBetween: 20,
-    centerInsufficientSlides: true,
-    slidesOffsetBefore:10,
-    slidesOffsetAfter:10,
-    // init: false,
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-    breakpoints: {
-        1024: {
-            slidesPerView: 4,
-            spaceBetween: 40,
-        },
-        768: {
-            slidesPerView: 3,
-            spaceBetween: 30,
-        },
-        640: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-        },
-        320: {
-            slidesPerView: 1,
-            spaceBetween: 10,
-        }
-    }
-});
+    // Slider
+        
+    var episwiper = new Swiper('#epilogue', {
+        slidesPerView: 1,
+        direction:'vertical',
+        parallax: true,
+        speed:1000
+        // init: false,
+    });
+    
+    
+$('#epibutton').click(function(){
+    episwiper.slideNext();
+})
 
-var partnerswiper = new Swiper('#partners', {
-    slidesPerView: 6,
-    spaceBetween: 20,
-    centerInsufficientSlides: true,
-    slidesOffsetBefore:10,
-    slidesOffsetAfter:10,
-    // init: false,
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-    breakpoints: {
-        1024: {
-            slidesPerView: 4,
-            spaceBetween: 40,
+    var sourcesswiper = new Swiper('#sources', {
+        slidesPerView: 6,
+        spaceBetween: 20,
+        centerInsufficientSlides: true,
+        slidesOffsetBefore: 10,
+        slidesOffsetAfter: 10,
+        // init: false,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
         },
-        768: {
-            slidesPerView: 3,
-            spaceBetween: 30,
-        },
-        640: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-        },
-        320: {
-            slidesPerView: 1,
-            spaceBetween: 10,
-        }
-    }
-});
-
-$('a[href*="#"]')
-    // Remove links that don't actually link to anything
-    .not('[href="#"]')
-    .not('[href="#0"]')
-    .click(event => {
-        // On-page links
-        if (
-            location.pathname.replace(/^\//, "") ==
-            this.pathname.replace(/^\//, "") &&
-            location.hostname == this.hostname
-        ) {
-            // Figure out element to scroll to
-            var target = $(this.hash);
-            target = target.length ? target : $("[name=" + this.hash.slice(1) + "]");
-            // Does a scroll target exist?
-            if (target.length) {
-                // Only prevent default if animation is actually gonna happen
-                event.preventDefault();
-                $("html, body").animate({
-                        scrollTop: target.offset().top
-                    },
-                    1000,
-                    () => {
-                        // Callback after animation
-                        // Must change focus!
-                        var $target = $(target);
-                        $target.focus();
-                        if ($target.is(":focus")) {
-                            // Checking if the target was focused
-                            return false;
-                        } else {
-                            $target.attr("tabindex", "-1"); // Adding tabindex for elements not focusable
-                            $target.focus(); // Set focus again
-                        }
-                    }
-                );
+        breakpoints: {
+            1024: {
+                slidesPerView: 4,
+                spaceBetween: 40,
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            320: {
+                slidesPerView: 1,
+                spaceBetween: 10,
             }
         }
     });
+
+    var partnerswiper = new Swiper('#partners', {
+        slidesPerView: 6,
+        spaceBetween: 20,
+        centerInsufficientSlides: true,
+        slidesOffsetBefore: 10,
+        slidesOffsetAfter: 10,
+        // init: false,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        breakpoints: {
+            1024: {
+                slidesPerView: 4,
+                spaceBetween: 40,
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            320: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+            }
+        }
+    });
+
+    $('a[href*="#"]')
+        // Remove links that don't actually link to anything
+        .not('[href="#"]')
+        .not('[href="#0"]')
+        .click(event => {
+            // On-page links
+            if (
+                location.pathname.replace(/^\//, "") ==
+                this.pathname.replace(/^\//, "") &&
+                location.hostname == this.hostname
+            ) {
+                // Figure out element to scroll to
+                var target = $(this.hash);
+                target = target.length ? target : $("[name=" + this.hash.slice(1) + "]");
+                // Does a scroll target exist?
+                if (target.length) {
+                    // Only prevent default if animation is actually gonna happen
+                    event.preventDefault();
+                    $("html, body").animate({
+                            scrollTop: target.offset().top
+                        },
+                        1000,
+                        () => {
+                            // Callback after animation
+                            // Must change focus!
+                            var $target = $(target);
+                            $target.focus();
+                            if ($target.is(":focus")) {
+                                // Checking if the target was focused
+                                return false;
+                            } else {
+                                $target.attr("tabindex", "-1"); // Adding tabindex for elements not focusable
+                                $target.focus(); // Set focus again
+                            }
+                        }
+                    );
+                }
+            }
+        });
+
+});
+
 
 var regionHistoryChart;
 

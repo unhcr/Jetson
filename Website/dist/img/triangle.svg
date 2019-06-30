@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="165px" height="137px" viewBox="0 0 165 137" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>triangle</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linejoin="round">
+        <g id="Desktop-V2" transform="translate(-402.000000, 0.000000)" stroke="#A8FFC9" stroke-width="20">
+            <g id="triangle" transform="translate(340.000000, -90.000000)">
+                <polygon id="Triangle" transform="translate(108.500000, 108.500000) rotate(-27.000000) translate(-108.500000, -108.500000) " points="108.5 28 189 189 28 189"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

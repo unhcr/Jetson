@@ -22,22 +22,65 @@
             <img src="img/logo-innovation-service.png" />
         </div>
     </div>
-    <div class="hero">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-4 split-col caption-col">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="#"><img src="img/logo-innovation-service.png" /> </a>
-                    </div>
-                    <div class="hero-caption">
-                        <div class="col-sm-12 content">
-                            <a href="#intro"><button class="btn">Explore the project</button></a>
-                        </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"><img src="img/logo-innovation-service.png" /> </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="ml-auto">
+            </ul>
+            
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <!-- a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a -->
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="swiper-container" id="epilogue">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="hero-caption">
+                    <div class="col-sm-12 content">
                     </div>
                 </div>
-                <div class="col-sm-8 split-col image-col">
-                    <div class="row hero-image"></div>
+                <a href="#" id="epibutton"><button class="btn"><img src="img/downarrow.svg"/></button></a>
+
+                <!-- animated objects -->
+                <img src="img/triangle.svg" class="anim-shape triangle" data-swiper-parallax="-100" />
+                <img src="img/cross.svg" class="anim-shape cross" data-swiper-parallax="-200" />
+                <img src="img/cyan-dots.svg" class="anim-shape cyan-dots" data-swiper-parallax="-500" />
+                <img src="img/yellow-dots.svg" class="anim-shape yellow-dots" data-swiper-parallax="-300" />
+                <img src="img/oval.svg" class="anim-shape oval" data-swiper-parallax="-400" />
+                <img src="img/line.svg" class="anim-shape line" data-swiper-parallax="-100" />
+            </div>
+            <div class="swiper-slide slide-sections">
+                <div class="slide-section process-half">
+                    <div class="content">
+                        <h1>Explore the Process</h1>
+                        <p>Learn about the work that went into making Jetson what it is</p>
+                    </div>
+                    <a href="process.html"><button class="btn"><img src="img/leftarrow.svg"/></button></a>
                 </div>
+                <div class="slide-section outcomes-half">
+                    <div class="content">
+                        <h1>Explore the Outcomes</h1>
+                        <p>Learn about the work that went into making Jetson what it is</p>
+                    </div>
+                    <a href="outcomes.html"><button class="btn"><img src="img/rightarrow.svg"/></button></a>
+                </div>
+
+                <!-- animated objects -->
+                <img src="img/triangle.svg" class="anim-shape triangle" data-swiper-parallax="-100" />
+                <img src="img/cross.svg" class="anim-shape cross" data-swiper-parallax="-200" />
+                <img src="img/cyan-dots.svg" class="anim-shape cyan-dots" data-swiper-parallax="-500" />
+                <img src="img/yellow-dots.svg" class="anim-shape yellow-dots" data-swiper-parallax="-300" />
+                <img src="img/oval.svg" class="anim-shape oval" data-swiper-parallax="-400" />
+                <img src="img/line.svg" class="anim-shape line" data-swiper-parallax="-100" />
             </div>
         </div>
     </div>
@@ -51,7 +94,7 @@
     <section class="partners">
         <div class="container">
             <h2>Our Data Partners</h2>
-            <div class="swiper-container" id="sources">
+            <div class="swiper-container logo-slider" id="sources">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <img src="/img/logo_fao_28_4.png" />
@@ -142,25 +185,25 @@
             <p>The data behind the experiment is central to the overall process. Multiple data inputs are fed into the machine. All data is anonymized and disaggregated per region – and per month. The outcome dataset is a combination of seven years worth of factors that may contribute to forced displacement movement.</p>
             <div class="row">
                 <div class="col-md-6 col-lg-3 single-article-thumb">
-                    <div class="thumb-cover">
+                    <div class="thumb-cover" data-tilt data-shine="true" data-shine-opacity="0.5" data-perspective="2000" data-disabled="x" data-max="5" data-speed="1000">
                         <h3>Lorem ipsum dolor sit amet</h3>
                         <a href="" target="_blank">View paper</a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3 single-article-thumb">
-                    <div class="thumb-cover">
+                    <div class="thumb-cover" data-tilt data-shine="true" data-shine-opacity="0.5" data-perspective="2000">
                         <h3>Lorem ipsum dolor sit amet</h3>
                         <a href="" target="_blank">View paper</a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3 single-article-thumb">
-                    <div class="thumb-cover">
+                    <div class="thumb-cover" data-tilt data-shine="true" data-shine-opacity="0.5" data-perspective="2000">
                         <h3>Lorem ipsum dolor sit amet</h3>
                         <a href="" target="_blank">View paper</a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3 single-article-thumb">
-                    <div class="thumb-cover">
+                    <div class="thumb-cover" data-tilt data-shine="true" data-shine-opacity="0.5" data-perspective="2000">
                         <h3>Lorem ipsum dolor sit amet</h3>
                         <a href="" target="_blank">View paper</a>
                     </div>
@@ -172,7 +215,7 @@
     <section class="partners">
         <div class="container">
             <h2>Our Data Partners</h2>
-            <div class="swiper-container" id="partners">
+            <div class="swiper-container logo-slider" id="partners">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <img src="/img/logo_fao_28_4.png" />
