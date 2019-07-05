@@ -5,7 +5,6 @@ import {
 } from "google-charts";
 import iso3166 from "iso-3166-2";
 import Chart from "chart.js";
-import UniversalTilt from 'universal-tilt.js';
 import Swiper from "swiper";
 import {
     downloadAndLoadWorkbook
@@ -87,7 +86,8 @@ $.ajax({
         slidesPerView: 1,
         direction:'vertical',
         parallax: true,
-        speed:1000
+        speed:1000,
+        mousewheel: true
         // init: false,
     });
     

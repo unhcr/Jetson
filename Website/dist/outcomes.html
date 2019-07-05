@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000E4A" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Project Jetson</title>
+
+    <link href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="bundle.css">
+    <link href="favicon.ico" rel="icon" type="image/ico">
+</head>
+
+<body>
+    <div class="loader">
+        <div class="logo">
+            <img src="img/logo-innovation-service.png" />
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html"><img src="img/logo-innovation-service.png" /> </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="ml-auto">
+            </ul>
+            
+            <ul class="custom-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="process.html">Explore Process <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+<div class="article-header">
+                <!-- animated objects -->
+                <img src="img/triangle.svg" class="anim-shape triangle" data-swiper-parallax="-100" />
+                <img src="img/cross.svg" class="anim-shape cross" data-swiper-parallax="-200" />
+                <img src="img/cyan-dots.svg" class="anim-shape cyan-dots" data-swiper-parallax="-500" />
+                <h1>The Outcomes</h1>
+</div>
+
+    <section class="intro" id="intro">
+        <div class="container content">
+
+        </div>
+    </section>
+
+    <section class="partners">
+        <div class="container">
+            <h2>Our Data Partners</h2>
+            <div class="swiper-container logo-slider" id="sources">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="img/logo_fao_28_4.png" />
+                        <a href="#">Visit Website</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/Acled-1-1.png" />
+                        <a href="#">Visit Website</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/icpac-logo.png" />
+                        <a href="#">Visit Website</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/The_World_Bank_logo.svg.png" />
+                        <a href="#">Visit Website</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/wmologo2016_fulltext_horizontal_rgb_en.png" />
+                        <a href="#">Visit Website</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/unitar-logo.png" />
+                        <a href="#">Visit Website</a>
+                    </div>
+                </div>
+                <!-- If we need navigation buttons 
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                -->
+            </div>
+        </div>
+    </section>
+
+
+    <section class="prediction">
+        <div class="container">
+            <h2>Jetson Models</h2>
+
+            <p>The data behind the experiment is central to the overall process. Multiple data inputs are fed into the machine. All data is anonymized and disaggregated per region – and per month. The outcome dataset is a combination of seven years worth of factors that may contribute to forced displacement movement.</p>
+            <!-- buttons -->
+
+            <a class="btn" href="https://unhcrinnovation.shinyapps.io/Somalia/" target="_blank"> Explore the engine</a>
+
+            <button class="btn" id="show_map">View map</button>
+
+
+            <!-- map -->
+            <div class="map-container">
+                <div class="map-title">
+                    <h2></h2>
+                </div>
+                <div id="regions_div"></div>
+                <div class="warning">
+                    <span class="ti-flag-alt-2"></span> Warning: Map data is not up to date
+                </div>
+                <div class="key">
+                    <h4>Predicted Displacement</h4>
+                    <div class="labels">
+                        <span class="moderate" data-toggle="tooltip" data-placement="top" data-toggle="tooltip" data-placement="top" title="Is the average of arrivals or less than the past 3 months' values">1
+                            - Moderate</span>
+                        <span class="high" data-toggle="tooltip" data-placement="top" data-toggle="tooltip" data-placement="top" title="Is higher/average + half OR 3/4 higher than the average arrivals past 3 months">2
+                            - High</span>
+                        <span class="critical" data-toggle="tooltip" data-placement="top" data-toggle="tooltip" data-placement="top" title="Is [critically] higher/double than the average arrivals of past 3 months">3
+                            - Critical</span>
+                    </div>
+                    <div class="colours">
+                        <span class="moderate"></span>
+                        <span class="high"></span>
+                        <span class="critical"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- div class="content"></div -->
+        </div>
+    </section>
+
+    <!-- section class="engine">
+        <div class="container content">
+
+        </div>
+    </section -->
+
+    <section class="articles">
+        <div class="container">
+            <h2>Research</h2>
+            <p>The data behind the experiment is central to the overall process. Multiple data inputs are fed into the machine. All data is anonymized and disaggregated per region – and per month. The outcome dataset is a combination of seven years worth of factors that may contribute to forced displacement movement.</p>
+            <div class="row">
+                <div class="col-md-6 col-lg-3 single-article-thumb">
+                    <div class="thumb-cover">
+                        <h3>Lorem ipsum dolor sit amet</h3>
+                        <a href="" target="_blank">View paper</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 single-article-thumb">
+                    <div class="thumb-cover">
+                        <h3>Lorem ipsum dolor sit amet</h3>
+                        <a href="" target="_blank">View paper</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 single-article-thumb">
+                    <div class="thumb-cover">
+                        <h3>Lorem ipsum dolor sit amet</h3>
+                        <a href="" target="_blank">View paper</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 single-article-thumb">
+                    <div class="thumb-cover">
+                        <h3>Lorem ipsum dolor sit amet</h3>
+                        <a href="" target="_blank">View paper</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="partners">
+        <div class="container">
+            <h2>Our Data Partners</h2>
+            <div class="swiper-container logo-slider" id="partners">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="img/logo_fao_28_4.png" />
+                        <a href="#">Visit Website</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/Acled-1-1.png" />
+                        <a href="#">Visit Website</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/icpac-logo.png" />
+                        <a href="#">Visit Website</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/The_World_Bank_logo.svg.png" />
+                        <a href="#">Visit Website</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/wmologo2016_fulltext_horizontal_rgb_en.png" />
+                        <a href="#">Visit Website</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/unitar-logo.png" />
+                        <a href="#">Visit Website</a>
+                    </div>
+                </div>
+                <!-- If we need navigation buttons 
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                -->
+            </div>
+        </div>
+    </section>
+
+    <section class="faqs">
+        <div class="container">
+            <h3>FAQs</h3>
+            <div class="row faqs-row"></div>
+        </div>
+    </section>
+
+    <!-- section class="epilogue">
+        <div class="container content"></div>
+    </section -->
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-6 copyright">
+                    <p>Copyright 2018</p>
+                </div>
+                <div class="col-6 back-home">
+                    <a href="http://www.unhcr.org/privacy-policy.html" target="_blank">Privacy Policy</a>
+                    <a href="terms.html" target="_blank">Terms of Use</a>
+                    <a href="http://innovation.unhcr.org" target="_blank">Main site <span class="ti-world"></span></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- modals -->
+
+
+    <div class="modal fade" id="disclaimer" tabindex="-1" role="dialog" aria-labelledby="q3">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Disclaimer</h4>
+                </div>
+                <div class="modal-body content">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Agree and Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade bs-example-modal-lg" id="region-modal" tabindex="-1" role="dialog" aria-labelledby="region chart">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body content">
+                    <canvas id="region-chart" width="600" height="300" style="background: #000b4b; border-radius: 3px;"></canvas>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-52484005-16"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-52484005-16');
+    </script>
+
+    <script src="commons.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
