@@ -557,8 +557,7 @@ $.ajax({
         navigation: {
             nextEl: '#next1',
             prevEl: '#prev1',
-        },
-        mousewheel: true
+        }
     });
 
     // 2nd Article slider
@@ -571,8 +570,7 @@ $.ajax({
         navigation: {
             nextEl: '#next2',
             prevEl: '#prev2',
-        },
-        mousewheel: true
+        }
     });
 
     var logoswiper = new Swiper('#logo-slider-1', {

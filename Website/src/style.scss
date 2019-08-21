@@ -234,7 +234,7 @@ section .more {
     right: 0;
     z-index: 2;
     text-align: left;
-    padding: 45px 0px 70px;
+    padding: 45px 0px 60px;
     background: #F5F4F0;
 }
 
@@ -779,36 +779,38 @@ section .btn
     align-items: center;
 }
 
-.slide-section .content {
+.slide-section a {
     padding: 0 100px;
     text-align: center;
     z-index: 2;
+    color:inherit;
+    text-decoration:none;
 }
 
 .slide-section.process-half {
     background: #0072bb;
-    color: #fff;
+    color: #fff
 }
 
 .slide-section.outcomes-half {
     left: auto;
-    right: 0;
+    right: 0
 }
 
-.slide-section a {
-    position: absolute;
+.slide-section .btn {
     bottom: 20px;
-    z-index: 4;
     left: 20px;
+    position: absolute;
+    z-index: 4
 }
 
-.slide-section.outcomes-half a {
+.slide-section.outcomes-half .btn {
     left: auto;
-    right: 20px;
+    right: 20px
 }
 
 .slide-section a:hover button {
-    background: none;
+    background: none
 }
 
 /* Prediction */
