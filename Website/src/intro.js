@@ -22,7 +22,7 @@ $('.anim-shape').each(function () {
 
 $.ajax({
     url: "https://www.unhcr.org/innovation/wp-json/wp/v2/pages/27745",
-    // url: "json/intro.json",
+//  url: "json/intro.json",
     type: "GET",
     success: data => {
 
@@ -49,6 +49,10 @@ $.ajax({
 
     }
 }).done(function () {
+    
+    $('body').css({
+        opacity: 1
+    });
 
     $(() => {
         $('[data-toggle="tooltip"]').tooltip();

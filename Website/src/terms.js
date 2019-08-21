@@ -7,6 +7,5 @@ $.ajax({
   type: 'GET',
   success: function(data) {
     $('.page-content .content').html(data.acf.terms_of_use);
-    $('.loader').fadeOut(100);
   }
 });
