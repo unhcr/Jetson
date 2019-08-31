@@ -1,41 +1,34 @@
 import $ from "jquery";
-import {
-    GoogleCharts
-} from "google-charts";
-import iso3166 from "iso-3166-2";
-import Chart from "chart.js";
 import Swiper from "swiper";
-import {
-    downloadAndLoadWorkbook
-} from "./spreadsheet";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-var data;
-
-var shapeanimations = ['fast-spin-right', 'fast-spin-left', 'spin-left', 'spin-right']
-$('.anim-shape').each(function () {
-    var rand = ~~(Math.random() * shapeanimations.length)
-    $(this).addClass(shapeanimations[rand])
+var shapeanimations = [
+  "fast-spin-right",
+  "fast-spin-left",
+  "spin-left",
+  "spin-right"
+];
+$(".anim-shape").each(function () {
+    var rand = ~~(Math.random() * shapeanimations.length);
+    $(this).addClass(shapeanimations[rand]);
 });
-
 
 // Data
 
 $.ajax({
     url: "https://www.unhcr.org/innovation/wp-json/wp/v2/pages/29887",
-    // url: "json/stories.json",
+//    url: "json/stories.json",
     type: "GET",
     success: data => {
-        
-        
-        // Title 
-        
-        $('.storytitle').html(data.title.rendered);
-        
 
-        // Sections 
-        
+        $('.place-cont').hide();
+        // Title
+
+        $(".storytitle").html(data.title.rendered);
+
+        // Sections
+
         var sectionlist = data.acf.sections;
         var ids = 0;
         var articlesliders = 0;
@@ -44,569 +37,614 @@ $.ajax({
         sectionlist.forEach(i => {
             ids = ids + 1;
 
-            var section = document.createElement('section');
-            $(section).attr('class', i.section_style);
+            var section = document.createElement("section");
+            $(section).attr("class", i.section_style);
 
             ////////// Text Section
 
             if (i.acf_fc_layout == "text_section") {
-                $(section).html('<div class="container"><h2>' +
-                    i.title + '</h2>' +
-                    i.text + '</div>');
-            } else
+                $(section).html(
+                    '<div class="container"><h2>' + i.title + "</h2>" + i.text + "</div>"
+                );
+            }
 
             ////////// Code Section
+            else if (i.acf_fc_layout == "code_section") {
+                $(section).html(
+                    '<div class="container"><h2>' +
+                    i.title +
+                    "</h2>" +
+                    i.text +
+                    "" +
+                    i.code +
+                    "</div>"
+                );
+            }
 
-            if (i.acf_fc_layout == "code_section") {
-                $(section).html('<div class="container"><h2>' +
-                    i.title + '</h2>' +
-                    i.text + '' + i.code + '</div>');
-            } else
+            ////////// FAQ Section
+            else if (i.acf_fc_layout == "faq_section") {
+                $(section).html(
+                    '<div class="container"><h2>' + i.title + "</h2>" + i.text + "</div>"
+                );
 
-                ////////// FAQ Section
+                var faqcontainer = document.createElement("div");
+                $(faqcontainer).addClass("container");
+                $(faqcontainer).append(
+                    '<div class="container"><h2>' + i.title + "</h2>" + i.text + "</div>"
+                );
 
-                if (i.acf_fc_layout == "faq_section") {
-                    $(section).html('<div class="container"><h2>' +
-                        i.title + '</h2>' +
-                        i.text + '</div>');
+                var faqrow = document.createElement("div");
+                $(faqrow).addClass("row");
 
-                    var faqcontainer = document.createElement('div');
-                    $(faqcontainer).addClass('container');
-                    $(faqcontainer).append('<div class="container"><h2>' +
-                        i.title + '</h2>' +
-                        i.text + '</div>');
-                    
-                    var faqrow = document.createElement('div');
-                    $(faqrow).addClass('row');
+                // FAQS
+                var faqlist = i.faqs;
+                var fids = 0;
 
-                    // FAQS
-                    var faqlist = i.faqs;
-                    var fids = 0;
+                faqlist.forEach(i => {
+                    fids = fids + 1;
+                    $(faqrow).append(
+                        '<div class="col-sm-4"><h4 data-toggle="modal" data-target="#q' +
+                        fids +
+                        '"><span class="num"><span class="ti-comment-alt"></span></span> <strong>' +
+                        i.faq_title +
+                        "</strong></h4></div>"
+                    );
 
-                    faqlist.forEach(i => {
-                        fids = fids + 1;
-                        $(faqrow).append(
-                            '<div class="col-sm-4"><h4 data-toggle="modal" data-target="#q' +
-                            fids +
-                            '"><span class="num"><span class="ti-comment-alt"></span></span> <strong>' +
-                            i.faq_title +
-                            "</strong></h4></div>"
+                    $("body").append(
+                        '<div class="modal fade" id="q' +
+                        fids +
+                        '" tabindex="-1" role="dialog" aria-labelledby="q' +
+                        fids +
+                        '"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title">' +
+                        i.faq_title +
+                        '</h4></div><div class="modal-body">' +
+                        i.faq_content +
+                        "</div></div></div></div>"
+                    );
+                });
+
+                $(faqcontainer).append(faqrow);
+            }
+
+            ///////////// Article Slider
+            else if (i.acf_fc_layout == "article_slider") {
+                articlesliders = articlesliders + 1;
+
+                // Check if only article slider
+                if (articlesliders == 1) {
+                    // Check if contains text
+                    if (i.text > -1) {
+                        $(section).html(
+                            '<div class="container"><h2>' +
+                            i.title +
+                            "</h2>" +
+                            i.text +
+                            "</div>"
                         );
 
-                        $("body").append(
-                            '<div class="modal fade" id="q' +
-                            fids +
-                            '" tabindex="-1" role="dialog" aria-labelledby="q' +
-                            fids +
-                            '"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title">' +
-                            i.faq_title +
-                            '</h4></div><div class="modal-body">' +
-                            i.faq_content +
-                            "</div></div></div></div>"
+                        // Create slider
+                        var articleslider = document.createElement("div");
+                        $(articleslider)
+                            .attr("class", "swiper-container article-slider")
+                            .attr("id", "article-slider-1");
+
+                        var articlesliderwrapper = document.createElement("div");
+                        $(articlesliderwrapper).attr("class", "swiper-wrapper");
+                        $(articlesliderwrapper).css({
+                            marginBottom: -50,
+                            padding: "10px 0 80px"
+                        });
+
+                        // Add to slider
+                        var articleslides = i.article_slider;
+                        articleslides.forEach(x => {
+                            $(articlesliderwrapper).append(
+                                '<div class="swiper-slide single-article-thumb"><a href="' +
+                                x.article_link +
+                                '" target="_blank"><div class="thumb-cover"><h3>' +
+                                x.article_title +
+                                "</h3><span>View paper</span></div></a>"
+                            );
+                        });
+
+                        // Add wrapper to slider
+
+                        $(articleslider).append(articlesliderwrapper);
+
+                        // Add controls
+
+                        var nextarrow1 = document.createElement("div");
+                        $(nextarrow1)
+                            .attr("class", "swiper-button-next")
+                            .attr("id", "next1");
+                        var prevarrow1 = document.createElement("div");
+                        $(prevarrow1)
+                            .attr("class", "swiper-button-prev")
+                            .attr("id", "prev1");
+
+                        $(articleslider).append(nextarrow1);
+                        $(articleslider).append(prevarrow1);
+
+                        // Add slider to Section
+
+                        $(section).append(articleslider);
+                    } else if (i.text < 1) {
+                        $(section).html(
+                            '<div class="container"><h2>' + i.title + "</h2></div>"
                         );
-                    });
-                    
-                    $(faqcontainer).append(faqrow);
 
-                } else
-
-                    ///////////// Article Slider
-
-                    if (i.acf_fc_layout == "article_slider") {
-
-                        articlesliders = articlesliders + 1;
-
-                        // Check if only article slider
-                        if (articlesliders == 1) {
-
-                            // Check if contains text
-                            if (i.text > -1) {
-
-                                $(section).html('<div class="container"><h2>' +
-                                    i.title + '</h2>' +
-                                    i.text + '</div>');
-
-                                // Create slider
-                                var articleslider = document.createElement('div');
-                                $(articleslider).attr('class', 'swiper-container article-slider').attr('id', 'article-slider-1');
-
-
-                                var articlesliderwrapper = document.createElement('div');
-                                $(articlesliderwrapper).attr('class', 'swiper-wrapper');
-                                $(articlesliderwrapper).css({
-                                    marginBottom: -50,
-                                    padding: '10px 0 80px'
-                                })
-
-                                // Add to slider
-                                var articleslides = i.article_slider;
-                                articleslides.forEach(x => {
-                                    $(articlesliderwrapper).append('<div class="swiper-slide single-article-thumb"><a href="' + x.article_link + '" target="_blank"><div class="thumb-cover"><h3>' + x.article_title + '</h3><span>View paper</span></div></a>');
-                                });
-
-
-                                // Add wrapper to slider
-
-                                $(articleslider).append(articlesliderwrapper);
-
-                                // Add controls
-
-                                var nextarrow1 = document.createElement('div');
-                                $(nextarrow1).attr('class', 'swiper-button-next').attr('id', 'next1');
-                                var prevarrow1 = document.createElement('div');
-                                $(prevarrow1).attr('class', 'swiper-button-prev').attr('id', 'prev1');
-
-
-                                $(articleslider).append(nextarrow1);
-                                $(articleslider).append(prevarrow1);
-
-
-                                // Add slider to Section
-
-                                $(section).append(articleslider);
-
-                            } else if (i.text < 1) {
-
-                                $(section).html('<div class="container"><h2>' +
-                                    i.title + '</h2></div>');
-
-                                // Create slider
-                                var articleslider = document.createElement('div');
-                                $(articleslider).attr('class', 'swiper-container article-slider').attr('id', 'article-slider-1');
-
-
-                                var articlesliderwrapper = document.createElement('div');
-                                $(articlesliderwrapper).attr('class', 'swiper-wrapper');
-                                $(articlesliderwrapper).css({
-                                    marginBottom: -50,
-                                    padding: '10px 0 80px'
-                                })
-
-                                // Add to slider
-                                var articleslides = i.article_slider;
-
-                                articleslides.forEach(x => {
-                                    $(articlesliderwrapper).append('<div class="swiper-slide single-article-thumb"><a href="' + x.article_link + '" target="_blank"><div class="thumb-cover"><h3>' + x.article_title + '</h3><span>View paper</span></div></a>');
-                                });
-
-
-                                // Add wrapper to slider
-
-                                $(articleslider).append(articlesliderwrapper);
-
-                                // Add controls
-
-                                var nextarrow1 = document.createElement('div');
-                                $(nextarrow1).attr('class', 'swiper-button-next').attr('id', next1);
-                                var prevarrow1 = document.createElement('div');
-                                $(prevarrow1).attr('class', 'swiper-button-prev').attr('id', prev1);
-
-
-                                $(articleslider).append(nextarrow1);
-                                $(articleslider).append(prevarrow1);
-
-
-                                // Add slider to Section
-
-                                $(section).append(articleslider);
-
-                            };
-
-                        } else if (articlesliders > 1) {
-
-                            // Check if contains text
-                            if (i.text > -1) {
-
-                                $(section).html('<div class="container"><h2>' +
-                                    i.title + '</h2>' +
-                                    i.text + '</div>');
-
-                                // Create slider
-                                var articleslider = document.createElement('div');
-                                $(articleslider).attr('class', 'swiper-container article-slider').attr('id', 'article-slider-2');
-
-
-                                var articlesliderwrapper = document.createElement('div');
-                                $(articlesliderwrapper).attr('class', 'swiper-wrapper');
-                                $(articlesliderwrapper).css({
-                                    marginBottom: -50,
-                                    padding: '10px 0 80px'
-                                })
-
-                                // Add to slider
-                                var articleslides = i.article_slider;
-                                articleslides.forEach(x => {
-                                    $(articlesliderwrapper).append('<div class="swiper-slide single-article-thumb"><a href="' + x.article_link + '" target="_blank"><div class="thumb-cover"><h3>' + x.article_title + '</h3><span>View paper</span></div></a>');
-                                });
-
-
-                                // Add wrapper to slider
-
-                                $(articleslider).append(articlesliderwrapper);
-
-                                // Add controls
-
-                                var nextarrow2 = document.createElement('div');
-                                $(nextarrow1).attr('class', 'swiper-button-next').attr('id', 'next2');
-                                var prevarrow2 = document.createElement('div');
-                                $(prevarrow1).attr('class', 'swiper-button-prev').attr('id', 'prev2');
-
-
-                                $(articleslider).append(nextarrow2);
-                                $(articleslider).append(prevarrow2);
-
-
-                                // Add slider to Section
-
-                                $(section).append(articleslider);
-
-                            } else if (i.text < 1) {
-
-                                $(section).html('<div class="container"><h2>' +
-                                    i.title + '</h2></div>');
-
-                                // Create slider
-                                var articleslider = document.createElement('div');
-                                $(articleslider).attr('class', 'swiper-container article-slider').attr('id', 'article-slider-2');
-
-
-                                var articlesliderwrapper = document.createElement('div');
-                                $(articlesliderwrapper).attr('class', 'swiper-wrapper');
-                                $(articlesliderwrapper).css({
-                                    marginBottom: -50,
-                                    padding: '10px 0 80px'
-                                })
-
-                                // Add to slider
-                                var articleslides = i.article_slider;
-
-                                articleslides.forEach(x => {
-                                    $(articlesliderwrapper).append('<div class="swiper-slide single-article-thumb"><a href="' + x.article_link + '" target="_blank"><div class="thumb-cover"><h3>' + x.article_title + '</h3><span>View paper</span></div></a>');
-                                });
-
-
-                                // Add wrapper to slider
-
-                                $(articleslider).append(articlesliderwrapper);
-
-                                // Add controls
-
-                                var nextarrow1 = document.createElement('div');
-                                $(nextarrow1).attr('class', 'swiper-button-next').attr('id', next1);
-                                var prevarrow1 = document.createElement('div');
-                                $(prevarrow1).attr('class', 'swiper-button-prev').attr('id', prev1);
-
-
-                                $(articleslider).append(nextarrow1);
-                                $(articleslider).append(prevarrow1);
-
-
-                                // Add slider to Section
-
-                                $(section).append(articleslider);
-
-                            };
-
-                        };
-                    } else
-
-
-                        ////////// Logo Slider
-
-                        if (i.acf_fc_layout == "logo_slider") {
-
-                            logosliders = logosliders + 1;
-
-                            // Check if only logo slider
-                            if (logosliders == 1) {
-
-                                // Check if contains text
-                                if (i.text > -1) {
-
-                                    $(section).html('<div class="container"><h2>' +
-                                        i.title + '</h2>' +
-                                        i.text + '</div>');
-
-                                    // Create slider
-                                    var logoslider = document.createElement('div');
-                                    $(logoslider).attr('class', 'swiper-container logo-slider').attr('id', 'logo-slider-1');
-
-
-                                    var logosliderwrapper = document.createElement('div');
-                                    $(logosliderwrapper).attr('class', 'swiper-wrapper');
-                                    $(logosliderwrapper).css({
-                                        marginBottom: -50,
-                                        padding: '10px 0 80px'
-                                    })
-
-                                    // Add to slider
-                                    var logoslides = i.logo_slider;
-                                    logoslides.forEach(x => {
-                                        $(logosliderwrapper).append('<div class="swiper-slide"><img src="' + x.logo + '" /><a href="' + x.logo_link + '" target="_blank"><span>Visit Website</a>');
-                                    });
-
-
-                                    // Add wrapper to slider
-
-                                    $(logoslider).append(logosliderwrapper);
-
-                                    // Add controls
-
-                                    var nextarrow3 = document.createElement('div');
-                                    $(nextarrow3).attr('class', 'swiper-button-next').attr('id', 'next3');
-                                    var prevarrow3 = document.createElement('div');
-                                    $(prevarrow3).attr('class', 'swiper-button-prev').attr('id', 'prev3');
-
-
-                                    $(logoslider).append(nextarrow3);
-                                    $(logoslider).append(prevarrow3);
-
-
-                                    // Add slider to Section
-
-                                    $(section).append(logoslider);
-
-                                } else if (i.text < 1) {
-
-                                    $(section).html('<div class="container"><h2>' +
-                                        i.title + '</h2></div>');
-
-                                    // Create slider
-                                    var logoslider = document.createElement('div');
-                                    $(logoslider).attr('class', 'swiper-container logo-slider').attr('id', 'logo-slider-1');
-
-
-                                    var logosliderwrapper = document.createElement('div');
-                                    $(logosliderwrapper).attr('class', 'swiper-wrapper');
-                                    $(logosliderwrapper).css({
-                                        marginBottom: -50,
-                                        padding: '10px 0 80px'
-                                    })
-
-                                    // Add to slider
-                                    var logoslides = i.logo_slider;
-                                    logoslides.forEach(x => {
-                                        $(logosliderwrapper).append('<div class="swiper-slide"><img src="' + x.logo + '" /><a href="' + x.logo_link + '" target="_blank"><span>Visit Website</a>');
-                                    });
-
-
-                                    // Add wrapper to slider
-
-                                    $(logoslider).append(logosliderwrapper);
-
-                                    // Add controls
-
-                                    var nextarrow3 = document.createElement('div');
-                                    $(nextarrow3).attr('class', 'swiper-button-next').attr('id', 'next3');
-                                    var prevarrow3 = document.createElement('div');
-                                    $(prevarrow3).attr('class', 'swiper-button-prev').attr('id', 'prev3');
-
-
-                                    $(logoslider).append(nextarrow3);
-                                    $(logoslider).append(prevarrow3);
-
-
-                                    // Add slider to Section
-
-                                    $(section).append(logoslider);
-
-                                };
-
-                            } else if (logosliders > 1) {
-
-                                // Check if contains text
-                                if (i.text > -1) {
-
-                                    $(section).html('<div class="container"><h2>' +
-                                        i.title + '</h2>' +
-                                        i.text + '</div>');
-
-                                    // Create slider
-                                    var logoslider = document.createElement('div');
-                                    $(logoslider).attr('class', 'swiper-container logo-slider').attr('id', 'logo-slider-2');
-
-
-                                    var logosliderwrapper = document.createElement('div');
-                                    $(logosliderwrapper).attr('class', 'swiper-wrapper');
-                                    $(logosliderwrapper).css({
-                                        marginBottom: -50,
-                                        padding: '10px 0 80px'
-                                    })
-
-                                    // Add to slider
-                                    var logoslides = i.logo_slider;
-                                    logoslides.forEach(x => {
-                                        $(logosliderwrapper).append('<div class="swiper-slide"><img src="' + x.logo + '" /><a href="' + x.logo_link + '" target="_blank"><span>Visit Website</a>');
-                                    });
-
-
-                                    // Add wrapper to slider
-
-                                    $(logoslider).append(logosliderwrapper);
-
-                                    // Add controls
-
-                                    var nextarrow4 = document.createElement('div');
-                                    $(nextarrow4).attr('class', 'swiper-button-next').attr('id', 'next4');
-                                    var prevarrow4 = document.createElement('div');
-                                    $(prevarrow4).attr('class', 'swiper-button-prev').attr('id', 'prev4');
-
-
-                                    $(logoslider).append(nextarrow4);
-                                    $(logoslider).append(prevarrow4);
-
-
-                                    // Add slider to Section
-
-                                    $(section).append(logoslider);
-
-                                } else if (i.text < 1) {
-
-                                    $(section).html('<div class="container"><h2>' +
-                                        i.title + '</h2></div>');
-
-                                    // Create slider
-                                    var logoslider = document.createElement('div');
-                                    $(logoslider).attr('class', 'swiper-container logo-slider').attr('id', 'logo-slider-2');
-
-
-                                    var logosliderwrapper = document.createElement('div');
-                                    $(logosliderwrapper).attr('class', 'swiper-wrapper');
-                                    $(logosliderwrapper).css({
-                                        marginBottom: -50,
-                                        padding: '10px 0 80px'
-                                    })
-
-                                    // Add to slider
-                                    var logoslides = i.logo_slider;
-                                    logoslides.forEach(x => {
-                                        $(logosliderwrapper).append('<div class="swiper-slide"><img src="' + x.logo + '" /><a href="' + x.logo_link + '" target="_blank"><span>Visit Website</a>');
-                                    });
-
-
-                                    // Add wrapper to slider
-
-                                    $(logoslider).append(logosliderwrapper);
-
-                                    // Add controls
-
-                                    var nextarrow4 = document.createElement('div');
-                                    $(nextarrow4).attr('class', 'swiper-button-next').attr('id', 'next4');
-                                    var prevarrow4 = document.createElement('div');
-                                    $(prevarrow4).attr('class', 'swiper-button-prev').attr('id', 'prev4');
-
-
-                                    $(logoslider).append(nextarrow4);
-                                    $(logoslider).append(prevarrow4);
-
-
-                                    // Add slider to Section
-
-                                    $(section).append(logoslider);
-
-                                };
-
-                            }
-                        }
-
-
-
-
-
-
-
-
-
-            $('.mainstory').append(section)
-
+                        // Create slider
+                        var articleslider = document.createElement("div");
+                        $(articleslider)
+                            .attr("class", "swiper-container article-slider")
+                            .attr("id", "article-slider-1");
+
+                        var articlesliderwrapper = document.createElement("div");
+                        $(articlesliderwrapper).attr("class", "swiper-wrapper");
+                        $(articlesliderwrapper).css({
+                            marginBottom: -50,
+                            padding: "10px 0 80px"
+                        });
+
+                        // Add to slider
+                        var articleslides = i.article_slider;
+
+                        articleslides.forEach(x => {
+                            $(articlesliderwrapper).append(
+                                '<div class="swiper-slide single-article-thumb"><a href="' +
+                                x.article_link +
+                                '" target="_blank"><div class="thumb-cover"><h3>' +
+                                x.article_title +
+                                "</h3><span>View paper</span></div></a>"
+                            );
+                        });
+
+                        // Add wrapper to slider
+
+                        $(articleslider).append(articlesliderwrapper);
+
+                        // Add controls
+
+                        var nextarrow1 = document.createElement("div");
+                        $(nextarrow1)
+                            .attr("class", "swiper-button-next")
+                            .attr("id", next1);
+                        var prevarrow1 = document.createElement("div");
+                        $(prevarrow1)
+                            .attr("class", "swiper-button-prev")
+                            .attr("id", prev1);
+
+                        $(articleslider).append(nextarrow1);
+                        $(articleslider).append(prevarrow1);
+
+                        // Add slider to Section
+
+                        $(section).append(articleslider);
+                    }
+                } else if (articlesliders > 1) {
+                    // Check if contains text
+                    if (i.text > -1) {
+                        $(section).html(
+                            '<div class="container"><h2>' +
+                            i.title +
+                            "</h2>" +
+                            i.text +
+                            "</div>"
+                        );
+
+                        // Create slider
+                        var articleslider = document.createElement("div");
+                        $(articleslider)
+                            .attr("class", "swiper-container article-slider")
+                            .attr("id", "article-slider-2");
+
+                        var articlesliderwrapper = document.createElement("div");
+                        $(articlesliderwrapper).attr("class", "swiper-wrapper");
+                        $(articlesliderwrapper).css({
+                            marginBottom: -50,
+                            padding: "10px 0 80px"
+                        });
+
+                        // Add to slider
+                        var articleslides = i.article_slider;
+                        articleslides.forEach(x => {
+                            $(articlesliderwrapper).append(
+                                '<div class="swiper-slide single-article-thumb"><a href="' +
+                                x.article_link +
+                                '" target="_blank"><div class="thumb-cover"><h3>' +
+                                x.article_title +
+                                "</h3><span>View paper</span></div></a>"
+                            );
+                        });
+
+                        // Add wrapper to slider
+
+                        $(articleslider).append(articlesliderwrapper);
+
+                        // Add controls
+
+                        var nextarrow2 = document.createElement("div");
+                        $(nextarrow1)
+                            .attr("class", "swiper-button-next")
+                            .attr("id", "next2");
+                        var prevarrow2 = document.createElement("div");
+                        $(prevarrow1)
+                            .attr("class", "swiper-button-prev")
+                            .attr("id", "prev2");
+
+                        $(articleslider).append(nextarrow2);
+                        $(articleslider).append(prevarrow2);
+
+                        // Add slider to Section
+
+                        $(section).append(articleslider);
+                    } else if (i.text < 1) {
+                        $(section).html(
+                            '<div class="container"><h2>' + i.title + "</h2></div>"
+                        );
+
+                        // Create slider
+                        var articleslider = document.createElement("div");
+                        $(articleslider)
+                            .attr("class", "swiper-container article-slider")
+                            .attr("id", "article-slider-2");
+
+                        var articlesliderwrapper = document.createElement("div");
+                        $(articlesliderwrapper).attr("class", "swiper-wrapper");
+                        $(articlesliderwrapper).css({
+                            marginBottom: -50,
+                            padding: "10px 0 80px"
+                        });
+
+                        // Add to slider
+                        var articleslides = i.article_slider;
+
+                        articleslides.forEach(x => {
+                            $(articlesliderwrapper).append(
+                                '<div class="swiper-slide single-article-thumb"><a href="' +
+                                x.article_link +
+                                '" target="_blank"><div class="thumb-cover"><h3>' +
+                                x.article_title +
+                                "</h3><span>View paper</span></div></a>"
+                            );
+                        });
+
+                        // Add wrapper to slider
+
+                        $(articleslider).append(articlesliderwrapper);
+
+                        // Add controls
+
+                        var nextarrow1 = document.createElement("div");
+                        $(nextarrow1)
+                            .attr("class", "swiper-button-next")
+                            .attr("id", next1);
+                        var prevarrow1 = document.createElement("div");
+                        $(prevarrow1)
+                            .attr("class", "swiper-button-prev")
+                            .attr("id", prev1);
+
+                        $(articleslider).append(nextarrow1);
+                        $(articleslider).append(prevarrow1);
+
+                        // Add slider to Section
+
+                        $(section).append(articleslider);
+                    }
+                }
+            }
+
+            ////////// Logo Slider
+            else if (i.acf_fc_layout == "logo_slider") {
+                logosliders = logosliders + 1;
+
+                // Check if only logo slider
+                if (logosliders == 1) {
+                    // Check if contains text
+                    if (i.text > -1) {
+                        $(section).html(
+                            '<div class="container"><h2>' +
+                            i.title +
+                            "</h2>" +
+                            i.text +
+                            "</div>"
+                        );
+
+                        // Create slider
+                        var logoslider = document.createElement("div");
+                        $(logoslider)
+                            .attr("class", "swiper-container logo-slider")
+                            .attr("id", "logo-slider-1");
+
+                        var logosliderwrapper = document.createElement("div");
+                        $(logosliderwrapper).attr("class", "swiper-wrapper");
+                        $(logosliderwrapper).css({
+                            marginBottom: -50,
+                            padding: "10px 0 80px"
+                        });
+
+                        // Add to slider
+                        var logoslides = i.logo_slider;
+                        logoslides.forEach(x => {
+                            $(logosliderwrapper).append(
+                                '<div class="swiper-slide"><img src="' +
+                                x.logo +
+                                '" /><a href="' +
+                                x.logo_link +
+                                '" target="_blank"><span>Visit Website</a>'
+                            );
+                        });
+
+                        // Add wrapper to slider
+
+                        $(logoslider).append(logosliderwrapper);
+
+                        // Add controls
+
+                        var nextarrow3 = document.createElement("div");
+                        $(nextarrow3)
+                            .attr("class", "swiper-button-next")
+                            .attr("id", "next3");
+                        var prevarrow3 = document.createElement("div");
+                        $(prevarrow3)
+                            .attr("class", "swiper-button-prev")
+                            .attr("id", "prev3");
+
+                        $(logoslider).append(nextarrow3);
+                        $(logoslider).append(prevarrow3);
+
+                        // Add slider to Section
+
+                        $(section).append(logoslider);
+                    } else if (i.text < 1) {
+                        $(section).html(
+                            '<div class="container"><h2>' + i.title + "</h2></div>"
+                        );
+
+                        // Create slider
+                        var logoslider = document.createElement("div");
+                        $(logoslider)
+                            .attr("class", "swiper-container logo-slider")
+                            .attr("id", "logo-slider-1");
+
+                        var logosliderwrapper = document.createElement("div");
+                        $(logosliderwrapper).attr("class", "swiper-wrapper");
+                        $(logosliderwrapper).css({
+                            marginBottom: -50,
+                            padding: "10px 0 80px"
+                        });
+
+                        // Add to slider
+                        var logoslides = i.logo_slider;
+                        logoslides.forEach(x => {
+                            $(logosliderwrapper).append(
+                                '<div class="swiper-slide"><img src="' +
+                                x.logo +
+                                '" /><a href="' +
+                                x.logo_link +
+                                '" target="_blank"><span>Visit Website</a>'
+                            );
+                        });
+
+                        // Add wrapper to slider
+
+                        $(logoslider).append(logosliderwrapper);
+
+                        // Add controls
+
+                        var nextarrow3 = document.createElement("div");
+                        $(nextarrow3)
+                            .attr("class", "swiper-button-next")
+                            .attr("id", "next3");
+                        var prevarrow3 = document.createElement("div");
+                        $(prevarrow3)
+                            .attr("class", "swiper-button-prev")
+                            .attr("id", "prev3");
+
+                        $(logoslider).append(nextarrow3);
+                        $(logoslider).append(prevarrow3);
+
+                        // Add slider to Section
+
+                        $(section).append(logoslider);
+                    }
+                } else if (logosliders > 1) {
+                    // Check if contains text
+                    if (i.text > -1) {
+                        $(section).html(
+                            '<div class="container"><h2>' +
+                            i.title +
+                            "</h2>" +
+                            i.text +
+                            "</div>"
+                        );
+
+                        // Create slider
+                        var logoslider = document.createElement("div");
+                        $(logoslider)
+                            .attr("class", "swiper-container logo-slider")
+                            .attr("id", "logo-slider-2");
+
+                        var logosliderwrapper = document.createElement("div");
+                        $(logosliderwrapper).attr("class", "swiper-wrapper");
+                        $(logosliderwrapper).css({
+                            marginBottom: -50,
+                            padding: "10px 0 80px"
+                        });
+
+                        // Add to slider
+                        var logoslides = i.logo_slider;
+                        logoslides.forEach(x => {
+                            $(logosliderwrapper).append(
+                                '<div class="swiper-slide"><img src="' +
+                                x.logo +
+                                '" /><a href="' +
+                                x.logo_link +
+                                '" target="_blank"><span>Visit Website</a>'
+                            );
+                        });
+
+                        // Add wrapper to slider
+
+                        $(logoslider).append(logosliderwrapper);
+
+                        // Add controls
+
+                        var nextarrow4 = document.createElement("div");
+                        $(nextarrow4)
+                            .attr("class", "swiper-button-next")
+                            .attr("id", "next4");
+                        var prevarrow4 = document.createElement("div");
+                        $(prevarrow4)
+                            .attr("class", "swiper-button-prev")
+                            .attr("id", "prev4");
+
+                        $(logoslider).append(nextarrow4);
+                        $(logoslider).append(prevarrow4);
+
+                        // Add slider to Section
+
+                        $(section).append(logoslider);
+                    } else if (i.text < 1) {
+                        $(section).html(
+                            '<div class="container"><h2>' + i.title + "</h2></div>"
+                        );
+
+                        // Create slider
+                        var logoslider = document.createElement("div");
+                        $(logoslider)
+                            .attr("class", "swiper-container logo-slider")
+                            .attr("id", "logo-slider-2");
+
+                        var logosliderwrapper = document.createElement("div");
+                        $(logosliderwrapper).attr("class", "swiper-wrapper");
+                        $(logosliderwrapper).css({
+                            marginBottom: -50,
+                            padding: "10px 0 80px"
+                        });
+
+                        // Add to slider
+                        var logoslides = i.logo_slider;
+                        logoslides.forEach(x => {
+                            $(logosliderwrapper).append(
+                                '<div class="swiper-slide"><img src="' +
+                                x.logo +
+                                '" /><a href="' +
+                                x.logo_link +
+                                '" target="_blank"><span>Visit Website</a>'
+                            );
+                        });
+
+                        // Add wrapper to slider
+
+                        $(logoslider).append(logosliderwrapper);
+
+                        // Add controls
+
+                        var nextarrow4 = document.createElement("div");
+                        $(nextarrow4)
+                            .attr("class", "swiper-button-next")
+                            .attr("id", "next4");
+                        var prevarrow4 = document.createElement("div");
+                        $(prevarrow4)
+                            .attr("class", "swiper-button-prev")
+                            .attr("id", "prev4");
+
+                        $(logoslider).append(nextarrow4);
+                        $(logoslider).append(prevarrow4);
+
+                        // Add slider to Section
+
+                        $(section).append(logoslider);
+                    }
+                }
+            }
+
+            $(".mainstory").append(section);
         });
 
         // Disclaimer
         $("#disclaimer .content").html(data.acf.disclaimer);
     }
 }).done(function () {
-
-
     $(() => {
         $('[data-toggle="tooltip"]').tooltip();
     });
 
     // Slider
 
-    var episwiper = new Swiper('#epilogue', {
+    var episwiper = new Swiper("#epilogue", {
         slidesPerView: 1,
-        direction: 'vertical',
+        direction: "vertical",
         parallax: true,
         speed: 1000,
         mousewheel: true
         // init: false,
     });
 
-
-    $('#epibutton').click(function () {
+    $("#epibutton").click(function () {
         episwiper.slideNext();
     });
 
     // 1st Article slider
-    var articleswiper = new Swiper('#article-slider-1', {
-        slidesPerView: 'auto',
+    var articleswiper = new Swiper("#article-slider-1", {
+        slidesPerView: "auto",
         spaceBetween: 30,
         centerInsufficientSlides: true,
         slidesOffsetBefore: 40,
         slidesOffsetAfter: 10,
         navigation: {
-            nextEl: '#next1',
-            prevEl: '#prev1',
+            nextEl: "#next1",
+            prevEl: "#prev1"
         }
     });
 
     // 2nd Article slider
-    var articleswiper2 = new Swiper('#article-slider-2', {
-        slidesPerView: 'auto',
+    var articleswiper2 = new Swiper("#article-slider-2", {
+        slidesPerView: "auto",
         spaceBetween: 30,
         centerInsufficientSlides: true,
         slidesOffsetBefore: 40,
         slidesOffsetAfter: 10,
         navigation: {
-            nextEl: '#next2',
-            prevEl: '#prev2',
+            nextEl: "#next2",
+            prevEl: "#prev2"
         }
     });
 
-    var logoswiper = new Swiper('#logo-slider-1', {
-        slidesPerView: 'auto',
+    var logoswiper = new Swiper("#logo-slider-1", {
+        slidesPerView: "auto",
         spaceBetween: 20,
         centerInsufficientSlides: true,
         slidesOffsetBefore: 10,
         slidesOffsetAfter: 10,
         // init: false,
         pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
+            el: ".swiper-pagination",
+            clickable: true
         },
         navigation: {
-            nextEl: '#next3',
-            prevEl: '#prev3',
+            nextEl: "#next3",
+            prevEl: "#prev3"
         }
     });
 
-    var logoswiper2 = new Swiper('#logo-slider-2', {
-        slidesPerView: 'auto',
+    var logoswiper2 = new Swiper("#logo-slider-2", {
+        slidesPerView: "auto",
         spaceBetween: 20,
         centerInsufficientSlides: true,
         slidesOffsetBefore: 10,
         slidesOffsetAfter: 10,
         // init: false,
         pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
+            el: ".swiper-pagination",
+            clickable: true
         },
         navigation: {
-            nextEl: '#next4',
-            prevEl: '#prev4',
+            nextEl: "#next4",
+            prevEl: "#prev4"
         }
     });
-
 
     $('a[href*="#"]')
         // Remove links that don't actually link to anything
@@ -621,7 +659,9 @@ $.ajax({
             ) {
                 // Figure out element to scroll to
                 var target = $(this.hash);
-                target = target.length ? target : $("[name=" + this.hash.slice(1) + "]");
+                target = target.length ?
+                    target :
+                    $("[name=" + this.hash.slice(1) + "]");
                 // Does a scroll target exist?
                 if (target.length) {
                     // Only prevent default if animation is actually gonna happen
@@ -647,5 +687,4 @@ $.ajax({
                 }
             }
         });
-
 });

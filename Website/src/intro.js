@@ -1,77 +1,64 @@
 import $ from "jquery";
-import {
-    GoogleCharts
-} from "google-charts";
-import iso3166 from "iso-3166-2";
-import Chart from "chart.js";
 import Swiper from "swiper";
-import {
-    downloadAndLoadWorkbook
-} from "./spreadsheet";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-var shapeanimations = ['fast-spin-right', 'fast-spin-left', 'spin-left', 'spin-right']
-$('.anim-shape').each(function () {
-    var rand = ~~(Math.random() * shapeanimations.length)
-    $(this).addClass(shapeanimations[rand])
+var shapeanimations = [
+  "fast-spin-right",
+  "fast-spin-left",
+  "spin-left",
+  "spin-right"
+];
+$(".anim-shape").each(function() {
+  var rand = ~~(Math.random() * shapeanimations.length);
+  $(this).addClass(shapeanimations[rand]);
 });
-
 
 // Jetson Intro
 
 $.ajax({
-    url: "https://www.unhcr.org/innovation/wp-json/wp/v2/pages/27745",
-//  url: "json/intro.json",
-    type: "GET",
-    success: data => {
+//  url: "https://www.unhcr.org/innovation/wp-json/wp/v2/pages/27745",
+   url: "json/intro.json",
+  type: "GET",
+  success: data => {
+    // Main intro
 
+    $(".hero-caption .content").prepend(data.acf.intro);
 
-        // Main intro
+    //
+    // Tech specs intro
 
-        $(".hero-caption .content").prepend(data.acf.intro);
+    $("#techspecsintro").html(data.acf.technical_specs_intro);
 
-        //
-        // Tech specs intro
+    // Story intro
 
-        $('#techspecsintro').html(data.acf.technical_specs_intro);
+    $("#storyintro").html(data.acf.stories_intro);
 
+    // Disclaimer
 
-        // Story intro
+    $("#disclaimer .content").html(data.acf.disclaimer);
+  }
+}).done(function() {
+  $("body").css({
+    opacity: 1
+  });
 
-        $('#storyintro').html(data.acf.stories_intro);
+  $(() => {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
 
+  // Slider
 
-        // Disclaimer
+  var episwiper = new Swiper("#epilogue", {
+    slidesPerView: 1,
+    direction: "vertical",
+    parallax: true,
+    speed: 1000,
+    mousewheel: true
+    // init: false,
+  });
 
-        $("#disclaimer .content").html(data.acf.disclaimer);
-
-
-    }
-}).done(function () {
-    
-    $('body').css({
-        opacity: 1
-    });
-
-    $(() => {
-        $('[data-toggle="tooltip"]').tooltip();
-    });
-
-    // Slider
-
-    var episwiper = new Swiper('#epilogue', {
-        slidesPerView: 1,
-        direction: 'vertical',
-        parallax: true,
-        speed: 1000,
-        mousewheel: true
-        // init: false,
-    });
-
-
-    $('#epibutton').click(function () {
-        episwiper.slideNext();
-    });
-
+  $("#epibutton").click(function() {
+    episwiper.slideNext();
+  });
 });
