@@ -212,7 +212,7 @@ ul.navbar-nav {
 
 .placeholder-content {
     height: 205px;
-    margin-top:100px;
+    margin-top: 100px;
     padding: 200px;
     overflow: hidden;
     background: #000;
@@ -1357,36 +1357,115 @@ footer .back-home a:hover span {
         width: 100%;
         margin-top: 10px;
     }
+    #epilogue .hero-caption .content {
+        max-width: 80%!important;
+    }
+    .slide-section {
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 50%
+    }
+    .slide-section a {
+        color: inherit;
+        padding: 0 30px;
+        text-align: center;
+        text-decoration: none;
+        z-index: 2
+    }
+    .slide-section.process-half {
+        background: #0072bb;
+        color: #fff
+    }
+    .slide-section.outcomes-half {
+        left: auto;
+        right: 0
+    }
 }
 
 
 /* Small Devices, Tablets */
 
 @media only screen and (max-width: 768px) {
-    .prediction h1 {
-        font-size: 70px;
-        position: relative;
+    #epilogue .hero-caption .content {
+        max-width: 100%!important;
     }
-    .engine img {
-        margin-top: 30px;
-        margin-bottom: -40px;
+    .h1,
+    h1 {
+        font-size: 1.5rem
     }
-    .faqs .col-sm-4 {
-        margin-bottom: 40px;
+    .h2,
+    h2 {
+        font-size: 1.2rem
     }
-    .prediction h1 #pred_accuracy {
-        font-size: 16px;
+    .navbar-light .navbar-toggler {
+        background: none !important;
     }
-    .prediction h1 #pred_date {
-        bottom: -30px;
-        right: auto;
+    .navbar-collapse.show {
+        background: #fff;
+        border-radius: 3px;
+        box-shadow: 0 10px 25px 0 rgba(0, 114, 188, .15);
+    }
+    .slide-section {
+        position: absolute;
         left: 0;
-        font-size: 16px;
+        right: 0;
+        top: 0;
+        height: 50%;
+        width: 100%;
     }
-    .hero p {
-        font-size: 15px;
-        letter-spacing: 0px;
-        margin-bottom: 10px;
+    .slide-section a {
+        color: inherit;
+        padding: 0 15px;
+        text-align: center;
+        text-decoration: none;
+        z-index: 2
+    }
+    .slide-section p {
+        font-size: 16px
+    }
+    .slide-section.process-half {
+        background: #0072bb;
+        color: #fff
+    }
+    .slide-section.outcomes-half {
+        top: 50%;
+    }
+    .swiper-slide .anim-shape {
+        opacity: .4;
+    }
+    .article-header {
+        height: 200px;
+    }
+    .article-header .anim-shape {
+        opacity: .4;
+    }
+    .single-article-thumb {
+        -webkit-transition: all .3s ease-in-out;
+        height: 250px;
+        width: 150px;
+        margin-top: 15px;
+        position: relative;
+        transition: all .3s ease-in-out;
+    }
+    .single-article-thumb .thumb-cover h3 {
+        -webkit-transform: translateZ(20px);
+        color: #000;
+        font-size: 16px;
+        line-height: 20px;
+        margin: 12px 0 0;
+        transform: translateZ(20px);
+        text-align: left;
+    }
+    .logo-slider .swiper-slide {
+        -webkit-box-shadow: 0 2px 19px 0 rgba(0, 0, 0, .12);
+        background: #fff;
+        box-shadow: 0 2px 19px 0 rgba(0, 0, 0, .12)
+    }
+    .logo-slider .swiper-slide a {
+        -webkit-transition: all .3s ease-in-out;
+        opacity: 1;
+        transition: all .3s ease-in-out
     }
 }
 
@@ -1438,6 +1517,3 @@ footer .back-home a:hover span {
         font-size: 14px;
     }
 }
-
-
-/* Custom, iPhone Retina */
