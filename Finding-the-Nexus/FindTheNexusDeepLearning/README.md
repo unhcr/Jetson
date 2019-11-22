@@ -1,22 +1,38 @@
 ### Using AI to Predict Droughts, Floods and Conflict Displacements in Somalia
-The goal of this challenge was to create a solution that quantifies the influence of climate anomalies on forced displacement and/or violent conflict through satellite imagery analysis. The focus was on building models that would help to understand forced displacement, using historical satellite imagery that portrays either climate anomalies/changes in the environment or/and its interrelation with violent conflict.
 
-Correlation between Vegetation Health Index- VHI values and number of individuals registered due to Conflict/Insecurity/Flood/Drought
-![Correlation between Vegetation Health Index- VHI values and number of individuals registered due to Conflict/Insecurity/Flood/Drought](https://miro.medium.com/max/2973/1*4wkjLXDfZiQN7al08xMfZw.png).
+The goal of this task is to build a neural network capable of predicting the weekly Vegetation Health Index (VHI) of Somalia.
 
-Correlation between the Number of Individuals from Hiiraan Displacements caused by flood and VHI data.
-![Correlation between the Number of Individuals from Hiiraan Displacements caused by flood and VHI data.](https://miro.medium.com/max/1598/1*YRClJxKzHAozNI-DtKme6Q.png)
+&nbsp;
 
-Correlation between the Number of Individuals from Sool Displacements caused by drought.
-![Correlation between the Number of Individuals from Sool Displacements caused by drought.](https://miro.medium.com/max/1613/1*ex8HMVNnb657vRaAyfs6sw.png)
+<p align="center">
+  <img src="https://miro.medium.com/max/2973/1*4wkjLXDfZiQN7al08xMfZw.png"/><br>
+  <i>Correlation between Vegetation Health Index (VHI) values and number of individuals registered due to Conflict/Insecurity/Flood/Drought</i>
+</p>
 
-A neural network that predicts the weekly VHI of Somalia by using historical data as described above. You can find it here.
-![A neural network that predicts the weekly VHI of Somalia by using historical data as described above. You can find it here.](https://miro.medium.com/max/836/1*1aD35jw5FDBNqeufEoMFKA.png)
+&nbsp;
 
+<p align="center">
+  <img src="https://miro.medium.com/max/1598/1*YRClJxKzHAozNI-DtKme6Q.png"/><br>
+  <i>Correlation between the number of individuals from Hiiraan Displacements caused by flood and VHI data.</i>
+</p>
 
+&nbsp;
 
-More details can be found in the Medium article [Using AI to Predict Droughts, Floods and Conflict Displacements in Somalia
-](https://medium.com/omdena/using-ai-to-predict-droughts-floods-and-conflict-displacements-in-somalia-40cba6200f3c)
+<p align="center">
+  <img src="https://miro.medium.com/max/1613/1*ex8HMVNnb657vRaAyfs6sw.png"/><br>
+  <i>Correlation between the number of individuals from Sool Displacements caused by drought.</i>
+</p>
+
+&nbsp;
+
+<p align="center">
+  <img src="https://miro.medium.com/max/836/1*1aD35jw5FDBNqeufEoMFKA.png"/><br>
+  <i>A neural network that predicts the weekly VHI of Somalia by using historical data</i>
+</p>
+
+&nbsp;
+
+More details can be found in this Medium article - [_Using AI to Predict Droughts, Floods and Conflict Displacements in Somalia_](https://medium.com/omdena/using-ai-to-predict-droughts-floods-and-conflict-displacements-in-somalia-40cba6200f3c)
 
 
 ### Getting Started
@@ -30,3 +46,12 @@ More details can be found in the Medium article [Using AI to Predict Droughts, F
 2. If you can't use a local GPU, you can use cloud platforms such as AWS, GCP, and FloydHub to train your networks on a GPU.[The project can be oppend also using  Google Colab](https://colab.research.google.com/) or using  [Kaggle Kernels](https://www.kaggle.com)
 3. How to reproduce the results can be found in [Jupyter Notebook  file](https://github.com/unhcr/Jetson/blob/master/Finding-the-Nexus/FindTheNexusDeepLearning/VHI%20and%20Displacements%20from%20Somanlia.ipynb) the same dataset split between training and testing for predicting and checking the prediction
 
+---
+
+
+### Examples 
+
+**Predict the weekly VHI of Somalia**
+
+> Here provide an example of how to predict the weekly VHI of Somalia using your model for a specified time period.
+This should be packaged into a separate script ready to be used. 
