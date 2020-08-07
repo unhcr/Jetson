@@ -15,7 +15,6 @@
 
 ## Project structure 
 
-
 ```bash
 ├── Landsat8 
 │   ├── EVI_calculation.py
