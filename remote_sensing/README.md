@@ -158,7 +158,7 @@ python plot_RGB_img.py --full_filename /path/where/image/stack/is/stored/xxxx.ti
 Example of a composite image
 
 <p align="center">
-  <img src="https://github.com/unhcr/Jetson/tree/master/remote_sensing/examples/RGB-Hiraan-2018-Mar-06.png?raw=true"/>
+  <img src="https://github.com/unhcr/Jetson/blob/master/remote_sensing/examples/RGB-Hiraan-2018-Mar-06.png?raw=true"/>
 </p>
 
     
@@ -178,6 +178,13 @@ plot_NDVI(ndvi,raster_stacked_filename)
 classify_NDVI(ndvi,raster_stacked_filename) #Categorise NDVI results into useful classes
 ```
 
+Examples of calculated NDVI for Hiraan
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/unhcr/Jetson/master/remote_sensing/examples/NDVI.png" width="275" />
+  <img src="https://raw.githubusercontent.com/unhcr/Jetson/master/remote_sensing/examples/NDVI-classes.png" width="275" />
+</p>
+
 
 #### VCI
 
@@ -195,7 +202,7 @@ classify_VCI(vci,selected_full_filename)
 Examples of calculated VCI for Hiraan
 
 <p align="center">
-  <img src="https://github.com/unhcr/Jetson/tree/master/remote_sensing/examples/Hiraan-2017-Apr-20.png" width="275" />
-  <img src="https://github.com/unhcr/Jetson/tree/master/remote_sensing/examples/Hiraan-2018-Mar-06.png" width="275" />
-  <img src="https://github.com/unhcr/Jetson/tree/master/remote_sensing/examples/Hiraan-2018-May-25.png" width="275" />
+  <img src="https://raw.githubusercontent.com/unhcr/Jetson/master/remote_sensing/examples/Hiraan-2017-Apr-20.png" width="275" />
+  <img src="https://raw.githubusercontent.com/unhcr/Jetson/master/remote_sensing/examples/Hiraan-2018-Mar-06.png" width="275" />
+  <img src="https://raw.githubusercontent.com/unhcr/Jetson/master/remote_sensing/examples/Hiraan-2018-May-25.png" width="275" />
 </p>
