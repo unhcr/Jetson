@@ -71,6 +71,21 @@ once per hour.
 ---
 
 
+# Bulk download example
+
+Username: user_xxx
+
+Email: email@email.com
+
+Order-id: espa-email@email.com-0102006107904 (can be found in the confirmation email received)
+
+
+```console
+python ./download_espa_order.py -d /Users/gkalliatakis/Desktop -u user_xxx -o espa-email@email.com-0102006107904
+```
+
+
+
 
 
 [1]: https://github.com/USGS-EROS/espa-bulk-downloader/archive/master.zip
