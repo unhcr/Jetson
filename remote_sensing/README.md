@@ -1,9 +1,6 @@
-# Remote sensing with Python and Landsat 8 products
+# Remote sensing with Python and Landsat 8 products in humanitarian contexts - finding the nexus between climate anomalies, human conflict and displacement
 
-
-## Installation
-
-### Requirements
+## Installation - Requirements
 
 * [espa-bulk-downloader](https://github.com/unhcr/Jetson/tree/master/remote_sensing/Landsat8/bulk-downloader) - Retrieves all completed scenes for the user/order
 and places them into the target directory
@@ -13,8 +10,6 @@ and places them into the target directory
 * [earthpy](https://earthpy.readthedocs.io/en/latest/get-started.html#install-earthpy) - EarthPy is a python package devoted to working with spatial and remote sensing data
 * [geopandas](https://geopandas.org/install.html) - GeoPandas is an open source project to make working with geospatial data in python easier
 
-
-
 ---
 
 
@@ -22,16 +17,16 @@ and places them into the target directory
 ## Project structure 
 
 ```bash
-├── Landsat8 
-│   ├── EVI_calculation.py
-│   ├── MNDWI_calculation.py
+├── Landsat8 # Main package for analysing Landsat 8 Satellite Images With Python Scientific Stack
+│   ├── EVI_calculation.py # Enhanced Vegetation Index (EVI)
+│   ├── MNDWI_calculation.py # Modified Normalized Difference Water Index (MNDWI)
 │   ├── NDVI_calculation.py
-│   ├── NDWI_calculation.py
+│   ├── NDWI_calculation.py # Normalized Difference Water Index (NDWI)
 │   ├── README.md
 │   ├── VCI_calculation.py
 │   ├── __init__.py
-│   ├── bands_combos.py
-│   ├── bulk-downloader -> Automatically downloads all completed espa scenes
+│   ├── bands_combos.py 
+│   ├── bulk-downloader # Automatically downloads all completed espa scenes
 │   │   ├── README.md
 │   │   ├── UNLICENSE
 │   │   ├── download.sh
@@ -39,20 +34,20 @@ and places them into the target directory
 │   │   ├── raster_processing.py
 │   │   └── setup.py
 │   ├── colour_img_processing_examples.py
-│   ├── indices_def.md -> Formal definitions for different spectral vegetation indices
-│   ├── landsat8_bands.py -> Explanation of Landsat 8 bands
-│   ├── landsat8_utils.py -> Utilities related to Landsat 8 image processing
-│   ├── plot_RGB_img.py -> Plots RGB band combination and creates composite images
+│   ├── indices_def.md # Formal definitions for different spectral vegetation indices
+│   ├── landsat8_bands.py # Explanation of Landsat 8 bands
+│   ├── landsat8_utils.py # Utilities related to Landsat 8 image processing
+│   ├── plot_RGB_img.py # Plots RGB band combination and creates composite images
 │   └── spectral_vegatation_indices
-│       ├── NDVI.py -> Calculate Normalized Difference Vegetation Index (NDVI)
+│       ├── NDVI.py # Calculate Normalized Difference Vegetation Index (NDVI)
 │       ├── README.md
-│       ├── VCI.py -> per pixel NDVI value re-scaled according to the minimum and maximum values observed 
+│       ├── VCI.py # per pixel NDVI value re-scaled according to the minimum and maximum values observed 
 │       ├── __init__.py
-│       ├── calculate_VCI.py -> Calculate Vegetation Condition Index (VCI)
-│       └── create_raster_stack.py -> Generates a NumPy raster stack from multispectral satellite data
+│       ├── calculate_VCI.py # Calculate Vegetation Condition Index (VCI)
+│       └── create_raster_stack.py # Generates a NumPy raster stack from multispectral satellite data
 ├── README.md
 ├── __init__.py
-└── utils.py -> Python utilities
+└── utils.py # Python utilities
 ```
 
 
@@ -77,7 +72,7 @@ After the order of Landsat products has been made available, run the following c
 python ./download_espa_order.py -d /path/to/a/dir/you/want/to/download -u username -o order_id
 ```
 
-### Downloaded data structure 
+Example of the structure for some downloaded data 
 
 ```bash
 ├── LC081630572013052001T1-SC20200610161219
@@ -116,8 +111,7 @@ Create a raster stack NumPy from the raw, multispectral satellite data:
 python create_raster_stack.py --root_dir xxxx --region_name yyyy
 ```
 
-File structure after the preprocessing step will be the following 
-(in this example Hiraan was used):
+File structure after the preprocessing step has been conducted (in this example Hiraan was used):
 
 ```bash
 ├── Hiraan-2013-Jun-28.tif
@@ -158,7 +152,7 @@ python plot_RGB_img.py --full_filename /path/where/image/stack/is/stored/xxxx.ti
 Example of a composite image
 
 <p align="center">
-  <img src="https://github.com/unhcr/Jetson/blob/master/remote_sensing/examples/RGB-Hiraan-2018-Mar-06.png?raw=true"/>
+  <img src="https://github.com/unhcr/Jetson/blob/master/remote_sensing/examples/RGB-Hiraan-2018-Mar-06.png?raw=true" width="280"/>
 </p>
 
     
@@ -178,11 +172,11 @@ plot_NDVI(ndvi,raster_stacked_filename)
 classify_NDVI(ndvi,raster_stacked_filename) #Categorise NDVI results into useful classes
 ```
 
-Examples of calculated NDVI for Hiraan
+Examples of calculated NDVI for Hiraan (click image to enlarge)
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/unhcr/Jetson/master/remote_sensing/examples/NDVI.png" width="275" />
-  <img src="https://raw.githubusercontent.com/unhcr/Jetson/master/remote_sensing/examples/NDVI-classes.png" width="275" />
+  <img src="https://raw.githubusercontent.com/unhcr/Jetson/master/remote_sensing/examples/NDVI.png" width="280" />
+  <img src="https://raw.githubusercontent.com/unhcr/Jetson/master/remote_sensing/examples/NDVI-classes.png" width="280" />
 </p>
 
 
@@ -199,7 +193,7 @@ plot_VCI(vci,selected_full_filename)
 classify_VCI(vci,selected_full_filename) 
 ```
 
-Examples of calculated VCI for Hiraan
+Examples of calculated VCI for Hiraan (click image to enlarge)
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/unhcr/Jetson/master/remote_sensing/examples/Hiraan-2017-Apr-20.png" width="275" />
