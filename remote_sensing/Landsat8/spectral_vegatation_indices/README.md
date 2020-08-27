@@ -5,56 +5,89 @@ SVIs are designed to enhance the vegetation signal in remotely sensed data
 and provide an approximate measure of live, green vegetation amount.
 
 
-## Getting started with quick examples
 
-### [1] Download Landsat products
-After the order of Landsat products has been made available, run the following command inside the 'bulk-downloader' directory to bulk download the data:
+## Normalized Difference Vegetation Index (NDVI)
+NDVI stands for Normalized Difference Vegetation Index, which is the common
+measurement for the greenness of vegetation. In remote sensing, NDVI is used as an indicator for
+the greenness measurement in vegetation and shows the difference in the response of vegetation
+between red light and the near-infrared wavelengths.
 
-```console
-python ./download_espa_order.py -d /path/to/a/dir/you/want/to/download -u username -o order_id
-```
+Tucker (1979) proposed the NDVI index as an index for the diagnosis and detection of the
+healthiness and density of vegetation, which has since been used for the estimation of biomass,
+Leaf Area Index (LAR), plant production, the green cover identification, and land changes.
 
+Chlorophyll, pigments and the intercellular structure of leaves in green vegetation absorb the
+red spectra and reflect highly the Near-Infrared (NIR) spectra. In fact, NDVI is the normalized
+difference between the red (R) band and the Near-Infrared (NIR) band. NDVI is well correlated
+with green leaf biomass; it is positively dependent upon green leaf biomass or Leaf Area Index
+(LAI). Water stresses such as drought decrease the contrast while the high quantity and quality of
+plants increases this ratio (Thenkabail et al. 2004)
 
-### [2] Pre-processing step(s)
-  
-Create a raster stack NumPy from the raw, multispectral satellite data:
-    
-```console
-python create_raster_stack.py --root_dir xxxx --region_name yyyy
-```
-    
-Optionally - plot composite RGB Image (for visual inspection)
+Because of the normalization of the ratio between two bands, NDVI has some advantages,
+such as the reduction of the atmosphere effects, the correction of topography effects, and the
+correction of the solar radiation variations (Guyot and Gu 1994). Nevertheless, in some areas
+like drylands, the interaction between soil and vegetation are not resolved, such as mixed pixels.
 
-```console
-python plot_RGB_img.py --full_filename /path/where/image/stack/is/stored/xxxx.tif --to_file filename_to_save_the_plot.png
-```
-    
+The Normalized Difference Vegetation Index (NDVI) is an indicator of the greenness of the biomes. 
+As such, it is closely linked to the [FAPAR](https://land.copernicus.eu/global/products/fapar).
 
-### [3] Calculate spectral vegetation indices
-
-#### NDVI
-
-```python
-from remote_sensing.Landsat8.spectral_vegatation_indices.NDVI import calculate_NDVI, plot_NDVI, classify_NDVI
-from remote_sensing.utils import splitall
-
-full_filename = '/path/where/raster/stacks/are/stored/Hiraan-2013-May-20.tif'
-allparts, raster_stacked_filename = splitall(full_filename)
-ndvi = calculate_NDVI(full_filename)
-plot_NDVI(ndvi,raster_stacked_filename)
-classify_NDVI(ndvi,raster_stacked_filename) #Categorise NDVI results into useful classes
-```
+[Reference](http://othes.univie.ac.at/14090/1/2011-02-03_0549582.pdf)
 
 
-#### VCI
+### Vegetation Condition Index (VCI)
+The Vegetation Condition Index (VCI) compares the current NDVI to the range of values 
+observed in the same period in previous years. 
+The VCI is expressed in % and gives an idea where the observed value is situated 
+between the extreme values (minimum and maximum) in the previous years. 
+Lower and higher values indicate bad and good vegetation state conditions, respectively.
 
-```python
-from remote_sensing.Landsat8.spectral_vegatation_indices.VCI import calculate_VCI, plot_VCI, classify_VCI
-from remote_sensing.utils import splitall
+Reference https://land.copernicus.eu/global/products/vci
 
-full_filename = '/path/where/raster/stacks/are/stored/Hiraan-2013-May-20.tif'
-allparts, selected_full_filename = splitall(full_filename)
-vci = calculate_VCI(full_filename)
-plot_VCI(vci,selected_full_filename)
-classify_VCI(vci,selected_full_filename) 
-```
+
+### Vegetation Health Index (VHI)
+Vegetation Health Index (VHI) is based on Temperature Condition Index (TCI) and Vegetation
+Condition Index (VCI), even though there is no significant correlation between TCI and VCI.
+However, each index provides additional information about land surface. In other words,
+Temperature Condition Index (TCI) provides information about the thermal properties of land
+surface, and Vegetation Condition Index (VCI) also indicates the status of vegetation. The
+integration of these two indices is defined as Vegetation Health Condition (VHI).
+The integration of these indexes is necessary to evaluate land surface temperature and the vegetation
+canopy status. 
+
+In the affected areas the quality of vegetation decreases due to erosion and drought.
+Therefore, the health of the vegetation is a practical indicator to detect land degradation. The
+index has many advantages such giving information about the reduction of climatic and
+temporal noise in time series data and the fluctuations of NDVI and LST independent to
+weather conditions.
+
+### Vegetation Productivity Index (VPI)
+The Vegetation Productivity Index (VPI) assesses the overall vegetation condition 
+by referencing the current value of the NDVI with the long-term statistics for 
+the same period. The VPI is a percentile ranking of the current NDVI value against 
+its historical range of variability: values of 0%, 50% and 100% respectively 
+indicate that the current observation corresponds with the historical minimum 
+(worst vegetation state), median (normal) or maximum (best situation) ever observed.
+
+Reference https://land.copernicus.eu/global/products/vpi
+
+
+Since the VCI & VPI are NDVI-derived products, their quality depends entirely on the quality 
+of the NDVI and the length of the historical time series available. 
+In particular, they are sensitive to cloud contamination in the original NDVI dataset. 
+This may lead to a below normal value which is not due to low vegetation activity. 
+Because of this, it is important to consider successive dekades to see if the 
+trend on the considered area persists, as it can be seen on the temporal profiles below.
+
+
+
+### References
+[1] [Vegetation Condition Indices for Crop Vegetation Condition Monitoring](https://www.nass.usda.gov/Education_and_Outreach/Reports,_Presentations_and_Conferences/Presentations/Yang_IGARSS11_VegeConditionMonitoring.pdf)
+
+[2] [The Use of Remote Sensing to Evaluate and Detect Desert Regions](http://othes.univie.ac.at/14090/1/2011-02-03_0549582.pdf)
+
+
+
+
+
+
+

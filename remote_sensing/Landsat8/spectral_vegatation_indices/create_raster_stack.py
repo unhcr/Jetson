@@ -23,7 +23,7 @@ args = get_args()
 
 
 
-# create_raster_stack(args.root_dir,args.region_name)
+create_raster_stack(args.root_dir,args.region_name)
 
 
 create_raster_stack('/Users/gkalliatakis/Desktop/espa-gkallia@essex.ac.uk-0102006107904','Hiraan')

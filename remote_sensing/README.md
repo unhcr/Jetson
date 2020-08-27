@@ -106,12 +106,14 @@ Example of the structure for some downloaded data
 ### Pre-processing step(s)
   
 Create a raster stack NumPy from the raw, multispectral satellite data:
+
+⚠️ Downloaded multispectral data must be first unzipped to `root_dir`. 
     
 ```console
 python create_raster_stack.py --root_dir xxxx --region_name yyyy
 ```
 
-File structure after the preprocessing step has been conducted (in this example Hiraan was used):
+File structure after the preprocessing step has been conducted (in this example Hiraan was given as the `region_name`):
 
 ```bash
 ├── Hiraan-2013-Jun-28.tif
@@ -143,7 +145,7 @@ File structure after the preprocessing step has been conducted (in this example 
 └── Hiraan-2018-May-25.tif
 ```
 
-Optionally - plot composite RGB Image (for visual inspection)
+Optionally, composite RGB image can be plotted for visual inspection.
 
 ```console
 python plot_RGB_img.py --full_filename /path/where/image/stack/is/stored/xxxx.tif --to_file filename_to_save_the_plot.png
@@ -182,15 +184,23 @@ Examples of calculated NDVI for Hiraan (click image to enlarge)
 
 #### VCI
 
+⚠️ The folder that contains the historical data of the study area must be created **manually**.
+This can be done by gathering stacked rasters from the same period in previous years. 
+
+For instance, if the selected study area is Hiraan & the instance we want to compare is the one
+taken at 20 May 2013 (this will be the `full_filename`), 
+the `study_dir_of_stacked_raster` can be created by collecting stacked rasters from previous years from the same month (May 2012, May 2011 etc.).
+
 ```python
 from remote_sensing.Landsat8.spectral_vegatation_indices.VCI import calculate_VCI, plot_VCI, classify_VCI
 from remote_sensing.utils import splitall
 
 full_filename = '/path/where/raster/stacks/are/stored/Hiraan-2013-May-20.tif'
+study_dir_of_stacked_raster = '/path/where/stacked/rasters/of/the/study/area/are/stored/study_test_folder'
 allparts, selected_full_filename = splitall(full_filename)
-vci = calculate_VCI(full_filename)
+vci = calculate_VCI(full_filename, study_dir_of_stacked_raster)
 plot_VCI(vci,selected_full_filename)
-classify_VCI(vci,selected_full_filename) 
+classify_VCI(vci,selected_full_filename)
 ```
 
 Examples of calculated VCI for Hiraan (click image to enlarge)
