@@ -1021,7 +1021,7 @@ $.ajax({
       return new Promise((resolve, reject) => {
         // const predictionsXLSXURL =
         //   "https://docs.google.com/spreadsheets/d/2PACX-1vRWHN3E7tMgskw5R7u-MQwkuI9TnxeTfYQdWF96D5bZWgpMjfwcZNJ5HS_80LdsSTrUICGdbUo05iWi/gviz/tq?sheet=LATEST RESULTS";
-        // const correlationsXLXSURL = "https://docs.google.com/spreadsheets/d/2PACX-1vTGcnmYMki3euv4bcsgBqBRY1-sDl6zkVl0gGC8THLygJoYlYnfm4cY5bVCA8BXnmciFXnp6aEvow31/pub?key=AIzaSyBJWeZnT7VkViJKfr-qAit9HTxw8aGZPPM&output=xlsx";
+        // const correlationsXLXSURL = "https://docs.google.com/spreadsheets/d/2PACX-1vTGcnmYMki3euv4bcsgBqBRY1-sDl6zkVl0gGC8THLygJoYlYnfm4cY5bVCA8BXnmciFXnp6aEvow31/pub?output=xlsx";
 
         const predictionsXLSXURL = "/sheets/predictions.xlsx";
         const correlationsXLXSURL = "/sheets/correlations.xlsx";
