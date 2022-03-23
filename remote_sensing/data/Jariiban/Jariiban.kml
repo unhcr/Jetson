@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="Somalia_Adminstrative_Boundaries" id="Somalia_Adminstrative_Boundaries">
+	<SimpleField name="OBJECTID" type="int"></SimpleField>
+	<SimpleField name="REG_NAME" type="string"></SimpleField>
+	<SimpleField name="REG_CODE" type="int"></SimpleField>
+	<SimpleField name="REG_ALT" type="string"></SimpleField>
+	<SimpleField name="DIST_NAME" type="string"></SimpleField>
+	<SimpleField name="DIS_CODE" type="int"></SimpleField>
+	<SimpleField name="DIST_ALT" type="string"></SimpleField>
+	<SimpleField name="NOTE" type="string"></SimpleField>
+	<SimpleField name="Area" type="float"></SimpleField>
+	<SimpleField name="DIST_2_NAM" type="string"></SimpleField>
+	<SimpleField name="GlobalID" type="string"></SimpleField>
+</Schema>
+<Folder><name>Somalia_Adminstrative_Boundaries</name>  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Somalia_Adminstrative_Boundaries">
+		<SimpleData name="OBJECTID">32</SimpleData>
+		<SimpleData name="REG_NAME">Mudug</SimpleData>
+		<SimpleData name="REG_CODE">18</SimpleData>
+		<SimpleData name="REG_ALT"></SimpleData>
+		<SimpleData name="DIST_NAME">Jariiban</SimpleData>
+		<SimpleData name="DIS_CODE">1804</SimpleData>
+		<SimpleData name="DIST_ALT"></SimpleData>
+		<SimpleData name="NOTE"></SimpleData>
+		<SimpleData name="Area">10975.8617279</SimpleData>
+		<SimpleData name="DIST_2_NAM">Jariiban</SimpleData>
+		<SimpleData name="GlobalID">3088a247-2278-41bc-a8e7-b5304fec2e8d</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>49.0515098567981,7.70985698723921 49.1910476680951,7.70113611191492 49.2677726750022,7.66431140860475 49.4410514832553,7.58114671743491 49.5010566714968,7.57114791873655 49.6507682797807,7.39899587656534 49.6409454348125,7.38445234307601 49.6049385067225,7.33113717992302 49.5761070255764,7.29495906826956 49.5668449404496,7.28217506450139 49.5463867189489,7.25395059556805 49.53059768697,7.23573827737266 49.5191764830916,7.21777439126731 49.4913825992177,7.18093633636045 49.4764137263984,7.16108560555228 49.4273338315744,7.08254051172125 49.4213523866786,7.07594633127854 49.3985023495299,7.05071210835826 49.3759231571344,7.01063823717258 49.3622627254421,6.98140096669423 49.354614258009,6.96959590925824 49.3385238646086,6.94476556747827 49.3259391780454,6.93000507336678 49.3207092286821,6.91619634666828 49.3133888241941,6.90904092803812 49.3083992002205,6.89546298963625 49.3031387332903,6.88854551284796 49.2897300724227,6.86255693411737 49.2867393490765,6.85676383963625 49.2604980468645,6.81436681725336 49.2580184936611,6.80539369605088 49.2529792781921,6.80146360359084 49.2465896603908,6.79224395726571 49.2288208008147,6.75861310983603 49.2259101865306,6.75447845477657 49.2121505736444,6.73486804931356 49.2096595768026,6.72635412218519 49.2081603999845,6.70474767724994 49.2001991274914,6.68862438204629 49.1806907657074,6.63837623632479 49.1745491026875,6.62255144093622 49.164546966565,6.60102224358127 48.6710357664283,6.63123607627617 48.4910354613854,6.74122571907949 48.5314559939259,7.428382873694 49.0310440059056,7.71113586384463 49.0515098567981,7.70985698723921</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+ </Folder>
+</Document></kml>

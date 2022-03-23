@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="Somalia_Adminstrative_Boundaries" id="Somalia_Adminstrative_Boundaries">
+	<SimpleField name="OBJECTID" type="int"></SimpleField>
+	<SimpleField name="REG_NAME" type="string"></SimpleField>
+	<SimpleField name="REG_CODE" type="int"></SimpleField>
+	<SimpleField name="REG_ALT" type="string"></SimpleField>
+	<SimpleField name="DIST_NAME" type="string"></SimpleField>
+	<SimpleField name="DIS_CODE" type="int"></SimpleField>
+	<SimpleField name="DIST_ALT" type="string"></SimpleField>
+	<SimpleField name="NOTE" type="string"></SimpleField>
+	<SimpleField name="Area" type="float"></SimpleField>
+	<SimpleField name="DIST_2_NAM" type="string"></SimpleField>
+	<SimpleField name="GlobalID" type="string"></SimpleField>
+</Schema>
+<Folder><name>Somalia_Adminstrative_Boundaries</name>  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Somalia_Adminstrative_Boundaries">
+		<SimpleData name="OBJECTID">5</SimpleData>
+		<SimpleData name="REG_NAME">Awdal</SimpleData>
+		<SimpleData name="REG_CODE">11</SimpleData>
+		<SimpleData name="REG_ALT"></SimpleData>
+		<SimpleData name="DIST_NAME">Zeylac</SimpleData>
+		<SimpleData name="DIS_CODE">1104</SimpleData>
+		<SimpleData name="DIST_ALT">Saylac</SimpleData>
+		<SimpleData name="NOTE"></SimpleData>
+		<SimpleData name="Area">6082.2950477</SimpleData>
+		<SimpleData name="DIST_2_NAM">Zeylac</SimpleData>
+		<SimpleData name="GlobalID">7692b08e-5c79-4930-ac9a-b8f12e324674</SimpleData>
+	</SchemaData></ExtendedData>
+
+	  <Polygon>
+	  <outerBoundaryIs>
+	  <LinearRing>
+	  <coordinates>43.4689178464369,11.4282083506585 43.4561271662977,11.4216890330015 43.4556159970532,11.4288482666702 43.451564789158,11.4326686856119 43.4596557613101,11.4464063642207 43.4638061521959,11.4483366009323 43.4700851442666,11.4489259720304 43.4736366274541,11.4469366076563 43.4748954770859,11.4423675535919 43.4729843140139,11.4340476987619 43.4689178464369,11.4282083506585</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+ </Folder>
+</Document></kml>

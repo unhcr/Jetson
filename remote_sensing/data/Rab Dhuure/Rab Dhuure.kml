@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="Somalia_Adminstrative_Boundaries" id="Somalia_Adminstrative_Boundaries">
+	<SimpleField name="OBJECTID" type="int"></SimpleField>
+	<SimpleField name="REG_NAME" type="string"></SimpleField>
+	<SimpleField name="REG_CODE" type="int"></SimpleField>
+	<SimpleField name="REG_ALT" type="string"></SimpleField>
+	<SimpleField name="DIST_NAME" type="string"></SimpleField>
+	<SimpleField name="DIS_CODE" type="int"></SimpleField>
+	<SimpleField name="DIST_ALT" type="string"></SimpleField>
+	<SimpleField name="NOTE" type="string"></SimpleField>
+	<SimpleField name="Area" type="float"></SimpleField>
+	<SimpleField name="DIST_2_NAM" type="string"></SimpleField>
+	<SimpleField name="GlobalID" type="string"></SimpleField>
+</Schema>
+<Folder><name>Somalia_Adminstrative_Boundaries</name>  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Somalia_Adminstrative_Boundaries">
+		<SimpleData name="OBJECTID">61</SimpleData>
+		<SimpleData name="REG_NAME">Bakool</SimpleData>
+		<SimpleData name="REG_CODE">25</SimpleData>
+		<SimpleData name="REG_ALT"></SimpleData>
+		<SimpleData name="DIST_NAME">Rab Dhuure</SimpleData>
+		<SimpleData name="DIS_CODE">2505</SimpleData>
+		<SimpleData name="DIST_ALT">Yeed, Biyole</SimpleData>
+		<SimpleData name="NOTE"></SimpleData>
+		<SimpleData name="Area">3309.76800586</SimpleData>
+		<SimpleData name="DIST_2_NAM">Rab Dhuure</SimpleData>
+		<SimpleData name="GlobalID">03dabb79-12c2-444d-974d-5021da6592d1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>43.2809257504358,4.48144102085093 43.6309356689357,4.05147981682377 43.0914421079067,3.94774270066868 42.8909187319828,4.29145860657722 42.8850784303845,4.30842924099276 42.8989677429297,4.32001018514221 42.9265785214025,4.34954738601999 42.9405899051133,4.36581277824078 42.9530181886973,4.38136959075195 42.9701576230084,4.40480041482275 42.9820785524929,4.42402982731162 42.9910812374034,4.43839550040429 42.9984703064167,4.45319986329001 43.0043220516534,4.46315813038839 43.0081443786957,4.46918249160596 43.0105934143323,4.47542095174311 43.0132446292983,4.48372983962062 43.0221633909,4.5249986649781 43.022792816165,4.52983522454556 43.0247726437624,4.5367574689888 43.0269813540094,4.54368257533232 43.0312538142642,4.55063247646756 43.0357131959633,4.56172227823607 43.0400123595383,4.56683301954342 43.0452041628414,4.57356166811481 43.0810623164455,4.60411119453321 43.1233749390279,4.63266372718146 43.1273117069459,4.63503599171181 43.2809257504358,4.48144102085093</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+ </Folder>
+</Document></kml>

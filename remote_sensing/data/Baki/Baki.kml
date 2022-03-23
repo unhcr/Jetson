@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="Somalia_Adminstrative_Boundaries" id="Somalia_Adminstrative_Boundaries">
+	<SimpleField name="OBJECTID" type="int"></SimpleField>
+	<SimpleField name="REG_NAME" type="string"></SimpleField>
+	<SimpleField name="REG_CODE" type="int"></SimpleField>
+	<SimpleField name="REG_ALT" type="string"></SimpleField>
+	<SimpleField name="DIST_NAME" type="string"></SimpleField>
+	<SimpleField name="DIS_CODE" type="int"></SimpleField>
+	<SimpleField name="DIST_ALT" type="string"></SimpleField>
+	<SimpleField name="NOTE" type="string"></SimpleField>
+	<SimpleField name="Area" type="float"></SimpleField>
+	<SimpleField name="DIST_2_NAM" type="string"></SimpleField>
+	<SimpleField name="GlobalID" type="string"></SimpleField>
+</Schema>
+<Folder><name>Somalia_Adminstrative_Boundaries</name>  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Somalia_Adminstrative_Boundaries">
+		<SimpleData name="OBJECTID">3</SimpleData>
+		<SimpleData name="REG_NAME">Awdal</SimpleData>
+		<SimpleData name="REG_CODE">11</SimpleData>
+		<SimpleData name="REG_ALT"></SimpleData>
+		<SimpleData name="DIST_NAME">Baki</SimpleData>
+		<SimpleData name="DIS_CODE">1102</SimpleData>
+		<SimpleData name="DIST_ALT"></SimpleData>
+		<SimpleData name="NOTE"></SimpleData>
+		<SimpleData name="Area">3424.03465892</SimpleData>
+		<SimpleData name="DIST_2_NAM">Baki</SimpleData>
+		<SimpleData name="GlobalID">4551fb19-9b6a-4a9e-aafc-c6a3a08ee64b</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>44.0736885071743,10.5983095171566 44.0828475950639,10.5858211513 44.0970458984224,10.5727615360022 44.111186980894,10.5629224780948 44.1184692384234,10.5589227676173 44.131748199632,10.5568723679342 44.141345977994,10.5536136624709 44.1495780943419,10.5484838487967 44.1852378846599,10.5195064541242 44.2026367191874,10.508577346926 44.208099365447,10.502937317236 44.2189788816159,10.4921579360768 44.2353820800764,10.4759197237759 44.2372512819432,10.474289894105 44.1509590151393,10.320913314698 44.0409545899238,10.1709270481032 43.8209495546377,10.2909173963532 43.7609481815412,10.3009166718026 43.7209510806897,10.2609205243018 43.5309410092344,9.9909448625899 43.3709373470448,9.80096244841357 43.3309402461933,9.84095859564613 43.3509368899448,10.0509405135624 43.3909416201881,10.4109077450454 43.4609413142621,10.3809108732809 44.0736885071743,10.5983095171566</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+ </Folder>
+</Document></kml>

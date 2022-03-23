@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="Somalia_Adminstrative_Boundaries" id="Somalia_Adminstrative_Boundaries">
+	<SimpleField name="OBJECTID" type="int"></SimpleField>
+	<SimpleField name="REG_NAME" type="string"></SimpleField>
+	<SimpleField name="REG_CODE" type="int"></SimpleField>
+	<SimpleField name="REG_ALT" type="string"></SimpleField>
+	<SimpleField name="DIST_NAME" type="string"></SimpleField>
+	<SimpleField name="DIS_CODE" type="int"></SimpleField>
+	<SimpleField name="DIST_ALT" type="string"></SimpleField>
+	<SimpleField name="NOTE" type="string"></SimpleField>
+	<SimpleField name="Area" type="float"></SimpleField>
+	<SimpleField name="DIST_2_NAM" type="string"></SimpleField>
+	<SimpleField name="GlobalID" type="string"></SimpleField>
+</Schema>
+<Folder><name>Somalia_Adminstrative_Boundaries</name>  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Somalia_Adminstrative_Boundaries">
+		<SimpleData name="OBJECTID">51</SimpleData>
+		<SimpleData name="REG_NAME">Shabelle Hoose</SimpleData>
+		<SimpleData name="REG_CODE">23</SimpleData>
+		<SimpleData name="REG_ALT">Lower Shabelle, Shabeellaha Hoose</SimpleData>
+		<SimpleData name="DIST_NAME">Sablaale</SimpleData>
+		<SimpleData name="DIS_CODE">2306</SimpleData>
+		<SimpleData name="DIST_ALT">Sablale</SimpleData>
+		<SimpleData name="NOTE">Shabelle Hoose now includes Aw Dheegle district (2308), but no boundary exists as yet for this district</SimpleData>
+		<SimpleData name="Area">5992.4764392</SimpleData>
+		<SimpleData name="DIST_2_NAM">Sablaale</SimpleData>
+		<SimpleData name="GlobalID">dea4dc46-3359-4e95-b6b2-29a80b341945</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>43.5853805539791,1.76346564286503 44.1509437563559,1.44171547925847 43.3396873478289,0.937209666163488 43.2709236143134,1.03175258615945 43.2610435484582,1.04640734227559 42.980918884055,1.46171414873782 43.3109283445566,1.62670004350261 43.3209266664324,1.6316987275851 43.5809326168167,1.76168680194567 43.5853805539791,1.76346564286503</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+ </Folder>
+</Document></kml>

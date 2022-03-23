@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="Somalia_Adminstrative_Boundaries" id="Somalia_Adminstrative_Boundaries">
+	<SimpleField name="OBJECTID" type="int"></SimpleField>
+	<SimpleField name="REG_NAME" type="string"></SimpleField>
+	<SimpleField name="REG_CODE" type="int"></SimpleField>
+	<SimpleField name="REG_ALT" type="string"></SimpleField>
+	<SimpleField name="DIST_NAME" type="string"></SimpleField>
+	<SimpleField name="DIS_CODE" type="int"></SimpleField>
+	<SimpleField name="DIST_ALT" type="string"></SimpleField>
+	<SimpleField name="NOTE" type="string"></SimpleField>
+	<SimpleField name="Area" type="float"></SimpleField>
+	<SimpleField name="DIST_2_NAM" type="string"></SimpleField>
+	<SimpleField name="GlobalID" type="string"></SimpleField>
+</Schema>
+<Folder><name>Somalia_Adminstrative_Boundaries</name>  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Somalia_Adminstrative_Boundaries">
+		<SimpleData name="OBJECTID">56</SimpleData>
+		<SimpleData name="REG_NAME">Bay</SimpleData>
+		<SimpleData name="REG_CODE">24</SimpleData>
+		<SimpleData name="REG_ALT"></SimpleData>
+		<SimpleData name="DIST_NAME">Qansax Dheere</SimpleData>
+		<SimpleData name="DIS_CODE">2404</SimpleData>
+		<SimpleData name="DIST_ALT">Qansah Dere</SimpleData>
+		<SimpleData name="NOTE">Bay region now includes Bardaale district (2405), but no boundary exists as yet for this district</SimpleData>
+		<SimpleData name="Area">3268.60038171</SimpleData>
+		<SimpleData name="DIST_2_NAM">Qansax Dheere</SimpleData>
+		<SimpleData name="GlobalID">19987246-312e-46b8-8d45-3bd6a93acb32</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>43.1009216311463,3.08156800304288 43.1209220882463,3.08156776443653 43.1209220882463,2.57161402671043 42.5159873960363,2.60041785276412 42.5409126277296,2.74159908299013 42.5426216123705,2.75102639163617 42.6009101865794,3.07156920388494 42.6784515383992,3.06452107420167 42.930919647081,3.04157161699289 43.1009216311463,3.06156969034658 43.1009216311463,3.08156800304288</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+ </Folder>
+</Document></kml>

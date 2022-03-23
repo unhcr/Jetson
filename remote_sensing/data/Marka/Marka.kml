@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="Somalia_Adminstrative_Boundaries" id="Somalia_Adminstrative_Boundaries">
+	<SimpleField name="OBJECTID" type="int"></SimpleField>
+	<SimpleField name="REG_NAME" type="string"></SimpleField>
+	<SimpleField name="REG_CODE" type="int"></SimpleField>
+	<SimpleField name="REG_ALT" type="string"></SimpleField>
+	<SimpleField name="DIST_NAME" type="string"></SimpleField>
+	<SimpleField name="DIS_CODE" type="int"></SimpleField>
+	<SimpleField name="DIST_ALT" type="string"></SimpleField>
+	<SimpleField name="NOTE" type="string"></SimpleField>
+	<SimpleField name="Area" type="float"></SimpleField>
+	<SimpleField name="DIST_2_NAM" type="string"></SimpleField>
+	<SimpleField name="GlobalID" type="string"></SimpleField>
+</Schema>
+<Folder><name>Somalia_Adminstrative_Boundaries</name>  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Somalia_Adminstrative_Boundaries">
+		<SimpleData name="OBJECTID">46</SimpleData>
+		<SimpleData name="REG_NAME">Shabelle Hoose</SimpleData>
+		<SimpleData name="REG_CODE">23</SimpleData>
+		<SimpleData name="REG_ALT">Lower Shabelle, Shabeellaha Hoose</SimpleData>
+		<SimpleData name="DIST_NAME">Marka</SimpleData>
+		<SimpleData name="DIS_CODE">2301</SimpleData>
+		<SimpleData name="DIST_ALT">Merka</SimpleData>
+		<SimpleData name="NOTE">Shabelle Hoose now includes Aw Dheegle district (2308), but no boundary exists as yet for this district</SimpleData>
+		<SimpleData name="Area">1065.13081049</SimpleData>
+		<SimpleData name="DIST_2_NAM">Marka</SimpleData>
+		<SimpleData name="GlobalID">180ba81c-5ca0-42d7-ac60-5a11ce23cb86</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>45.1289329532538,1.92167055646875 45.1212196346438,1.91562116162912 45.1150817867689,1.91303133923993 45.1045799259387,1.91131949412811 45.0932121278021,1.90500009047937 45.0875511173581,1.89942562597986 45.0750122071452,1.89677286158147 45.0643310542624,1.89069044608824 45.057529449309,1.88441503072158 45.0317611693828,1.86922836320091 45.0293502807047,1.8678123951417 45.0009613033794,1.84827828424963 44.9744186397457,1.8300199512263 44.9609756470646,1.82528734194284 44.9319190975156,1.80614411850211 44.9249992374398,1.80354237513956 44.9187164302241,1.80118358130941 44.8812675479997,1.77551686734932 44.8172378542847,1.73884928252919 44.8142356873001,1.73713350308665 44.7624626163048,1.70510935786252 44.7574920653613,1.69931089859835 44.7541618345332,1.68985176095672 44.7509918209311,1.68728995342975 44.7436943055166,1.68537616733664 44.7316932678683,1.67536807097048 44.7162437442696,1.66920173196278 44.6919746402632,1.64898145189838 44.6815223691317,1.64335596583477 44.6708030701886,1.6416361330813 44.6601219173058,1.63531875643479 44.641323089849,1.61995208231105 44.6227951053487,1.59999001003375 44.6157226565404,1.59778106241681 44.6088600155549,1.59938502305423 44.6054382320264,1.59819912930996 44.5835304261012,1.57429325556695 44.569221497012,1.5663279292036 44.5522613529569,1.55005955723696 44.5415916446108,1.54328107864616 44.5259704592496,1.52932548515682 44.517620086881,1.5250128503145 44.5136985777464,1.5229889156554 44.5014305113884,1.51345682152457 44.4309501647385,1.5017099379537 44.3809471126194,1.53170716762472 44.420944213471,1.56170439760832 44.470951080735,1.63169813134562 44.5109481815865,1.67169451754855 44.8409576411898,1.92167162935179 45.1289329532538,1.92167055646875</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+ </Folder>
+</Document></kml>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="Somalia_Adminstrative_Boundaries" id="Somalia_Adminstrative_Boundaries">
+	<SimpleField name="OBJECTID" type="int"></SimpleField>
+	<SimpleField name="REG_NAME" type="string"></SimpleField>
+	<SimpleField name="REG_CODE" type="int"></SimpleField>
+	<SimpleField name="REG_ALT" type="string"></SimpleField>
+	<SimpleField name="DIST_NAME" type="string"></SimpleField>
+	<SimpleField name="DIS_CODE" type="int"></SimpleField>
+	<SimpleField name="DIST_ALT" type="string"></SimpleField>
+	<SimpleField name="NOTE" type="string"></SimpleField>
+	<SimpleField name="Area" type="float"></SimpleField>
+	<SimpleField name="DIST_2_NAM" type="string"></SimpleField>
+	<SimpleField name="GlobalID" type="string"></SimpleField>
+</Schema>
+<Folder><name>Somalia_Adminstrative_Boundaries</name>  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Somalia_Adminstrative_Boundaries">
+		<SimpleData name="OBJECTID">12</SimpleData>
+		<SimpleData name="REG_NAME">Togdheer</SimpleData>
+		<SimpleData name="REG_CODE">13</SimpleData>
+		<SimpleData name="REG_ALT">Tog-dheer</SimpleData>
+		<SimpleData name="DIST_NAME">Sheikh</SimpleData>
+		<SimpleData name="DIS_CODE">1304</SimpleData>
+		<SimpleData name="DIST_ALT">Sheekh</SimpleData>
+		<SimpleData name="NOTE"></SimpleData>
+		<SimpleData name="Area">2960.23300521</SimpleData>
+		<SimpleData name="DIST_2_NAM">Sheikh</SimpleData>
+		<SimpleData name="GlobalID">623186cb-70c4-42c2-be1c-057bfb4adfa5</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>45.9074630739219,10.0997476579978 45.894241332702,10.0878486636803 45.8309936520863,10.0309343341419 45.8009872437188,9.92094421364237 45.8509902958379,9.78095626834455 45.2809791562987,9.87095069872949 44.9009742739681,9.94094467131425 44.8976821900986,9.94113922108011 45.1009750370091,10.1709241868366 45.9009933470586,10.1009283062826 45.9074630739219,10.0997476579978</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+ </Folder>
+</Document></kml>
