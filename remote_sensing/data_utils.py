@@ -80,10 +80,12 @@ def download_region_data(region, user, passwd, root_data_dir = "./data", locatio
             info = str(date.year) + "_" + str(date.month) + "_" + str(path) + "_" + str(row)
 
             if info not in collected :
-                path = root_data_dir + "/" +  region + "/" + str(date.year) + "_" + str(date.month)+ "/"
+                path = root_data_dir + "/" + region + "/" + str(date.year) + "_" + str(date.month)+ "/"
                 Path(path).mkdir(exist_ok=True)
-                ee.download(scene["display_id"], path)
-                collected.append(info)
+                if scene["display_id"][0:4] == "LC08" :
+                    print("Downloading scene: " + scene["display_id"])
+                    ee.download(scene["display_id"], path)
+                    collected.append(info)
 
     api.logout()
     ee.logout()
