@@ -49,6 +49,9 @@ if op_sys == "Windows" :
     print("Installing earthpy package")
     os.system("pip install earthpy")
 
+    print("Installing landsatexplore package")
+    os.system("pip install landsatexplore")
+
 # Installing for Linux (Ubuntu based)
 # Requires sudo password
 # TODO test this script
@@ -76,6 +79,8 @@ if op_sys == "Linux":
 
     # Installing earthpy
     os.system("pip install earthpy")
+    
+    os.system("pip install landsatexplore")
 
 # Installing for Mac
 # Assumes brew is installed
@@ -99,4 +104,6 @@ if op_sys == "Darwin":
 
     # Installing earthpy
     os.system("pip install earthpy")
+
+    os.system("pip install landsatexplore")
     

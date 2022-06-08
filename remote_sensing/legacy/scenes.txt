@@ -1,2 +1,0 @@
-landsat_ot_c2_l1|displayId
-LC08_L1TP_204033_20220205_20220212_02_T1

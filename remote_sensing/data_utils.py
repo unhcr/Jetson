@@ -27,6 +27,7 @@ def download_region_data(region, user, passwd, root_data_dir = "./data", locatio
     with open(location_file_path) as location_file :
         locations = json.load(location_file)
         
+        print("Getting region coordinates")
         # Get the coordinates of the defining polygon to do scene search
         with open(root_data_dir + "/" + region + "/" + region + ".kml") as kml_file :
             for line in kml_file.readlines() :
@@ -37,8 +38,8 @@ def download_region_data(region, user, passwd, root_data_dir = "./data", locatio
                     coordinate_pairs = line.strip().split(" ")
                     coordinate_pairs = [pair.split(",") for pair in coordinate_pairs]
 
+        print("Searching scenes")
         all_scenes = []
-            
         # Get all scenes touching the polygon
         for coordinate_pair in coordinate_pairs:
             longi = float(coordinate_pair[0])
@@ -53,6 +54,7 @@ def download_region_data(region, user, passwd, root_data_dir = "./data", locatio
             all_scenes.extend(scenes_search)
         print(all_scenes[0])
 
+        print("Filtering by row and path")
         # Filter the scenes for only the relevant path/row pairs
         relevant_scenes = []
         path_row_pairs = locations[region]["path_row_pairs"]
@@ -65,8 +67,10 @@ def download_region_data(region, user, passwd, root_data_dir = "./data", locatio
                     if scene not in relevant_scenes :
                         relevant_scenes.append(scene)
 
+
         # Only get one path/row scene per month per year
         # To be merged into a single one per month
+        print("Downloading scenes")
         collected = []
         for scene in relevant_scenes:
             date = scene["acquisition_date"].date()
@@ -75,20 +79,27 @@ def download_region_data(region, user, passwd, root_data_dir = "./data", locatio
 
             info = str(date.year) + "_" + str(date.month) + "_" + str(path) + "_" + str(row)
 
+
             if info not in collected :
                 path = root_data_dir + "/" + region + "/" + str(date.year) + "_" + str(date.month)+ "/"
                 Path(path).mkdir(exist_ok=True)
                 if scene["display_id"][0:4] == "LC08" :
                     print("Downloading scene: " + scene["display_id"])
                     ee.download(scene["display_id"], path)
-                    collected.append(info)
+                    collected.append(info) #
 
     api.logout()
     ee.logout()
 
 
 def process_region_folder(region, root_data_dir = "./data") :
-    pass
+    for (_, dirnames, _) in os.walk(root_data_dir + "/" + region) :
+        for date in dirnames:
+            year_month = date.split("_")
+            process_year_month_folder(region, year_month[0], year_month[1], root_data_dir + "/" + region + "/" + date)
+        break
+        
+
 
 
 def process_year_month_folder(region, year, month,  folder_path, delete = False) :
@@ -110,9 +121,7 @@ def process_year_month_folder(region, year, month,  folder_path, delete = False)
                         cutlineDSName="./data/" + region + "/" + region + '.kml',
                         cropToCutline=True,
                         dstNodata = 0)
-
             OutTile = None
-    
     
     for (dirpath, dirnames, filenames) in os.walk(folder_path + "/clipped/") :
         output_path = folder_path + "/" + year + "_" + month + ".tif"
@@ -124,3 +133,53 @@ def process_year_month_folder(region, year, month,  folder_path, delete = False)
     # delete warped rasters
     if delete :
         shutil.rmtree(folder_path + "raster_stack/")
+
+
+def split_kml(kml_file_path, out_path = "./data/") :
+    initial_text = """<?xml version="1.0" encoding="utf-8" ?>
+    <kml xmlns="http://www.opengis.net/kml/2.2">
+    <Document id="root_doc">
+    <Schema name="Somalia_Adminstrative_Boundaries" id="Somalia_Adminstrative_Boundaries">
+        <SimpleField name="OBJECTID" type="int"></SimpleField>
+        <SimpleField name="REG_NAME" type="string"></SimpleField>
+        <SimpleField name="REG_CODE" type="int"></SimpleField>
+        <SimpleField name="REG_ALT" type="string"></SimpleField>
+        <SimpleField name="DIST_NAME" type="string"></SimpleField>
+        <SimpleField name="DIS_CODE" type="int"></SimpleField>
+        <SimpleField name="DIST_ALT" type="string"></SimpleField>
+        <SimpleField name="NOTE" type="string"></SimpleField>
+        <SimpleField name="Area" type="float"></SimpleField>
+        <SimpleField name="DIST_2_NAM" type="string"></SimpleField>
+        <SimpleField name="GlobalID" type="string"></SimpleField>
+    </Schema>
+    <Folder><name>Somalia_Adminstrative_Boundaries</name>"""
+
+    final_text = """ </Folder>
+    </Document></kml>"""
+
+    region_text = ""
+    
+    with open(kml_file_path) as kml_file :
+
+        for line in kml_file :
+
+            if "<Placemark>" in line:
+                region_text = ""
+
+            region_text += line
+            if "DIST_NAME" in line:
+                region_name = line.replace('<SimpleData name="DIST_NAME">', "").replace('</SimpleData>', "")
+                #print(region_name)
+
+            
+            if "</Placemark>" in line :
+                out_file_path = out_path + region_name.strip() + ".kml"
+                with open(out_file_path, "w") as out:
+                    out.write(initial_text + region_text + final_text)
+
+    for (dirpath, dirnames, filenames) in os.walk(out_path + "kmls/") :
+        for kml in filenames : 
+            
+            new_folder_path = out_path + kml.replace(".kml", "") 
+            os.mkdir(new_folder_path)
+            os.rename(out_path + "kmls/" + kml, new_folder_path + "/" + kml )

@@ -28,4 +28,7 @@ import earthpy
 print("importing geopandas")
 import geopandas
 
+print("importing landsatexplore")
+import landsatxplore
+
 
