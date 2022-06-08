@@ -22,7 +22,16 @@ To avoid redudant data, manually create a JSON file containing, per region, an e
 
 All the required packages can be installed using the setup.py script.
 
-# Expected Folder Structure
+# Starting Expected Folder Structure
+- /data/
+    - region 1/
+        - 1.kml
+    - region 2/
+        - 2.kml
+    - region n/
+        - n.kml
+
+With the KML file containing all the regions, the function split_kml generates the individual KML files and this file structure
 
 # Downloading
 
