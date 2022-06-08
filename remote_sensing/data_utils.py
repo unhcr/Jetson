@@ -9,9 +9,6 @@ import os
 from osgeo import gdal
 
 
-# TODO: DESCRIBE WHERE THE FILES SHOULD BE :
-#   - kml file
-#   - locations (path/row) file
 def download_region_data(region, user, passwd, root_data_dir = "./data", location_file_path = "location_data.json") :
     """
     Downloads tiff files from earthexplorer for a single region (given by region name)
@@ -50,12 +47,11 @@ def download_region_data(region, user, passwd, root_data_dir = "./data", locatio
                 dataset='landsat_ot_c2_l1',
                 longitude=longi,
                 latitude=lati,
-                max_results=50000
+                max_results=5000
             )
 
-            #print(scenes_search[0])
-
             all_scenes.extend(scenes_search)
+        print(all_scenes[0])
 
         # Filter the scenes for only the relevant path/row pairs
         relevant_scenes = []
@@ -102,7 +98,6 @@ def process_year_month_folder(region, year, month,  folder_path, delete = False)
     3rd - it joins the resulting rasters into a single one to reconstruct the entire region
     """
 
-   
     Path(folder_path + "/clipped/").mkdir(exist_ok=True)
 
     # creating raster stacks
@@ -124,6 +119,7 @@ def process_year_month_folder(region, year, month,  folder_path, delete = False)
         g = gdal.Warp(output_path, filenames, format="GTiff",
               options=["COMPRESS=LZW", "TILED=YES"]) # if you want
         g = None
+
 
     # delete warped rasters
     if delete :
