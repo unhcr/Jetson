@@ -9,9 +9,6 @@ import os
 from osgeo import gdal
 
 
-# TODO: DESCRIBE WHERE THE FILES SHOULD BE :
-#   - kml file
-#   - locations (path/row) file
 def download_region_data(region, user, passwd, root_data_dir = "./data", location_file_path = "location_data.json") :
     """
     Downloads tiff files from earthexplorer for a single region (given by region name)
@@ -51,12 +48,11 @@ def download_region_data(region, user, passwd, root_data_dir = "./data", locatio
                 dataset='landsat_ot_c2_l1',
                 longitude=longi,
                 latitude=lati,
-                max_results=50000
+                max_results=5000
             )
 
-            #print(scenes_search[0])
-
             all_scenes.extend(scenes_search)
+        print(all_scenes[0])
 
         print("Filtering by row and path")
         # Filter the scenes for only the relevant path/row pairs
@@ -132,12 +128,19 @@ def process_year_month_folder(region, year, month,  folder_path, delete = False)
               options=["COMPRESS=LZW", "TILED=YES"]) 
         g = None
 
+
     # delete warped rasters
     if delete :
         shutil.rmtree(folder_path + "raster_stack/")
 
 
 def split_kml(kml_file_path, out_path = "./data/") :
+    """
+    Split the KML file containing all the regions into individual KML files (one per region)
+    Creates a folder for each region at out_path and places the corresponding KML file into that folder
+    """
+
+    # Variables holding the KML file settings. If using a differently structured KML file, change accordingly
     initial_text = """<?xml version="1.0" encoding="utf-8" ?>
     <kml xmlns="http://www.opengis.net/kml/2.2">
     <Document id="root_doc">
@@ -171,7 +174,6 @@ def split_kml(kml_file_path, out_path = "./data/") :
             region_text += line
             if "DIST_NAME" in line:
                 region_name = line.replace('<SimpleData name="DIST_NAME">', "").replace('</SimpleData>', "")
-                #print(region_name)
 
             
             if "</Placemark>" in line :
