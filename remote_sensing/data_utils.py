@@ -96,15 +96,14 @@ def download_region_data(region, user, passwd, root_data_dir = "./data", locatio
     ee.logout()
 
 
-def process_region_folder(region, root_data_dir = "./data") :
+
+def process_region_folder(region, root_data_dir = "./data", delete=True) :
     for (_, dirnames, _) in os.walk(root_data_dir + "/" + region) :
         for date in dirnames:
             year_month = date.split("_")
             process_year_month_folder(region, year_month[0], year_month[1], root_data_dir + "/" + region + "/" + date)
         break
         
-
-
 
 def process_year_month_folder(region, year, month,  folder_path, delete = False) :
     """
@@ -130,7 +129,7 @@ def process_year_month_folder(region, year, month,  folder_path, delete = False)
     for (dirpath, dirnames, filenames) in os.walk(folder_path + "/clipped/") :
         output_path = folder_path + "/" + year + "_" + month + ".tif"
         g = gdal.Warp(output_path, filenames, format="GTiff",
-              options=["COMPRESS=LZW", "TILED=YES"]) # if you want
+              options=["COMPRESS=LZW", "TILED=YES"]) 
         g = None
 
     # delete warped rasters
@@ -161,7 +160,7 @@ def split_kml(kml_file_path, out_path = "./data/") :
     </Document></kml>"""
 
     region_text = ""
-    
+    os.mkdir(out_path)
     with open(kml_file_path) as kml_file :
 
         for line in kml_file :
@@ -180,9 +179,9 @@ def split_kml(kml_file_path, out_path = "./data/") :
                 with open(out_file_path, "w") as out:
                     out.write(initial_text + region_text + final_text)
 
-    for (dirpath, dirnames, filenames) in os.walk(out_path + "kmls/") :
+    for (dirpath, dirnames, filenames) in os.walk(out_path) :
         for kml in filenames : 
             
             new_folder_path = out_path + kml.replace(".kml", "") 
             os.mkdir(new_folder_path)
-            os.rename(out_path + "kmls/" + kml, new_folder_path + "/" + kml )
+            os.rename(out_path + kml, new_folder_path + "/" + kml )

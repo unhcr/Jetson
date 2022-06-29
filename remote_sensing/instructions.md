@@ -1,31 +1,20 @@
-# Required Files
-### KML Bounds File
-A KML file delimiting the regions of interest is required. Furthermore, the formate of the file is important as we expect certain keywords and text to exist. We developed the system for the KML files found in : TODO: KML WEBSITE.
+# Installing Packages
+- Run setup/setup.py
 
-If you wish to use a differently formatted KML file, please modify the function split_kmls in data_utils.py accordingly.
+# Files
+- Place "location_data.json" in /remote_sensing/
+- Place the kml file (e.g. "Somalia_Adminstrative_Boundaries.kml") in /remote_sensing/ 
 
-### Landsat Explore (Path, Row) File
-Landsat Explorer "squares" are given by a combination of path and row. Latitude and longitude may return several squares when only a few or even one is required to complete cover a region. 
+# Folder Setup
+- Run folder_creation.py
 
-To avoid redudant data, manually create a JSON file containing, per region, an element with all the required (path, row) pairs to completely cover the region. See location_data.json for an example. 
+# Downloading Data
+- Run download_data.py 
+    - if no region name is passed as shell argument: download all regions
+    - if region name is passed: download data only for that region
 
-# Required Packages
-- scikit-image
-- matplotlib
-- wheel (windows only)
-- gdal
-- rasterio
-- fiona
-- geopandas
-- earthpy
-- landsatexplore
-
-All the required packages can be installed using the setup.py script.
-
-# Expected Folder Structure
-
-# Downloading
-
-# Region Rasters
-
-# VCI Calculation
+# Calculating VCIs#
+## DO NOT TRY YET, WORKING ON IT - BRUNO
+- Run calculate_vcis.py 
+    - if no region name is passed as shell argument: calculate for all regions
+    - if region name is passed: calculate only for that region

@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<kml xmlns="http://www.opengis.net/kml/2.2">
-<Document id="root_doc">
-<Schema name="Somalia_Adminstrative_Boundaries" id="Somalia_Adminstrative_Boundaries">
-	<SimpleField name="OBJECTID" type="int"></SimpleField>
-	<SimpleField name="REG_NAME" type="string"></SimpleField>
-	<SimpleField name="REG_CODE" type="int"></SimpleField>
-	<SimpleField name="REG_ALT" type="string"></SimpleField>
-	<SimpleField name="DIST_NAME" type="string"></SimpleField>
-	<SimpleField name="DIS_CODE" type="int"></SimpleField>
-	<SimpleField name="DIST_ALT" type="string"></SimpleField>
-	<SimpleField name="NOTE" type="string"></SimpleField>
-	<SimpleField name="Area" type="float"></SimpleField>
-	<SimpleField name="DIST_2_NAM" type="string"></SimpleField>
-	<SimpleField name="GlobalID" type="string"></SimpleField>
-</Schema>
-<Folder><name>Somalia_Adminstrative_Boundaries</name>  <Placemark>
+    <kml xmlns="http://www.opengis.net/kml/2.2">
+    <Document id="root_doc">
+    <Schema name="Somalia_Adminstrative_Boundaries" id="Somalia_Adminstrative_Boundaries">
+        <SimpleField name="OBJECTID" type="int"></SimpleField>
+        <SimpleField name="REG_NAME" type="string"></SimpleField>
+        <SimpleField name="REG_CODE" type="int"></SimpleField>
+        <SimpleField name="REG_ALT" type="string"></SimpleField>
+        <SimpleField name="DIST_NAME" type="string"></SimpleField>
+        <SimpleField name="DIS_CODE" type="int"></SimpleField>
+        <SimpleField name="DIST_ALT" type="string"></SimpleField>
+        <SimpleField name="NOTE" type="string"></SimpleField>
+        <SimpleField name="Area" type="float"></SimpleField>
+        <SimpleField name="DIST_2_NAM" type="string"></SimpleField>
+        <SimpleField name="GlobalID" type="string"></SimpleField>
+    </Schema>
+    <Folder><name>Somalia_Adminstrative_Boundaries</name>  <Placemark>
 	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
 	<ExtendedData><SchemaData schemaUrl="#Somalia_Adminstrative_Boundaries">
 		<SimpleData name="OBJECTID">66</SimpleData>
@@ -32,4 +32,4 @@
       <Polygon><outerBoundaryIs><LinearRing><coordinates>41.8595275876124,3.91205406201737 41.8610877986659,3.91415095307482 41.8737754824662,3.93810677516735 41.8999748225747,3.97698211628619 41.9077949526687,3.97949600200534 41.9139862062855,3.99224090601117 41.9223175047257,3.99560356159855 41.9272956850609,4.00409460068369 41.944358825455,4.01814317694678 41.9498596195714,4.0293583869963 41.9468917844004,4.046072006014 41.9471206661516,4.05714511854956 41.9678115845486,4.08156681050514 41.9751205444999,4.0820374492777 41.9799499512477,4.09666347472201 42.0009002689628,4.09484481809391 42.0096092227416,4.10299158134894 42.0362510684675,4.13369703253636 42.0520401004463,4.15299129469818 42.0619888308268,4.16301059716676 42.0699195857531,4.16978263823666 42.0810585021384,4.17682695396364 42.088569641419,4.18083476999342 42.0986404420669,4.18119668948178 42.1424140927122,4.18107461887943 42.1976432799479,4.18040943137358 42.2532844543358,4.18342590295757 42.2995376590828,4.18585824990503 42.317859650007,4.1870117188494 42.3718872067012,4.19091987603055 42.402206421027,4.19451999659757 42.2309036252263,3.7915046212025 42.1008987429108,3.81150293347345 42.0809021000575,3.82150197005449 41.8595275876124,3.91205406201737</coordinates></LinearRing></outerBoundaryIs></Polygon>
   </Placemark>
  </Folder>
-</Document></kml>
+    </Document></kml>
