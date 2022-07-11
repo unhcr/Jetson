@@ -1,2 +1,5 @@
 DS_Store
 */.DS_Store
+*.pyc
+*.ipynb_checkpoints*
+*jetson_configs.py
