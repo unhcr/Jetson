@@ -1,4 +1,8 @@
-from sklearn.externals import joblib
+try:
+    from sklearn.externals import joblib
+except:
+    import joblib
+    
 import pandas as pd
 import numpy as np
 from dateutil.relativedelta import *
@@ -8,13 +12,13 @@ from tqdm import tqdm_notebook as tqdm
 
 def fit_baseline_models(learn_df, admin_level, horizon):
     
-    sequences = learn_df['arrivals'].unstack(level='region') #.interpolate()
+    sequences = learn_df['arrivals'].unstack(level='region').astype(float) #.interpolate()
     regions = learn_df.index.get_level_values('region').unique()
     
     # Initialize the dataframe for storing results
     predictions = pd.DataFrame(columns = sequences.index,
                              index = pd.MultiIndex(levels =[[],[]], 
-                                                   labels =[[],[]], 
+                                                   codes =[[],[]], 
                                                    names=['model_parameters', 'region']))
     
     # For each region, fit all models
@@ -61,6 +65,7 @@ def fit_baseline_models(learn_df, admin_level, horizon):
 
     # Reshape and export
     predictions = predictions.unstack(level='region').T.sort_index()
+    predictions.index = predictions.index.swaplevel()
     predictions.to_csv(f'ml/output_data/{admin_level}_lag{horizon}/results_baseline.csv')
     
     return predictions

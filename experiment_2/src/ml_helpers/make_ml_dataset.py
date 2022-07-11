@@ -4,7 +4,7 @@ from dateutil.relativedelta import *
 import os
 
 
-def make_ml_features(current_month, admin_level):
+def make_ml_features(current_month, horizon, admin_level,  sql_engine=''):
     '''
     Starts from the compiled dataset for the given admin level and month. 
     Does the following steps:
@@ -23,10 +23,8 @@ def make_ml_features(current_month, admin_level):
     
     ################################
     ### Read in the data
-    df = pd.read_csv(f"data/compiled/master_{admin_level}.csv", 
-                     parse_dates=['date'], 
-                     index_col=['date', 'region'])
-
+    df = pd.read_sql(f"SELECT * FROM master_{admin_level}", index_col=['date', 'region'], con=sql_engine, parse_dates=['date'])
+        
     if admin_level=='admin1':
         admin_unit='region'
 
@@ -60,9 +58,10 @@ def make_ml_features(current_month, admin_level):
     learn_df['month_dummies']  = learn_df.index.get_level_values('date'  ).month.astype(str)
     learn_df = pd.get_dummies(learn_df)
 
-    # Linear time var
-    learn_df['months_since_2010'] = (learn_df.index.get_level_values('date').to_period('M') - 
-                                                pd.to_datetime('2010-01-01').to_period('M'))
+    # Linear time var    
+    learn_df['months_since_2010'] = \
+                12 * (learn_df.index.get_level_values('date').year  - pd.to_datetime('2010-01-01').year) + \
+                     (learn_df.index.get_level_values('date').month - pd.to_datetime('2010-01-01').month)
     '''
     ################################
     ### Then, add in the observations for other regions
@@ -87,7 +86,7 @@ def make_ml_features(current_month, admin_level):
     ## Pare down dataset 
     
     # Since 2011-01-01
-    start_prmn = pd.to_datetime('2011-01-01')
+    start_prmn = learn_df[~learn_df.arrivals.isna()].index.get_level_values('date').min()
     learn_df = learn_df.loc[start_prmn:current_month]
     
     # Remove columns which are completely missing
@@ -112,12 +111,12 @@ def make_ml_features(current_month, admin_level):
     ################################
     ## Save
     learn_df.to_csv(f"ml/input_data/learn_df_{admin_level}.csv")
+    
+    # Add true arrivals into the results folder
+    if not os.path.exists(f"ml/output_data/{admin_level}_lag{horizon}/"):
+        os.mkdir(f"ml/output_data/{admin_level}_lag{horizon}/")
 
-    for lag in range(1,13):
-        if not os.path.exists(f"ml/output_data/{admin_level}_lag{lag}/"):
-            os.mkdir(f"ml/output_data/{admin_level}_lag{lag}/")
-
-        learn_df[[f'arrivals']].to_csv(f'ml/output_data/{admin_level}_lag{lag}/true.csv')
+    learn_df[[f'arrivals']].to_csv(f'ml/output_data/{admin_level}_lag{horizon}/true.csv')
         
         
     '''
@@ -136,7 +135,8 @@ def make_ml_features(current_month, admin_level):
 def fill_missing_values(learn_df, X_cols):
     '''
     Fills missing values for the input features
-    
+    1. First, forward fills the missing values
+    2. Next, fills NA with 0
     '''
     
     learn_df.sort_index(level='date', inplace=True)
@@ -164,7 +164,7 @@ def shift_input_features(learn_df, X_cols, y_col, horizon, current_month, admin_
 
     for d in future_months:
         for r in regions:
-            learn_df.ix[(d, r), :] = np.nan
+            learn_df.loc[(d, r)] = np.nan
 
     ### Shift the X features back according to the horizon
     # Concatenate

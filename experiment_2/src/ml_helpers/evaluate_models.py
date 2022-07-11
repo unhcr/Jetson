@@ -33,7 +33,7 @@ def evaluate_predictions(predictions, train_dates, test_dates, admin_level, hori
     # Initalize a dataframe for results
     results = pd.DataFrame(columns = regions,
                           index = pd.MultiIndex(levels =[[],[],[]], 
-                                                labels =[[],[],[]], 
+                                                codes =[[],[],[]], 
                                                 names=['model_parameters', 'metric', 'dataset']))
 
     ##############################
@@ -63,9 +63,9 @@ def evaluate_predictions(predictions, train_dates, test_dates, admin_level, hori
     # Loop over all models+parameters
     for model in tqdm(models):
 
-        # Get the true and predicted series; make a single series with mutiple obs epr date
-        pred = predictions.xs(model,  level='model_parameters').stack().reset_index(level='region', drop=True).sort_index()
-        true = predictions.xs("true", level='model_parameters').stack().reset_index(level='region', drop=True).sort_index()
+        # Get the true and predicted series; make a single series with multiple obs per date
+        pred = predictions.xs(model,  level='model_parameters').stack(dropna=False).reset_index(level='region', drop=True).sort_index()
+        true = predictions.xs("true", level='model_parameters').stack(dropna=False).reset_index(level='region', drop=True).sort_index()
 
         # Loop over all metrics
         for metric, metricname in [(mse,  'mse'), 

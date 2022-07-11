@@ -6,7 +6,7 @@ import os
 import time
 
 
-def get_acled_monthly(month, iso='706', data_dir = "data/raw/acled"):
+def get_acled_monthly(month, iso='706', acled_user = '', acled_pass= '', data_dir = "data/raw/acled"):
     ''' 
     Page through the Acled API and download all query results to csv. 
     https://www.acleddata.com/wp-content/uploads/dlm_uploads/2017/10/API-User-Guide-11.pdf
@@ -27,7 +27,7 @@ def get_acled_monthly(month, iso='706', data_dir = "data/raw/acled"):
         # API query
         url = f"https://api.acleddata.com/acled/read?terms=accept&" + \
                 f"iso={iso}&event_date={start_date}|{end_date}&" + \
-                f"event_date_where=BETWEEN&page={p}"
+                f"event_date_where=BETWEEN&page={p}&key={acled_pass}&email={acled_user}"
                 
         resp = json.loads(urllib.request.urlopen(url).read().decode())
         
@@ -53,7 +53,7 @@ def get_acled_monthly(month, iso='706', data_dir = "data/raw/acled"):
 
 
 
-def get_acled_all( start_month, end_month, data_dir= "data/raw/acled", redownload=False):
+def get_acled_all( start_month, end_month, acled_user, acled_pass, data_dir= "data/raw/acled", redownload=False):
     ''' 
     Loops over all months in range and calls `get_acled_monthly` to download the data.  
     
@@ -75,7 +75,7 @@ def get_acled_all( start_month, end_month, data_dir= "data/raw/acled", redownloa
         if not file_exists or \
            redownload==True:
             
-            get_acled_monthly(str(month), '706', data_dir)
+            get_acled_monthly(str(month), '706', acled_user, acled_pass, data_dir)
             downloaded.append(month)
             time.sleep(2)
             

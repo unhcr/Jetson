@@ -184,8 +184,8 @@ def get_distances_all(fpath = 'data/raw/gis',
                    if False, download only files not in repository
     '''
     # Get the admin boundary file
-    admin1 = gp.read_file(f"{fpath}/somalia_boundaries_admin1/")
-    admin2 = gp.read_file(f"{fpath}/somalia_boundaries_admin2/")
+    admin1 = gp.read_file(f"{fpath}/somalia_boundaries/Som_Admbnda_Adm1_UNDP.shp")
+    admin2 = gp.read_file(f"{fpath}/somalia_boundaries/Som_Admbnda_Adm2_UNDP.shp")
             
     # If index is supplied to be set, set it
     admin1.set_index('admin1Name', inplace=True)

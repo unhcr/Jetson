@@ -1,4 +1,7 @@
-from sklearn.externals import joblib
+try:
+    from sklearn.externals import joblib
+except:
+    import joblib
 import pandas as pd
 import numpy as np
 from dateutil.relativedelta import *

@@ -1,5 +1,7 @@
 import geopandas as gp
-import os.path
+import os
+import urllib.request
+import zipfile
 
 def get_gis_all(data_dir ='data/raw/gis', redownload=False):
     ''' 
@@ -11,24 +13,21 @@ def get_gis_all(data_dir ='data/raw/gis', redownload=False):
     
     '''
     
-    url1 = "https://data.humdata.org/dataset/ec140a63-5330-4376-a3df-c7ebf73cfc3c/resource/0353bb25-919e-40d7-be7d-831376bc4f76/download/som_admbnda_adm1_undp.zip"
+    url = "https://data.humdata.org/dataset/ec140a63-5330-4376-a3df-c7ebf73cfc3c/resource/6f42e9ce-bbca-4c0d-a3e6-85efc9298c3c/download/som_adm_undp_shp.zip"
     
-    
-    url2 = "https://data.humdata.org/dataset/ec140a63-5330-4376-a3df-c7ebf73cfc3c/resource/a58ba039-7423-4241-b2cb-0534c46f295d/download/som_admbnda_adm2_undp.zip"
-    
-    fname1= 'somalia_boundaries_admin1'
-    fname2= 'somalia_boundaries_admin2'
+    fname= 'somalia_boundaries'
     
     # Download the file if it doesn't exist or redownload is requested
-    for fname,url in [[fname1, url1],
-                      [fname2, url2]]:
-        
-        if not os.path.exists(f'{data_dir}/{fname}/{fname}.shp') or redownload==True:
-
-            admin = gp.read_file(url)
-            admin.to_file(
-                f'{data_dir}/{fname}', 
-                driver='ESRI Shapefile')
+    if not os.path.isdir(f'{data_dir}/{fname}/') or redownload==True:
+            
+            cwd = os.getcwd().replace("\\", "/")
+            
+            urllib.request.urlretrieve(url, f"{cwd}/{data_dir}/{fname}.zip")
+            
+            zip_ref = zipfile.ZipFile(f"{data_dir}/{fname}.zip", 'r')
+            zip_ref.extractall(f"{data_dir}/{fname}/")
+            zip_ref.close()
+            os.remove(f"{cwd}/{data_dir}/{fname}.zip")
 
             print(f"Redownloaded: {fname}")
 
