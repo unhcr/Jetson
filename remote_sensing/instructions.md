@@ -1,5 +1,8 @@
+# NOTE
+All scrips should be run from their folder
+
 # Installing Packages
-- Run setup/setup.py
+- Run setup/setup.py 
 
 # Files
 - Place "location_data.json" in /remote_sensing/
@@ -13,8 +16,8 @@
     - if no region name is passed as shell argument: download all regions
     - if region name is passed: download data only for that region
 
-# Calculating VCIs#
-## DO NOT TRY YET, WORKING ON IT - BRUNO
+# Calculating VCIs
+## DO NOT TRY YET, WORKING ON IT 
 - Run calculate_vcis.py 
     - if no region name is passed as shell argument: calculate for all regions
     - if region name is passed: calculate only for that region
