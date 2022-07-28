@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+    <kml xmlns="http://www.opengis.net/kml/2.2">
+    <Document id="root_doc">
+    <Schema name="Somalia_Adminstrative_Boundaries" id="Somalia_Adminstrative_Boundaries">
+        <SimpleField name="OBJECTID" type="int"></SimpleField>
+        <SimpleField name="REG_NAME" type="string"></SimpleField>
+        <SimpleField name="REG_CODE" type="int"></SimpleField>
+        <SimpleField name="REG_ALT" type="string"></SimpleField>
+        <SimpleField name="DIST_NAME" type="string"></SimpleField>
+        <SimpleField name="DIS_CODE" type="int"></SimpleField>
+        <SimpleField name="DIST_ALT" type="string"></SimpleField>
+        <SimpleField name="NOTE" type="string"></SimpleField>
+        <SimpleField name="Area" type="float"></SimpleField>
+        <SimpleField name="DIST_2_NAM" type="string"></SimpleField>
+        <SimpleField name="GlobalID" type="string"></SimpleField>
+    </Schema>
+    <Folder><name>Somalia_Adminstrative_Boundaries</name>  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Somalia_Adminstrative_Boundaries">
+		<SimpleData name="OBJECTID">67</SimpleData>
+		<SimpleData name="REG_NAME">Gedo</SimpleData>
+		<SimpleData name="REG_CODE">26</SimpleData>
+		<SimpleData name="REG_ALT"></SimpleData>
+		<SimpleData name="DIST_NAME">Luuq</SimpleData>
+		<SimpleData name="DIS_CODE">2606</SimpleData>
+		<SimpleData name="DIST_ALT">Luuk, Luq</SimpleData>
+		<SimpleData name="NOTE">Gedo region now includes Buur Dhuubo district (2607), but no boundary exists as yet for this district</SimpleData>
+		<SimpleData name="Area">8273.9717628</SimpleData>
+		<SimpleData name="DIST_2_NAM">Luuq</SimpleData>
+		<SimpleData name="GlobalID">348f13ed-7307-4a8a-9d83-36cb690db2c2</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>42.402206421027,4.19451999659757 42.4174079898443,4.19632577909045 42.4464569091032,4.20083189008995 42.4764327999039,4.20419836046995 42.486740112593,4.20478725461823 42.4984321594279,4.20378446622806 42.5275306701821,4.20437908189243 42.5435409545205,4.20641851443003 42.5554428100766,4.20771694180834 42.5666313170588,4.2113051411864 42.5748519897683,4.2134771343765 42.5887908938088,4.21687078493716 42.60040283248,4.22207355497015 42.6391830440066,4.23704194996593 42.6724548338217,4.25194025029336 42.684326171811,4.25576639178371 42.695285797042,4.25935077702161 42.7032737728552,4.26151847864278 42.7108154297027,4.26322031060087 42.7211151121018,4.26426744432643 42.7298164364889,4.26483345005027 42.7385139466293,4.26540040941306 42.7511138919759,4.26601409914518 42.8182563784061,4.26637315794469 42.8260154724681,4.26853704415325 42.8342285157859,4.27208566694648 42.8499298093109,4.28101444263705 42.8633384701785,4.29083585743108 42.879009247035,4.30336570734364 42.8850784303845,4.30842924099276 42.8909187319828,4.29145860657722 43.0914421079067,3.94774270066868 43.1009216311463,3.93149113649555 43.1409225462446,3.85149812737629 43.1209220882463,3.67151474976064 43.1020927432227,3.25736308098412 42.8509140017395,3.35154366469212 42.6409111025759,3.44153594965849 42.040901184061,3.68151473985701 42.1008987429108,3.81150293347345 42.2309036252263,3.7915046212025 42.402206421027,4.19451999659757</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+ </Folder>
+    </Document></kml>

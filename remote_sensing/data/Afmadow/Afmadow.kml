@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+    <kml xmlns="http://www.opengis.net/kml/2.2">
+    <Document id="root_doc">
+    <Schema name="Somalia_Adminstrative_Boundaries" id="Somalia_Adminstrative_Boundaries">
+        <SimpleField name="OBJECTID" type="int"></SimpleField>
+        <SimpleField name="REG_NAME" type="string"></SimpleField>
+        <SimpleField name="REG_CODE" type="int"></SimpleField>
+        <SimpleField name="REG_ALT" type="string"></SimpleField>
+        <SimpleField name="DIST_NAME" type="string"></SimpleField>
+        <SimpleField name="DIS_CODE" type="int"></SimpleField>
+        <SimpleField name="DIST_ALT" type="string"></SimpleField>
+        <SimpleField name="NOTE" type="string"></SimpleField>
+        <SimpleField name="Area" type="float"></SimpleField>
+        <SimpleField name="DIST_2_NAM" type="string"></SimpleField>
+        <SimpleField name="GlobalID" type="string"></SimpleField>
+    </Schema>
+    <Folder><name>Somalia_Adminstrative_Boundaries</name>  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Somalia_Adminstrative_Boundaries">
+		<SimpleData name="OBJECTID">72</SimpleData>
+		<SimpleData name="REG_NAME">Juba Hoose</SimpleData>
+		<SimpleData name="REG_CODE">28</SimpleData>
+		<SimpleData name="REG_ALT">Lower Juba, Jubbada Hoose</SimpleData>
+		<SimpleData name="DIST_NAME">Afmadow</SimpleData>
+		<SimpleData name="DIS_CODE">2802</SimpleData>
+		<SimpleData name="DIST_ALT"></SimpleData>
+		<SimpleData name="NOTE"></SimpleData>
+		<SimpleData name="Area">26880.7483834</SimpleData>
+		<SimpleData name="DIST_2_NAM">Afmadow</SimpleData>
+		<SimpleData name="GlobalID">2bd0dc1c-616b-4d2f-aa6a-c8ec209331a4</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>42.1389198304116,1.30775535091196 42.2009010311055,1.31172788106866 42.3215446471003,1.31697237465357 42.4309082034124,1.32172691802646 42.6209106445777,0.751778662567476 42.6309127807002,0.721780657538724 42.726802825866,0.328681051809575 42.5409088134829,0.111835114463249 42.5309066773604,-0.018153298688217 41.850891113504,-0.038151524552398 41.3108863832305,-0.148141786387037 41.001457214497,-0.196484297345773 41.0003585811927,-0.135866567638295 41.0011978151789,-0.126216039403336 40.9999389646488,-0.110151655915047 41.0013580324048,-0.085800960479376 41.0013885499716,0.001844920404322 40.9895057674456,0.015856918360712 40.9901885984527,0.095022700657041 40.9918365479599,0.108478165858604 40.9901466372475,0.121146842795982 40.9902458193397,0.130810082277465 40.9909667973052,0.199039623493006 40.9906082149966,0.25700390342193 40.989948273063,0.360039711298312 40.990127563319,0.38321754376647 40.9911270145311,0.509447932406228 40.9921264648448,0.635695337815057 40.9922561645039,0.652604103017125 40.9908866882431,0.724132120509177 40.9910774230358,0.761947572053336 40.9917564388978,0.888228774357332 40.9921684269484,0.964818120333077 40.9912490847984,1.01451587663957 40.9909782409436,1.02890253094575 40.9913063047871,1.14082551045586 40.9915657041051,1.23246443278471 41.4208831790543,1.26173269755329 42.1389198304116,1.30775535091196</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+ </Folder>
+    </Document></kml>

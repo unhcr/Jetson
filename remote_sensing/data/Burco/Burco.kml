@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+    <kml xmlns="http://www.opengis.net/kml/2.2">
+    <Document id="root_doc">
+    <Schema name="Somalia_Adminstrative_Boundaries" id="Somalia_Adminstrative_Boundaries">
+        <SimpleField name="OBJECTID" type="int"></SimpleField>
+        <SimpleField name="REG_NAME" type="string"></SimpleField>
+        <SimpleField name="REG_CODE" type="int"></SimpleField>
+        <SimpleField name="REG_ALT" type="string"></SimpleField>
+        <SimpleField name="DIST_NAME" type="string"></SimpleField>
+        <SimpleField name="DIS_CODE" type="int"></SimpleField>
+        <SimpleField name="DIST_ALT" type="string"></SimpleField>
+        <SimpleField name="NOTE" type="string"></SimpleField>
+        <SimpleField name="Area" type="float"></SimpleField>
+        <SimpleField name="DIST_2_NAM" type="string"></SimpleField>
+        <SimpleField name="GlobalID" type="string"></SimpleField>
+    </Schema>
+    <Folder><name>Somalia_Adminstrative_Boundaries</name>  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Somalia_Adminstrative_Boundaries">
+		<SimpleData name="OBJECTID">9</SimpleData>
+		<SimpleData name="REG_NAME">Togdheer</SimpleData>
+		<SimpleData name="REG_CODE">13</SimpleData>
+		<SimpleData name="REG_ALT">Tog-dheer</SimpleData>
+		<SimpleData name="DIST_NAME">Burco</SimpleData>
+		<SimpleData name="DIS_CODE">1301</SimpleData>
+		<SimpleData name="DIST_ALT">Burao</SimpleData>
+		<SimpleData name="NOTE"></SimpleData>
+		<SimpleData name="Area">16052.9183962</SimpleData>
+		<SimpleData name="DIST_2_NAM">Burco</SimpleData>
+		<SimpleData name="GlobalID">d1e83e13-7d36-4cb3-b696-3033250cfb4a</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>46.0109939571291,10.0809297561382 46.0494270326805,10.0503721236892 46.1509971622187,9.44098567965522 46.2209968562927,9.00102615344125 46.1909942630702,8.82104206098274 46.2509956361668,8.27109241511563 46.2509956361668,8.25667667411582 46.2403755184176,8.2603960037143 46.2128410338619,8.26903629345425 46.1943626399585,8.27295875559214 46.1904029847637,8.27612495438904 46.1510505679607,8.28904151942426 46.1147308348107,8.3009576801069 46.1001205442999,8.30836105326231 46.0895004274491,8.30915546428854 46.0700607301905,8.3158111568577 46.061710357822,8.32007312732154 46.0527000426216,8.3215732572423 46.0314102174246,8.32832813276948 45.9279289248144,8.36114597353971 45.9112663270359,8.36817645984918 45.8957481380135,8.37199401862486 45.8299369808856,8.39641475633277 45.7912940975114,8.40854930840058 45.76671600359,8.41626453409566 45.6713142394935,8.44920539875579 45.6661529537572,8.45098495484929 45.6571350100634,8.4522428508651 45.6126213075241,8.46886348700759 45.5511589054663,8.48889350900387 45.5301208492975,8.4957456588803 45.5143814088139,8.49920177483575 45.495128631203,8.50673961631929 45.4826393124854,8.50909137683855 45.4303207395338,8.52643108337426 45.3099975588891,8.56626605986719 45.2909774781744,8.57255649576757 45.2909774781744,8.60106468176409 45.2809753420519,9.41099166909904 45.2809791562987,9.87095069872949 45.8509902958379,9.78095626834455 45.8009872437188,9.92094421364237 45.8309936520863,10.0309343341419 45.894241332702,10.0878486636803 45.9074630739219,10.0997476579978 46.0109939571291,10.0809297561382</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+ </Folder>
+    </Document></kml>

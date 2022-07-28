@@ -10,166 +10,68 @@
     <title>Project Jetson</title>
 
     <link href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="bundle.css">
-    <link href="favicon.ico" rel="icon" type="image/ico">
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
 </head>
 
-<body>
-    <div class="loader">
+<body style="opacity: 0; transition:all ease-in-out .2s">
+    <!-- div class="loader">
         <div class="logo">
             <img src="img/logo-innovation-service.png" />
         </div>
-    </div>
+    </div -->
 
-    <nav class="navbar navbar-default">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#"><img src="img/logo-innovation-service.png" /> </a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="jetsonnav">
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"><img src="img/logo-innovation-service.png" /> </a>
     </nav>
-    <div class="hero">
-        <div class="hero-caption">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-8 content">
-                        <a href="#intro" class="btn"><span class="ti-arrow-down"></span> Find out more</a>
+
+    <div class="swiper-container" id="epilogue">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="hero-caption">
+                    <div class="col-sm-12 content">
                     </div>
                 </div>
+                <a href="#" id="epibutton"><button class="btn"><img src="img/downarrow.svg"/></button></a>
+
+                <!-- animated objects -->
+                <img src="img/triangle.svg" class="anim-shape triangle" data-swiper-parallax="-100" />
+                <img src="img/cross.svg" class="anim-shape cross" data-swiper-parallax="-200" />
+                <img src="img/cyan-dots.svg" class="anim-shape cyan-dots" data-swiper-parallax="-500" />
+                <img src="img/yellow-dots.svg" class="anim-shape yellow-dots" data-swiper-parallax="-300" />
+                <img src="img/oval.svg" class="anim-shape oval" data-swiper-parallax="-400" />
+                <img src="img/line.svg" class="anim-shape line" data-swiper-parallax="-100" />
+            </div>
+            <div class="swiper-slide slide-sections">
+                <div class="slide-section process-half">
+                    <a href="tech.html">
+                        <div class="content" id="techspecsintro">
+                        </div>
+                        <button class="btn"><img src="img/leftarrow.svg"/></button></a>
+                </div>
+                <div class="slide-section outcomes-half">
+                    <a href="story.html">
+                        <div class="content" id="storyintro">
+                        </div>
+                        <button class="btn"><img src="img/rightarrow.svg"/></button></a>
+                </div>
+
+                <!-- animated objects -->
+                <img src="img/triangle.svg" class="anim-shape triangle" data-swiper-parallax="-100" />
+                <img src="img/cross.svg" class="anim-shape cross" data-swiper-parallax="-200" />
+                <img src="img/cyan-dots.svg" class="anim-shape cyan-dots" data-swiper-parallax="-500" />
+                <img src="img/yellow-dots.svg" class="anim-shape yellow-dots" data-swiper-parallax="-300" />
+                <img src="img/oval.svg" class="anim-shape oval" data-swiper-parallax="-400" />
+                <img src="img/line.svg" class="anim-shape line" data-swiper-parallax="-100" />
             </div>
         </div>
     </div>
-
-    <section class="intro" id="intro">
-        <div class="container content">
-
-        </div>
-    </section>
-
-
-    <section class="prediction">
-        <div class="container">
-            <div class="map-holder">
-                <img src="img/africa.svg" alt="Africa" />
-            </div>
-            <h4><span class="highlight">ARRIVALS PREDICTED IN </span> <span class="ti-location-pin"></span>SOMALIA</h4>
-            <h1 class="prediction-number">
-                <span class="from_num">Jetson Models</span>
-                <!-- span id="pred_date">01.05.2018 — 31.05.2018</span -->
-            </h1>
-
-
-            <!-- buttons -->
-
-            <a class="btn" href="https://unhcrinnovation.shinyapps.io/Somalia/" target="_blank"><span class="ti-panel"></span>
-                Explore the engine</a>
-
-            <button class="btn" id="show_map">
-                <span class="ti-location-pin"></span> View map
-            </button>
-
-
-            <!-- map -->
-            <div class="map-container">
-                <div class="map-title">
-                    <h2></h2>
-                </div>
-                <div id="regions_div"></div>
-                <div class="warning">
-                    <span class="ti-flag-alt-2"></span> Warning: Map data is not up to date
-                </div>
-                <div class="key">
-                    <h4>Predicted Displacement</h4>
-                    <div class="labels">
-                        <span class="moderate" data-toggle="tooltip" data-placement="top" data-toggle="tooltip" data-placement="top" title="Is the average of arrivals or less than the past 3 months' values">1
-                            - Moderate</span>
-                        <span class="high" data-toggle="tooltip" data-placement="top" data-toggle="tooltip" data-placement="top" title="Is higher/average + half OR 3/4 higher than the average arrivals past 3 months">2
-                            - High</span>
-                        <span class="critical" data-toggle="tooltip" data-placement="top" data-toggle="tooltip" data-placement="top" title="Is [critically] higher/double than the average arrivals of past 3 months">3
-                            - Critical</span>
-                    </div>
-                    <div class="colours">
-                        <span class="moderate"></span>
-                        <span class="high"></span>
-                        <span class="critical"></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="content"></div>
-        </div>
-    </section>
-
-    <section class="engine">
-        <div class="container content">
-
-        </div>
-    </section>
-
-    <section class="articles">
-        <div class="container">
-            <h2>More information and related articles</h2>
-            <div class="row">
-                <div class="col-sm-6 single-article-thumb article-one">
-                    <div class="thumb-cover">
-                        <span class="ti-book art-icon"></span>
-                        <h2></h2>
-                        <h5></h5>
-                        <a href="" target="_blank"><span class="ti-new-window"></span> Read article</a>
-                    </div>
-                </div>
-                <div class="col-sm-6 single-article-thumb article-two">
-                    <div class="thumb-cover">
-                        <span class="ti-book art-icon"></span>
-                        <h2></h2>
-                        <h5></h5>
-                        <a href="" target="_blank"><span class="ti-new-window"></span> Read article</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <section class="faqs">
-        <div class="container">
-            <h3>FAQs</h3>
-            <div class="row faqs-row"></div>
-        </div>
-    </section>
-
-    <section class="epilogue">
-        <div class="container content"></div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-6 copyright">
-                    <p>Copyright 2018</p>
-                </div>
-                <div class="col-xs-6 back-home">
-                    <a href="http://www.unhcr.org/privacy-policy.html" target="_blank">Privacy Policy</a>
-                    <a href="terms.html" target="_blank">Terms of Use</a>
-                    <a href="http://innovation.unhcr.org" target="_blank">Main site <span class="ti-world"></span></a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- modals -->
-
 
     <div class="modal fade" id="disclaimer" tabindex="-1" role="dialog" aria-labelledby="q3">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Disclaimer</h4>
@@ -183,21 +85,6 @@
         </div>
     </div>
 
-    <div class="modal fade bs-example-modal-lg" id="region-modal" tabindex="-1" role="dialog" aria-labelledby="region chart">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title"></h4>
-                </div>
-                <div class="modal-body content">
-                    <canvas id="region-chart" width="600" height="300" style="background: #000b4b; border-radius: 3px;"></canvas>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-52484005-16"></script>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+    <kml xmlns="http://www.opengis.net/kml/2.2">
+    <Document id="root_doc">
+    <Schema name="Somalia_Adminstrative_Boundaries" id="Somalia_Adminstrative_Boundaries">
+        <SimpleField name="OBJECTID" type="int"></SimpleField>
+        <SimpleField name="REG_NAME" type="string"></SimpleField>
+        <SimpleField name="REG_CODE" type="int"></SimpleField>
+        <SimpleField name="REG_ALT" type="string"></SimpleField>
+        <SimpleField name="DIST_NAME" type="string"></SimpleField>
+        <SimpleField name="DIS_CODE" type="int"></SimpleField>
+        <SimpleField name="DIST_ALT" type="string"></SimpleField>
+        <SimpleField name="NOTE" type="string"></SimpleField>
+        <SimpleField name="Area" type="float"></SimpleField>
+        <SimpleField name="DIST_2_NAM" type="string"></SimpleField>
+        <SimpleField name="GlobalID" type="string"></SimpleField>
+    </Schema>
+    <Folder><name>Somalia_Adminstrative_Boundaries</name>  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Somalia_Adminstrative_Boundaries">
+		<SimpleData name="OBJECTID">8</SimpleData>
+		<SimpleData name="REG_NAME">Woqooyi Galbeed</SimpleData>
+		<SimpleData name="REG_CODE">12</SimpleData>
+		<SimpleData name="REG_ALT">West Galbeed</SimpleData>
+		<SimpleData name="DIST_NAME">Gebiley</SimpleData>
+		<SimpleData name="DIS_CODE">1203</SimpleData>
+		<SimpleData name="DIST_ALT">Gabiley</SimpleData>
+		<SimpleData name="NOTE"></SimpleData>
+		<SimpleData name="Area">4269.85154769</SimpleData>
+		<SimpleData name="DIST_2_NAM">Gebiley</SimpleData>
+		<SimpleData name="GlobalID">a008d7a3-4b16-4859-8fbd-babc33144bcb</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>44.0409545899238,10.1709270481032 44.1009559630203,10.1309309003496 43.9309501647083,9.86095523814535 43.5709419252309,9.39099883990532 43.5564231874207,9.37648200951798 43.5358123780857,9.38206195818872 43.5208625791948,9.38818168620576 43.4923133846436,9.40251541097155 43.4900932307582,9.40424537647661 43.4692420960337,9.42040729529406 43.4464569091636,9.44588565861996 43.433158874925,9.47179222078658 43.4182281490642,9.50556468946302 43.4146499634548,9.51367092111691 43.4111976623594,9.53381538379504 43.4058189394086,9.5467948913417 43.399177551681,9.55377578719742 43.3761177067095,9.5700540546951 43.3722572327086,9.57709407835285 43.3616065982909,9.58720493285215 43.3415565487974,9.60126876831496 43.3257293698601,9.60711002388183 43.3078384400165,9.60925102203448 43.3001289365515,9.61207103740139 43.2905197145511,9.65850353231383 43.3109397890933,9.69097137461054 43.3709373470448,9.80096244841357 43.5309410092344,9.9909448625899 43.7209510806897,10.2609205243018 43.7609481815412,10.3009166718026 43.8209495546377,10.2909173963532 44.0409545899238,10.1709270481032</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+ </Folder>
+    </Document></kml>

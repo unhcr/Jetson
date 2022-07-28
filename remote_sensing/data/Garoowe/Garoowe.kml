@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+    <kml xmlns="http://www.opengis.net/kml/2.2">
+    <Document id="root_doc">
+    <Schema name="Somalia_Adminstrative_Boundaries" id="Somalia_Adminstrative_Boundaries">
+        <SimpleField name="OBJECTID" type="int"></SimpleField>
+        <SimpleField name="REG_NAME" type="string"></SimpleField>
+        <SimpleField name="REG_CODE" type="int"></SimpleField>
+        <SimpleField name="REG_ALT" type="string"></SimpleField>
+        <SimpleField name="DIST_NAME" type="string"></SimpleField>
+        <SimpleField name="DIS_CODE" type="int"></SimpleField>
+        <SimpleField name="DIST_ALT" type="string"></SimpleField>
+        <SimpleField name="NOTE" type="string"></SimpleField>
+        <SimpleField name="Area" type="float"></SimpleField>
+        <SimpleField name="DIST_2_NAM" type="string"></SimpleField>
+        <SimpleField name="GlobalID" type="string"></SimpleField>
+    </Schema>
+    <Folder><name>Somalia_Adminstrative_Boundaries</name>  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Somalia_Adminstrative_Boundaries">
+		<SimpleData name="OBJECTID">26</SimpleData>
+		<SimpleData name="REG_NAME">Nugaal</SimpleData>
+		<SimpleData name="REG_CODE">17</SimpleData>
+		<SimpleData name="REG_ALT">Nugal</SimpleData>
+		<SimpleData name="DIST_NAME">Garoowe</SimpleData>
+		<SimpleData name="DIS_CODE">1701</SimpleData>
+		<SimpleData name="DIST_ALT">Garowe</SimpleData>
+		<SimpleData name="NOTE">Nugaal region now includes Dan Gorayo district (1704), but no boundary exists as yet for this district</SimpleData>
+		<SimpleData name="Area">8623.00203064</SimpleData>
+		<SimpleData name="DIST_2_NAM">Garoowe</SimpleData>
+		<SimpleData name="GlobalID">49561f20-64f7-4374-a636-c7240d35a748</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>49.0811119083033,9.14052963224325 49.1024436947055,8.96994400042109 49.1110534663921,8.90102672606934 49.1810531613644,8.77103900876893 49.2363510131254,8.73082637829496 49.2910537723332,8.69104480704496 49.3000717160271,8.68541145361626 49.2210540773609,8.50106334653287 49.1810531613644,8.41107177704447 49.2110519412385,8.10109996802689 49.1910476680951,8.0211076738342 48.1310310361548,8.21109294892354 48.05102920506,8.24108982062858 48.5610427857495,8.78103923794891 48.7310447689165,8.78103828446666 49.0811119083033,9.14052963224325</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+ </Folder>
+    </Document></kml>

@@ -234,9 +234,13 @@ def create_raster_stack(rootDir,
             # print("[INFO] Processing ", current_working_dir, " folder")
 
             # Get list of all data and sort the data
-            all_landsat_post_bands = glob(current_working_dir + "/*band*.tif")
-            all_landsat_post_bands.sort()
+            all_landsat_post_bands = glob(current_working_dir + "/*B*.TIF")
+            #all_landsat_post_bands.sort()
 
+            # CHANGE THIS TO EXCLUDE EXTRA BANDS BEYOND 7
+            all_landsat_post_bands = [band for band in all_landsat_post_bands if "B10" not in band and "B11" not in band and "B9" not in band and "B8" not in band]
+            #all_landsat_post_bands = all_landsat_post_bands[:-2]
+            #print(all_landsat_post_bands)
 
             formatted_filename = format_landsat_product_identifier(current_folder,region_name)
             # print ('formatted_filename: ',formatted_filename)
@@ -252,13 +256,14 @@ def create_raster_stack(rootDir,
             # Create an output array of all the landsat data stacked
             new_raster_stack_path = os.path.join(rootDir, "raster_stack", formatted_filename)
 
-            # print ("[INFO] New raster stack created as '",new_raster_stack_path,"'")
+            print ("[INFO] New raster stack created as '",new_raster_stack_path,"'")
 
             # This will create a new stacked raster with all bands
             # This creates a numpy array with each "layer" representing a single band
             land_stack, land_meta = es.stack(all_landsat_post_bands,
                                              new_raster_stack_path,
-                                             -9999)
+                                             9999)
+
 
     print("[INFO] Raster stack numpy arrays have been successfully created")
 
@@ -268,9 +273,11 @@ def format_landsat_product_identifier(folder,
                                       region_name):
 
     # format filename to extract collection date
-    year = folder[10:14]
-    month = folder[14:16]
-    date = folder[16:18]
+    year = folder[17:21]
+    month = folder[21:23]
+    date = folder[23:25]
+
+    print(year, month, date)
 
     month_name = calendar.month_name[int(month)]
     month_name_abbr = calendar.month_abbr[int(month)]

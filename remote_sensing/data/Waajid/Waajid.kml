@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+    <kml xmlns="http://www.opengis.net/kml/2.2">
+    <Document id="root_doc">
+    <Schema name="Somalia_Adminstrative_Boundaries" id="Somalia_Adminstrative_Boundaries">
+        <SimpleField name="OBJECTID" type="int"></SimpleField>
+        <SimpleField name="REG_NAME" type="string"></SimpleField>
+        <SimpleField name="REG_CODE" type="int"></SimpleField>
+        <SimpleField name="REG_ALT" type="string"></SimpleField>
+        <SimpleField name="DIST_NAME" type="string"></SimpleField>
+        <SimpleField name="DIS_CODE" type="int"></SimpleField>
+        <SimpleField name="DIST_ALT" type="string"></SimpleField>
+        <SimpleField name="NOTE" type="string"></SimpleField>
+        <SimpleField name="Area" type="float"></SimpleField>
+        <SimpleField name="DIST_2_NAM" type="string"></SimpleField>
+        <SimpleField name="GlobalID" type="string"></SimpleField>
+    </Schema>
+    <Folder><name>Somalia_Adminstrative_Boundaries</name>  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Somalia_Adminstrative_Boundaries">
+		<SimpleData name="OBJECTID">60</SimpleData>
+		<SimpleData name="REG_NAME">Bakool</SimpleData>
+		<SimpleData name="REG_CODE">25</SimpleData>
+		<SimpleData name="REG_ALT"></SimpleData>
+		<SimpleData name="DIST_NAME">Waajid</SimpleData>
+		<SimpleData name="DIS_CODE">2504</SimpleData>
+		<SimpleData name="DIST_ALT">Wajid</SimpleData>
+		<SimpleData name="NOTE"></SimpleData>
+		<SimpleData name="Area">2803.44631824</SimpleData>
+		<SimpleData name="DIST_2_NAM">Waajid</SimpleData>
+		<SimpleData name="GlobalID">67870f19-f0b9-4258-84cd-09263d1c14e6</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>43.6309356689357,4.05147981682377 43.7609329227578,3.92149138413643 43.7978591920994,3.88457155214417 43.7909393311252,3.88149499850217 43.750934600882,3.85149741213972 43.6809349059097,3.72150945696293 43.5809326168167,3.61151933712673 43.4109268185046,3.57152318915692 43.1209220882463,3.67151474976064 43.1409225462446,3.85149812737629 43.1009216311463,3.93149113649555 43.0914421079067,3.94774270066868 43.6309356689357,4.05147981682377</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+ </Folder>
+    </Document></kml>
