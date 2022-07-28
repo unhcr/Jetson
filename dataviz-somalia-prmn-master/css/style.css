@@ -1,0 +1,326 @@
+body {
+    padding: 0px 10px;
+}
+
+.collapse-right { padding-right: 0px !important; }
+.expand-left { padding-left: 30px !important; }
+
+img {
+   margin: 2px 2px 2px 2px; 
+}
+
+svg, 
+svg text {
+    font-family: 'Lato';
+}
+
+.ui.grid+.grid {
+    margin-top: 0px !important;
+}
+
+/* .row, */
+.ui.grid>.column:not(.row),
+{
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.row { 
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+}
+
+h4 {
+    white-space: nowrap;
+}
+
+.text-section {
+    margin-top: 8px;
+}
+.tick line:not(.grid-line) {
+
+  display: none;
+}
+
+.tick text {
+  fill: #666666;
+}
+
+.domain {
+  display: none;
+}
+
+#dc-displace-total-number {
+    padding: 0px;
+}
+
+/* #dc-prev-region-map g.admin1Name path {
+    stroke: #fff;
+    stroke-width: 2px;
+}
+#dc-curr-region-map g.admin1Name path {
+    stroke: #fff;
+    stroke-width: 2px;
+} */
+
+#dc-prev-district-map g.admin2Name path {
+    stroke: #fff;
+    stroke-width: .03rem;
+}
+#dc-curr-district-map g.admin2Name path {
+    stroke: #fff;
+    stroke-width: .03rem;
+}
+
+.admin1Name {
+    cursor: pointer;
+}
+.admin2Name {
+    cursor: pointer;
+}
+
+#dc-choropleth-map g.admin2Name path:hover {
+    fill-opacity: .8;
+}
+
+td.dc-table-column._1,
+td.dc-table-column._2
+{
+    text-align: right;
+}
+
+.btn-group-sm>.btn, .btn-sm {
+    font-size: .875rem;
+    padding-top: 3px; 
+    padding-bottom: 3px; 
+}
+
+/* change rowChart label color */
+.dc-chart g.row text {
+    fill: black;
+    text-shadow:
+      0px 0px 2px white,
+      0px 0px 2px white,
+      0px 0px 2px white;
+    pointer-events: none;
+}
+
+.nd {
+    width: 180px;
+    height: 60px;
+    font-size: 40px;
+    text-align: left;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    line-height: normal;
+}
+
+.chart {
+    pointer-events: none;
+}
+
+.dc-chart after { 
+   content: "\00a0 ";
+}
+
+/* g.x text {
+    opacity: 0;
+    text-anchor: end;
+} */
+
+.admin1Name path {
+    stroke: #fff;
+    stroke-width: 1;
+    stroke-opacity: 0.5;
+}
+
+@media screen and (min-width: 1600px) {
+    .container {
+        max-width: (1600px - @grid-gutter-width);
+    }
+}
+
+@media screen and (min-width: 1900px) {
+    .container {
+        max-width: (1900px - @grid-gutter-width);
+    }
+}
+
+@media print { 
+    .container {
+        max-width: none!important;
+        width: 100%!important;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .row {
+        margin: -1%;
+    }
+    [class*="col-"] {
+        float: left;
+        padding-left: 1%;
+        padding-right: 1%;
+    }
+    .col-sm-12,
+    .col-md-12,
+    .col-lg-12 {
+        width: 100%
+    }
+    .col-sm-11,
+    .col-md-11,
+    .col-lg-11 {
+        width: 91.66666667%
+    }
+    .col-sm-10,
+    .col-md-10,
+    .col-lg-10 {
+        width: 83.33333333%
+    }
+    .col-sm-9,
+    .col-md-9,
+    .col-lg-9 {
+        width: 75%
+    }
+    .col-sm-8,
+    .col-md-8,
+    .col-lg-8 {
+        width: 66.66666667%
+    }
+    .col-sm-7,
+    .col-md-7,
+    .col-lg-7 {
+        width: 58.33333333%
+    }
+    .col-sm-6,
+    .col-md-6,
+    .col-lg-6 {
+        width: 50%
+    }
+    .col-sm-5,
+    .col-md-5,
+    .col-lg-5 {
+        width: 41.66666667%
+    }
+    .col-sm-4,
+    .col-md-4,
+    .col-lg-4 {
+        width: 33.33333333%
+    }
+    .col-sm-3,
+    .col-md-3,
+    .col-lg-3 {
+        width: 25%
+    }
+    .col-sm-2,
+    .col-md-2,
+    .col-lg-2 {
+        width: 16.66666667%
+    }
+    .col-sm-1,
+    .col-md-1,
+    .col-lg-1 {
+        width: 8.33333333%
+    }
+}
+
+ /* d3-tip (dc.css modifier) - start */
+ .dc-tooltip {
+    background-color: #FFF;
+    border: 1px solid grey;
+    padding: 3px 7px;
+    font-size: 12px;
+    -webkit-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.16);
+    -moz-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.16);
+    box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.16);
+  }
+  
+  .dc-tooltip-title {
+    font-weight: bold;
+    padding-right: 2px;
+  }
+  
+  .dc-tooltip-value {
+    padding-left: 2px;
+  }
+  
+  .dc-tooltip:after,
+  .dc-tooltip:before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 50%;
+      margin-left: -5px;
+      /* margin: auto; */
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-color: #ffffff transparent transparent transparent;
+  }
+  
+  .dc-tooltip:after {
+      left: 50%;
+      bottom: -4px;
+      border-color: #FFF transparent transparent transparent;
+      border-width: 5px 5px 0 5px;
+  }
+  
+  .dc-tooltip:before {
+      left: 50%;
+      margin-left: -6px;
+      /* margin-left: 2px; */
+      bottom: -5px;
+      border-color: grey transparent transparent transparent;
+      border-width: 6px 6px 0 6px;
+  }
+
+  /* 'About PRMN' heading floats the right of  */
+  /* 'Monthly Displacement' heading without it */
+  div.dc-chart { 
+    float: none;  
+  }
+  /* d3-tip (dc.css modifier) - end */
+
+/* help icon custom grey */
+.ui.header>.icon {
+    color: #99c6e4;
+    font-size: 1.3em;
+    margin-top: .1em;
+}
+
+/* hide x axis for priority needs row chart */
+#dc-displace-need-chart svg g g.axis { display: none; }
+
+/* .scrolling {
+    height: 230px;
+    overflow-y: scroll;
+} */
+
+/* reseize reset/clear buttons */
+a.reset.ui.primary.button.mini {
+    padding: .6em .7em;
+}
+
+/* resize y-axis labels for  */
+.dc-chart text.y-axis-label {
+    font-size: 11px;
+}
+
+/* year and month dc filter color */
+.dc-chart span.filter {
+    color: black;
+}
+
+/* remove left & right paddings for the curr and prev maps */
+#col-curr-district-map, #col-prev-district-map {
+    padding-left: 0;
+    padding-right: 0;
+}
+/* remove left padding only for the weekly line chart */
+#col-week-chart {
+    padding-left: 0;
+}
+
+/* remove last text (Jan...) in x axis of the monthly bar chart */
+#dc-month-chart svg g g.axis.x g.tick:last-child text {
+    display: none;
+}
