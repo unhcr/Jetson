@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+    <kml xmlns="http://www.opengis.net/kml/2.2">
+    <Document id="root_doc">
+    <Schema name="Somalia_Adminstrative_Boundaries" id="Somalia_Adminstrative_Boundaries">
+        <SimpleField name="OBJECTID" type="int"></SimpleField>
+        <SimpleField name="REG_NAME" type="string"></SimpleField>
+        <SimpleField name="REG_CODE" type="int"></SimpleField>
+        <SimpleField name="REG_ALT" type="string"></SimpleField>
+        <SimpleField name="DIST_NAME" type="string"></SimpleField>
+        <SimpleField name="DIS_CODE" type="int"></SimpleField>
+        <SimpleField name="DIST_ALT" type="string"></SimpleField>
+        <SimpleField name="NOTE" type="string"></SimpleField>
+        <SimpleField name="Area" type="float"></SimpleField>
+        <SimpleField name="DIST_2_NAM" type="string"></SimpleField>
+        <SimpleField name="GlobalID" type="string"></SimpleField>
+    </Schema>
+    <Folder><name>Somalia_Adminstrative_Boundaries</name>  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Somalia_Adminstrative_Boundaries">
+		<SimpleData name="OBJECTID">58</SimpleData>
+		<SimpleData name="REG_NAME">Bakool</SimpleData>
+		<SimpleData name="REG_CODE">25</SimpleData>
+		<SimpleData name="REG_ALT"></SimpleData>
+		<SimpleData name="DIST_NAME">Ceel Barde</SimpleData>
+		<SimpleData name="DIS_CODE">2502</SimpleData>
+		<SimpleData name="DIST_ALT">El Barde</SimpleData>
+		<SimpleData name="NOTE"></SimpleData>
+		<SimpleData name="Area">7682.93655516</SimpleData>
+		<SimpleData name="DIST_2_NAM">Ceel Barde</SimpleData>
+		<SimpleData name="GlobalID">2a10d851-dd1f-473e-81e0-a3467975ec53</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>43.1273117069459,4.63503599171181 43.1705017086764,4.66104078335303 43.2361183167649,4.69767856569809 43.3252487181825,4.74285936379698 43.4224014281251,4.78996086116484 43.435859680488,4.79609251060481 43.4701118466884,4.80820846572808 43.5443649288854,4.83272981642331 43.6600036621231,4.86943244932002 43.8148002622261,4.91137647624052 44.0085220340949,4.9603724483707 44.0160827639725,4.96183347730035 44.0312232967578,4.96107578271672 44.2441444395971,4.95181894310922 44.5918350221194,4.9362258914328 44.6027946473504,4.87171602285387 44.6775627139369,4.43144369155399 44.2909469605472,4.43144416802906 43.2809257504358,4.48144102085093 43.1273117069459,4.63503599171181</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+ </Folder>
+    </Document></kml>

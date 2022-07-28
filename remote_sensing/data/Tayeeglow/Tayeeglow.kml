@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+    <kml xmlns="http://www.opengis.net/kml/2.2">
+    <Document id="root_doc">
+    <Schema name="Somalia_Adminstrative_Boundaries" id="Somalia_Adminstrative_Boundaries">
+        <SimpleField name="OBJECTID" type="int"></SimpleField>
+        <SimpleField name="REG_NAME" type="string"></SimpleField>
+        <SimpleField name="REG_CODE" type="int"></SimpleField>
+        <SimpleField name="REG_ALT" type="string"></SimpleField>
+        <SimpleField name="DIST_NAME" type="string"></SimpleField>
+        <SimpleField name="DIS_CODE" type="int"></SimpleField>
+        <SimpleField name="DIST_ALT" type="string"></SimpleField>
+        <SimpleField name="NOTE" type="string"></SimpleField>
+        <SimpleField name="Area" type="float"></SimpleField>
+        <SimpleField name="DIST_2_NAM" type="string"></SimpleField>
+        <SimpleField name="GlobalID" type="string"></SimpleField>
+    </Schema>
+    <Folder><name>Somalia_Adminstrative_Boundaries</name>  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Somalia_Adminstrative_Boundaries">
+		<SimpleData name="OBJECTID">59</SimpleData>
+		<SimpleData name="REG_NAME">Bakool</SimpleData>
+		<SimpleData name="REG_CODE">25</SimpleData>
+		<SimpleData name="REG_ALT"></SimpleData>
+		<SimpleData name="DIST_NAME">Tayeeglow</SimpleData>
+		<SimpleData name="DIS_CODE">2503</SimpleData>
+		<SimpleData name="DIST_ALT">Tiyeeglow, Tayeglow, Tieglow</SimpleData>
+		<SimpleData name="NOTE"></SimpleData>
+		<SimpleData name="Area">6591.59150532</SimpleData>
+		<SimpleData name="DIST_2_NAM">Tayeeglow</SimpleData>
+		<SimpleData name="GlobalID">f819c677-7e14-4d23-ad7e-e3b9b5483fd0</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>44.6775627139369,4.43144369155399 44.6809539798986,4.41144561729264 44.7496566773822,4.07777166405756 44.7509574891176,4.07147645930391 44.8009567260916,3.86149549489689 44.7709579471158,3.70151019109147 44.7739868165222,3.57112717653259 44.7809562680933,3.27154922499271 44.6609535219003,3.25155115087552 44.6109542849263,3.27154946355515 44.4718017574613,3.26459217033606 44.4109497067402,3.26155042689204 44.333396911282,3.30927014366668 44.2809448244247,3.3415431979565 44.3109474185455,3.39153885872822 44.3109474185455,3.45097732535151 44.3109474185455,3.45396494861836 44.3109474185455,3.45695185679487 44.3109474185455,3.45993948008081 44.3109474185455,3.46292734143015 44.3109474185455,3.46591401064023 44.3109474185455,3.46890187285472 44.3109474185455,3.47188925756439 44.3109474185455,3.4748761656622 44.3109474185455,3.47786378880687 44.3109474185455,3.48085164996128 44.3109474185455,3.48383831984665 44.3109474185455,3.48682618176804 44.3109474185455,3.48981404316209 44.3109474185455,3.49280047386927 44.3109474185455,3.49578833598195 44.3109474185455,3.49877595903628 44.3109474185455,3.50176382093443 44.3109474185455,3.50475049063616 44.3109474185455,3.50773835139344 44.3109474185455,3.51072502173881 44.3109474185455,3.51371288311577 44.3109474185455,3.57152223610239 44.2909469605472,3.61151862169473 44.2909469605472,4.43144416802906 44.6775627139369,4.43144369155399</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+ </Folder>
+    </Document></kml>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+    <kml xmlns="http://www.opengis.net/kml/2.2">
+    <Document id="root_doc">
+    <Schema name="Somalia_Adminstrative_Boundaries" id="Somalia_Adminstrative_Boundaries">
+        <SimpleField name="OBJECTID" type="int"></SimpleField>
+        <SimpleField name="REG_NAME" type="string"></SimpleField>
+        <SimpleField name="REG_CODE" type="int"></SimpleField>
+        <SimpleField name="REG_ALT" type="string"></SimpleField>
+        <SimpleField name="DIST_NAME" type="string"></SimpleField>
+        <SimpleField name="DIS_CODE" type="int"></SimpleField>
+        <SimpleField name="DIST_ALT" type="string"></SimpleField>
+        <SimpleField name="NOTE" type="string"></SimpleField>
+        <SimpleField name="Area" type="float"></SimpleField>
+        <SimpleField name="DIST_2_NAM" type="string"></SimpleField>
+        <SimpleField name="GlobalID" type="string"></SimpleField>
+    </Schema>
+    <Folder><name>Somalia_Adminstrative_Boundaries</name>  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Somalia_Adminstrative_Boundaries">
+		<SimpleData name="OBJECTID">63</SimpleData>
+		<SimpleData name="REG_NAME">Gedo</SimpleData>
+		<SimpleData name="REG_CODE">26</SimpleData>
+		<SimpleData name="REG_ALT"></SimpleData>
+		<SimpleData name="DIST_NAME">Baardheere</SimpleData>
+		<SimpleData name="DIS_CODE">2602</SimpleData>
+		<SimpleData name="DIST_ALT">Baar-dheere, Bardera</SimpleData>
+		<SimpleData name="NOTE">Gedo region now includes Buur Dhuubo district (2607), but no boundary exists as yet for this district</SimpleData>
+		<SimpleData name="Area">15355.468659</SimpleData>
+		<SimpleData name="DIST_2_NAM">Baardheere</SimpleData>
+		<SimpleData name="GlobalID">92ad2bd7-78ca-46df-b5ae-7077494954c4</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>42.5426216123705,2.75102639163617 42.5409126277296,2.74159908299013 42.5159873960363,2.60041785276412 42.5109062193621,2.57161450413285 42.4009094235383,1.95167040786136 41.6408882143404,1.94167172879272 41.4208831790543,1.26173269755329 40.9915657041051,1.23246443278471 40.9916458131672,1.26179087181674 40.9916687013423,1.26715040207108 40.9920272827526,1.39348900351353 40.9923858641629,1.51983964443515 40.9926757810478,1.62090170405316 40.9925270083587,1.64620149121391 40.9918365479599,1.75932633921454 40.9920272827526,1.7725712057129 40.9923591617411,1.79448616459899 40.9947090152855,1.82556843748153 40.9921684269484,1.8333517315656 40.9915885922803,1.89845287808823 40.9911880496648,1.94366383518877 40.9926376340893,2.01917409895962 40.9925270083587,2.02483057999252 40.9911460875612,2.09692120567099 40.9923171996375,2.11098480205048 40.9922180175453,2.15117216129375 40.9918975830936,2.27758407584475 40.9918174740315,2.31162691089164 41.7808914185317,2.30163931838103 41.970897674842,2.9415814878735 42.5426216123705,2.75102639163617</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+ </Folder>
+    </Document></kml>

@@ -22,6 +22,9 @@ http://www.un-spider.org/advisory-support/recommended-practices/recommended-prac
 import os
 import numpy as np
 import random
+import sys
+remote_sensing_path = os.path.join("../")
+sys.path.insert(0, remote_sensing_path)
 
 from remote_sensing.Landsat8.spectral_vegatation_indices.NDVI import calculate_NDVI
 import earthpy.plot as ep

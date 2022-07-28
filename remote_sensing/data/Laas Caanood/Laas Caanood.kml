@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+    <kml xmlns="http://www.opengis.net/kml/2.2">
+    <Document id="root_doc">
+    <Schema name="Somalia_Adminstrative_Boundaries" id="Somalia_Adminstrative_Boundaries">
+        <SimpleField name="OBJECTID" type="int"></SimpleField>
+        <SimpleField name="REG_NAME" type="string"></SimpleField>
+        <SimpleField name="REG_CODE" type="int"></SimpleField>
+        <SimpleField name="REG_ALT" type="string"></SimpleField>
+        <SimpleField name="DIST_NAME" type="string"></SimpleField>
+        <SimpleField name="DIS_CODE" type="int"></SimpleField>
+        <SimpleField name="DIST_ALT" type="string"></SimpleField>
+        <SimpleField name="NOTE" type="string"></SimpleField>
+        <SimpleField name="Area" type="float"></SimpleField>
+        <SimpleField name="DIST_2_NAM" type="string"></SimpleField>
+        <SimpleField name="GlobalID" type="string"></SimpleField>
+    </Schema>
+    <Folder><name>Somalia_Adminstrative_Boundaries</name>  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Somalia_Adminstrative_Boundaries">
+		<SimpleData name="OBJECTID">13</SimpleData>
+		<SimpleData name="REG_NAME">Sool</SimpleData>
+		<SimpleData name="REG_CODE">14</SimpleData>
+		<SimpleData name="REG_ALT"></SimpleData>
+		<SimpleData name="DIST_NAME">Laas Caanood</SimpleData>
+		<SimpleData name="DIS_CODE">1401</SimpleData>
+		<SimpleData name="DIST_ALT">Las Caanood, Lascaanod, Lasanod, Las Anod</SimpleData>
+		<SimpleData name="NOTE"></SimpleData>
+		<SimpleData name="Area">11571.855093</SimpleData>
+		<SimpleData name="DIST_2_NAM">Laas Caanood</SimpleData>
+		<SimpleData name="GlobalID">77ba0b8e-9e21-4192-b865-8e63f15cdf61</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>46.9206390379537,8.8432807926161 48.0410308840825,8.78104019143118 48.5610427857495,8.78103923794891 48.05102920506,8.24108982062858 48.1310310361548,8.21109294892354 47.9410247798445,8.02111053455243 47.9210243227445,8.0011119841184 47.9010276798913,8.0011119841184 47.8010215756532,8.0011119841184 47.7010231017052,8.00111293773801 47.6010169983654,8.00111293773801 47.5010185244174,8.00111293773801 47.4010162353244,8.0011138913576 47.3010139462313,8.0011138913576 47.2010116580366,8.0011138913576 47.1010093689435,8.0011138913576 47.0127754215008,8.00111484497719 47.1010093689435,8.56106376657801 47.0010108949955,8.75104618098386 46.9210052487557,8.76104640933953 46.9210052487557,8.78262233738918 46.9210090639007,8.82104015333667 46.9206390379537,8.8432807926161</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+ </Folder>
+    </Document></kml>

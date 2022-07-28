@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000E4A" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Jetson Stories</title>
+
+    <link href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="bundle.css">
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+</head>
+
+<body class="jetsonstory">
+    <!-- div class="loader">
+        <div class="logo">
+            <img src="img/logo-innovation-service.png" />
+        </div>
+    </div -->
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html"><img src="img/logo-innovation-service-blue.png" /> </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="ml-auto">
+            </ul>
+
+            <ul class="custom-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="tech.html">Explore Technical Specifications</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="article-header">
+        <!-- animated objects -->
+        <img src="img/triangle.svg" class="anim-shape triangle" data-swiper-parallax="-100" />
+        <img src="img/cross.svg" class="anim-shape cross" data-swiper-parallax="-200" />
+        <img src="img/cyan-dots.svg" class="anim-shape cyan-dots" data-swiper-parallax="-500" />
+        <h1 class="storytitle"></h1>
+    </div>
+
+    <div class="mainstory">
+        <div class="container place-cont">
+            <div class="placeholder-content">
+                <div class="placeholder-content_item"></div>
+                <div class="placeholder-content_item"></div>
+                <div class="placeholder-content_item"></div>
+                <div class="placeholder-content_item"></div>
+                <div class="placeholder-content_item"></div>
+                <div class="placeholder-content_item"></div>
+                <div class="placeholder-content_item"></div>
+                <div class="placeholder-content_item"></div>
+                <div class="placeholder-content_item"></div>
+                <div class="placeholder-content_item"></div>
+                <div class="placeholder-content_item"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- section class="epilogue">
+        <div class="container content"></div>
+    </section -->
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-6 copyright">
+                    <p>Copyright 2019</p>
+                </div>
+                <div class="col-6 back-home">
+                    <a href="http://www.unhcr.org/privacy-policy.html" target="_blank">Privacy Policy</a>
+                    <a href="terms.html" target="_blank">Terms of Use</a>
+                    <a href="http://innovation.unhcr.org" target="_blank">Main site <span class="ti-world"></span></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- modals -->
+
+    <div class="modal fade bs-example-modal-lg" id="region-modal" tabindex="-1" role="dialog" aria-labelledby="region chart">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body content">
+                    <canvas id="region-chart" width="600" height="300" style="background: #000b4b; border-radius: 3px;"></canvas>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-52484005-16"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-52484005-16');
+    </script>
+
+    <script src="commons.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
