@@ -1,3 +1,4 @@
+# Overview 
 This repository contains the code from Experiment #2 of the Jetson project, adapted for sharing with the general public.
 This experiment was described in the following [paper](https://arxiv.org/pdf/2201.08006.pdf): 
 
@@ -6,7 +7,7 @@ This experiment was described in the following [paper](https://arxiv.org/pdf/220
 We have continued to adapt and improve the code since the manuscript was submitted. To see the version of the code used to produce the results in the paper, please see the following branch of this repository: https://github.com/unhcr/Jetson/tree/JEMS_replication/experiment_2
 
 
-### File structure:
+## File structure
 
 | File | Description |
 |---|---|
@@ -26,7 +27,7 @@ We have continued to adapt and improve the code since the manuscript was submitt
 | `pipeline_5d_explore_crossval.ipynb`| Explores the results of the crossvalidation performed on the ML models. |
 
 
-Baselines:
+### Baselines:
 
 | File | Description |
 |---|---|
