@@ -31,4 +31,6 @@ import geopandas
 print("importing landsatexplore")
 import landsatxplore
 
+print("importing gdal")
+from osgeo import gdal
 
