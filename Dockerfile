@@ -12,3 +12,6 @@ RUN export C_INCLUDE_PATH=/usr/include/
 COPY remote_sensing remote_sensing/
 WORKDIR remote_sensing/
 RUN pip install -r requirements.txt
+RUN curl -LO https://github.com/yannforget/landsatxplore/archive/refs/heads/master.tar.gz
+RUN tar -zxvf master.tar.gz
+RUN mv landsatxplore-master/landsatxplore/ /usr/local/lib/python3.10/dist-packages/landsatxplore/
