@@ -1,0 +1,6 @@
+GDAL
+rastreio
+fiona
+geopandas
+earthpy
+landsatxplore

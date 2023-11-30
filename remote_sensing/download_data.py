@@ -20,4 +20,5 @@ if len(args) == 2 :
     region = args[1].capitalize()
 else :
     region = None
-download_data("barcanjo", "Guitarra915641448", region)
+    
+download_data("barcanjo", "SatCropper2020", 'Baki')

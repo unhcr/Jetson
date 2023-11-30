@@ -28,7 +28,7 @@ for (dirpath, dirnames, filenames) in os.walk("./data/") :
             region_vci_data = {}
             for stack in filenames:
                 vci = calculate_VCI(region_path  + "/raster_stack/clipped/" +stack, region_path  + "/raster_stack/clipped/")
-                region_vci_data[stack.replace(".tif", "").replace(region + "-", "")] = np.average(vci);
+                region_vci_data[stack.replace(".tif", "").replace(region + "-", "")] = np.average(vci)
         
         vci_data[region] = vci_data
 

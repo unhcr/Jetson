@@ -7,6 +7,7 @@ from landsatxplore.earthexplorer import EarthExplorer
 from Landsat8.landsat8_utils import create_raster_stack
 import os
 from osgeo import gdal
+from tqdm import tqdm, trange
 
 
 def download_region_data(region, user, passwd, root_data_dir = "./data", location_file_path = "location_data.json") :
@@ -30,7 +31,7 @@ def download_region_data(region, user, passwd, root_data_dir = "./data", locatio
         print("Getting region coordinates")
         # Get the coordinates of the defining polygon to do scene search
         with open(root_data_dir + "/" + region + "/" + region + ".kml") as kml_file :
-            for line in kml_file.readlines() :
+            for line in tqdm(kml_file.readlines()) :
                 # Get all the edges of the polygon of the region
                 if "<Polygon>" in line:
                     line = line.replace("<Polygon><outerBoundaryIs><LinearRing><coordinates>", "")
@@ -41,7 +42,7 @@ def download_region_data(region, user, passwd, root_data_dir = "./data", locatio
         print("Searching scenes")
         all_scenes = []
         # Get all scenes touching the polygon
-        for coordinate_pair in coordinate_pairs:
+        for coordinate_pair in tqdm(coordinate_pairs):
             longi = float(coordinate_pair[0])
             lati = float(coordinate_pair[1])
             scenes_search = api.search(
@@ -52,13 +53,12 @@ def download_region_data(region, user, passwd, root_data_dir = "./data", locatio
             )
 
             all_scenes.extend(scenes_search)
-        print(all_scenes[0])
 
         print("Filtering by row and path")
         # Filter the scenes for only the relevant path/row pairs
         relevant_scenes = []
         path_row_pairs = locations[region]["path_row_pairs"]
-        for path_row_pair in path_row_pairs :
+        for path_row_pair in tqdm(path_row_pairs) :
             path = path_row_pair[0]
             row = path_row_pair[1]
 
@@ -111,6 +111,7 @@ def process_year_month_folder(region, year, month,  folder_path, delete = False)
     Path(folder_path + "/clipped/").mkdir(exist_ok=True)
 
     # creating raster stacks
+    print(folder_path)
     create_raster_stack(folder_path, region)
 
     for (dirpath, dirnames, filenames) in os.walk(folder_path + "raster_stack") :
