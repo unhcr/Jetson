@@ -30,7 +30,7 @@ def download_region_data(region, user, passwd, root_data_dir = "./data", locatio
         
         print("Getting region coordinates")
         # Get the coordinates of the defining polygon to do scene search
-        with open(root_data_dir + "/" + region + "/" + region + ".kml") as kml_file :
+        with open(root_data_dir + region + "/" + region + ".kml") as kml_file :
             for line in tqdm(kml_file.readlines()) :
                 # Get all the edges of the polygon of the region
                 if "<Polygon>" in line:
@@ -81,7 +81,7 @@ def download_region_data(region, user, passwd, root_data_dir = "./data", locatio
 
 
             if info not in collected :
-                path = root_data_dir + "/" + region + "/" + str(date.year) + "_" + str(date.month)+ "/"
+                path = root_data_dir + region + "/" + str(date.year) + "_" + str(date.month)+ "/"
                 Path(path).mkdir(exist_ok=True)
                 if scene["display_id"][0:4] == "LC08" :
                     print("Downloading scene: " + scene["display_id"])
@@ -94,10 +94,10 @@ def download_region_data(region, user, passwd, root_data_dir = "./data", locatio
 
 
 def process_region_folder(region, root_data_dir = "./data", delete=True) :
-    for (_, dirnames, _) in os.walk(root_data_dir + "/" + region) :
+    for (_, dirnames, _) in os.walk(root_data_dir + region) :
         for date in dirnames:
             year_month = date.split("_")
-            process_year_month_folder(region, year_month[0], year_month[1], root_data_dir + "/" + region + "/" + date)
+            process_year_month_folder(region, year_month[0], year_month[1], root_data_dir + region + "/" + date)
         break
         
 
